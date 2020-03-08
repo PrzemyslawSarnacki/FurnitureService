@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TweenOne from 'rc-tween-one';
 import ScrollOverPack from 'rc-scroll-anim/lib/ScrollOverPack';
-import {  Button } from 'antd';
+import { Icon, Button } from 'antd';
 import QueueAnim from 'rc-queue-anim';
 
 export default function Page3({ isMobile }) {
@@ -27,9 +27,9 @@ export default function Page3({ isMobile }) {
         </p>
         <div key="button">
           <a>
-            <Button type="primary" size="large">
+            <Button type="danger" size="large">
               OK
-              {/* <Icon type="right" /> */}
+              <Icon type="right" />
             </Button>
           </a>
         </div>

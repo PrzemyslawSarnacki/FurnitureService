@@ -8,6 +8,7 @@ import Page2 from './Page2';
 import Page3 from './Page3';
 import Footer from './Footer';
 import './static/styles.less';
+import Offer from './Offer';
 
 let isMobile = false;
 enquireScreen((b) => {
@@ -39,8 +40,9 @@ render(){
     [
       <Header key="header" isFirstScreen={this.state.isFirstScreen} isMobile={this.state.isMobile} />,
       <Banner key="banner" onEnterChange={this.onEnterChange} />,
+      <Offer key="offer" isMobile={this.state.isMobile} />,
       <Page1 key="page1" isMobile={this.state.isMobile} />,
-      <Page2 key="page2" />,
+      <Page2 key="page2" isMobile={this.state.isMobile} />,
       <Page3 key="page3" isMobile={this.state.isMobile} />,
       <Footer key="footer" />,
       <DocumentTitle title="Ant Design UI" key="title" />,

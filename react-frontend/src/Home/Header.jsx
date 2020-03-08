@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { Menu, Row, Col, Button, Popover, Badge } from 'antd';
+import { Menu, Row, Col, Icon, Button, Popover, Badge } from 'antd';
 
 
 const searchEngine = 'Google';
@@ -9,7 +9,7 @@ const searchEngine = 'Google';
 export default class Header extends React.Component {
   static propTypes = {
     isFirstScreen: PropTypes.bool,
-    isMoblie: PropTypes.bool,
+    isMobile: PropTypes.bool,
   }
   state = {
     menuVisible: false,
@@ -38,49 +38,30 @@ export default class Header extends React.Component {
   }
 
   render() {
-    const { isFirstScreen, isMoblie } = this.props;
+    const { isFirstScreen, isMobile } = this.props;
     const { menuVisible } = this.state;
-    const menuMode = isMoblie ? 'inline' : 'horizontal';
+    const menuMode = isMobile ? 'inline' : 'horizontal';
     const headerClassName = classNames({
       clearfix: true,
       'home-nav-white': !isFirstScreen,
     });
 
     const menu = [
-      <Button className="header-lang-button" ghost size="small" key="lang">
-        English
-      </Button>,
       <Menu mode={menuMode} defaultSelectedKeys={['home']} id="nav" key="nav">
         <Menu.Item key="home">
-          首页
+          Oferta
         </Menu.Item>
         <Menu.Item key="docs/spec">
-          指引
+          Kontakt
         </Menu.Item>
         <Menu.Item key="docs/react">
-          组件
+          Lokalizacja
         </Menu.Item>
         <Menu.Item key="docs/pattern">
-          模式
+          Sklep
         </Menu.Item>
         <Menu.Item key="docs/resource">
-          资源
-        </Menu.Item>
-        <Menu.Item key="pro">
-          <a
-            href="http://pro.ant.design"
-            className="header-link"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            PRO
-            <span style={{
-              display: 'inline-block', position: 'relative', top: -2, width: 18,
-            }}
-            >
-              <Badge dot />
-            </span>
-          </a>
+          Sth else
         </Menu.Item>
       </Menu>,
     ];
@@ -97,18 +78,19 @@ export default class Header extends React.Component {
             arrowPointAtCenter
             onVisibleChange={this.onMenuVisibleChange}
           >
-            {/* <Icon
+            <Icon
               className="nav-phone-icon"
               type="menu"
               onClick={this.handleShowMenu}
-            /> */}
+            />
           </Popover>
         ) : null}
         <Row>
           <Col lg={4} md={5} sm={24} xs={24}>
             <a id="logo">
+              <span>
               <img alt="logo" src="https://t.alipayobjects.com/images/rmsweb/T1B9hfXcdvXXXXXXXX.svg" />
-              <span>Meble idea</span>
+                <h2 key="h2"><p>MEBLE</p>idea</h2></span>
             </a>
           </Col>
           <Col lg={20} md={19} sm={0} xs={0}>

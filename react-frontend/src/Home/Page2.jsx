@@ -1,29 +1,31 @@
 import React from 'react';
 import TweenOne from 'rc-tween-one';
+import PropTypes from 'prop-types';
 import ScrollOverPack from 'rc-scroll-anim/lib/ScrollOverPack';
-import {  Button } from 'antd';
+import { Icon, Button } from 'antd';
 import QueueAnim from 'rc-queue-anim';
 
-export default function Page2() {
+export default function Page2({ isMobile }) {
   return (
     <ScrollOverPack
       id="page2"
       className="content-wrapper page"
     >
       <QueueAnim
+        type={isMobile ? 'bottom' : 'left'}
         className="text-wrapper left-text"
         key="text"
         duration={450}
         type="bottom"
         leaveReverse
       >
-        <h2 key="h2">设计模式</h2>
-        <p key="p" style={{ maxWidth: 260 }}>spoko</p>
+        <h2 key="h2">Lokalizacja</h2>
+        <p key="p" style={{ maxWidth: 260 }}>Sprawdź naszą lokalizację w serwisie Google Maps</p>
         <div key="button">
           <a>
-            <Button type="primary" size="large">
-              Ok
-              {/* <Icon type="right" /> */}
+            <Button type="danger" size="large">
+              Mapa
+              <Icon type="right" />
             </Button>
           </a>
         </div>
@@ -37,3 +39,6 @@ export default function Page2() {
     </ScrollOverPack>
   );
 }
+Page2.propTypes = {
+  isMobile: PropTypes.bool,
+};

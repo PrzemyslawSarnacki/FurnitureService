@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ScrollElement from 'rc-scroll-anim/lib/ScrollElement';
-// import { Icon } from 'antd';
+import { Icon } from 'antd';
 import QueueAnim from 'rc-queue-anim';
 
 function typeFunc(a) {
@@ -23,19 +23,19 @@ export default function Banner({ onEnterChange }) {
         playScale={0.9}
       >
         <QueueAnim className="banner-text-wrapper" type={typeFunc} delay={300} key="banner">
-          <h2 key="h2">ANT <p>DESIGN</p></h2>
-          <p key="content"> UI </p>
+          <h2 key="h2"><p>MEBLE</p>idea</h2>
+          <p key="content"> Najtańsze meble w mieście </p>
           <span className="line" key="line" />
           <div key="button1" className="start-button clearfix">
             <a>
-                Spox
+                Oferta
             </a>
             <a>
-                OK
+                Zakupy
             </a>
           </div>
         </QueueAnim>
-        {/* <Icon type="down" className="down" /> */}
+        <Icon type="down" className="down" />
       </ScrollElement>
     </section>
   );

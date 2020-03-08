@@ -1,4 +1,38 @@
 @import './default.less';
+.banner-user{
+  margin-top: 100px;
+  margin-bottom: 100px;
+  
+  height: 500px;
+}
+.banner-user-elem{
+  text-align: center;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.banner-user-elem .banner-user-title{
+  font-size: 36px;
+  font-weight: bold;
+  top: 40%;
+  text-shadow: 2px 2px 4px #000000;
+}
+.banner-user-elem .banner-user-text{
+  font-size: 20px;
+  top: 40%;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px #000000;
+
+}
+.banner-anim-elem .bg{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
 .banner-wrapper {
   position: relative;
   width: 100%;
@@ -23,6 +57,7 @@
 }
 .banner-text-wrapper h2 p {
   color: #ff3171;
+  font-weight: 500;
   display: inline-block;
   margin: 0;
 }
@@ -44,7 +79,7 @@
 }
 
 .banner-text-wrapper .start-button {
-  @start-button-color: tint(@primary-color, 20%);
+  @start-button-color: tint(#ff3175, 20%);
   margin-bottom: 24px;
   text-align: right;
   > a {
@@ -53,9 +88,9 @@
     padding: 0 16px;
     font-weight: 500;
     border-radius: @border-radius-base;
-    border: 1px solid @start-button-color;
+    border: 1px solid #ff3175;
     text-decoration: none;
-    color: #0ae;
+    color: #ff3175;
     font-size: 15px;
     background: transparent;
     transition: all .45s;
@@ -135,24 +170,29 @@
 }
 
 .image1 {
-  background: url("https://t.alipayobjects.com/images/T1Ch8kXfpdXXXXXXXX.png") no-repeat right / 841px;
+  background: url("http://directvintage.com/wp-content/uploads/vintage-furniture-pinterest.jpg") no-repeat right / 841px;
+  background-size: 600px;
+  background-position: 100px;
   height: 511px;
   top: 50%;
-  margin-top: -256px;
+  margin-top: -290px;
+  filter: blur(5px);
 }
 .image2 {
-  background: url("https://t.alipayobjects.com/images/T1r5RkXotXXXXXXXXX.png") no-repeat left / 800px;
+  background: url("https://modernhomedecor.eu/wp-content/uploads/2019/06/12-uxury-furniture-design-ideas-on-pinterest-09.jpg") no-repeat left / 800px;
   height: 474px;
   top: 50%;
   margin-top: -266px;
+  filter: blur(5px);
 }
 .image3 {
   padding-right: 10%;
-  background: url("https://t.alipayobjects.com/images/T1nx0kXdFfXXXXXXXX.png") no-repeat right / 639px;
+  background: url("https://modernhomedecor.eu/wp-content/uploads/2019/06/12-uxury-furniture-design-ideas-on-pinterest-12.jpg") no-repeat right / 639px;
   background-origin: content-box;
   height: 500px;
   top: 50%;
   margin-top: -250px;
+  filter: blur(5px);
 }
 .image4 {
   background: url("https://t.alipayobjects.com/images/T1lyJkXg4aXXXXXXXX.png") no-repeat center / 615px;
