@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ScrollElement from 'rc-scroll-anim/lib/ScrollElement';
+import ScrollLink from 'rc-scroll-anim/lib/ScrollLink';
 import { Icon } from 'antd';
 import QueueAnim from 'rc-queue-anim';
+// import { Link, animateScroll as scroll } from "react-scroll";
+
 
 function typeFunc(a) {
   if (a.key === 'line') {
@@ -13,13 +16,14 @@ function typeFunc(a) {
   return 'left';
 }
 
-export default function Banner({ onEnterChange }) {
-  return (
+export class Banner extends React.Component {
+  render() {
+    return (
     <section className="page banner-wrapper">
       <ScrollElement
         className="page"
         id="banner"
-        onChange={({ mode }) => onEnterChange(mode)}
+        onChange={({ mode }) => this.props.onEnterChange(mode)}
         playScale={0.9}
       >
         <QueueAnim className="banner-text-wrapper" type={typeFunc} delay={300} key="banner">
@@ -28,18 +32,22 @@ export default function Banner({ onEnterChange }) {
           <span className="line" key="line" />
           <div key="button1" className="start-button clearfix">
             <a>
-                Oferta
+              Oferta
             </a>
             <a>
-                Zakupy
+              Zakupy
             </a>
           </div>
         </QueueAnim>
-        <Icon type="down" className="down" />
+        <ScrollLink
+          to="offer"
+        >
+          <Icon type="down" className="down" />
+        </ScrollLink>
       </ScrollElement>
     </section>
-  );
+    )
+  }
 }
-Banner.propTypes = {
-  onEnterChange: PropTypes.func,
-};
+
+export default Banner

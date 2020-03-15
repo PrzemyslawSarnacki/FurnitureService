@@ -29,7 +29,7 @@ class ItemSerializer(serializers.ModelSerializer):
         model = Item
         fields = (
             'id',
-            'title',
+            'title',]
             'price',
             'discount_price',
             'category',

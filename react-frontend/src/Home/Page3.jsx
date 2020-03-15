@@ -5,8 +5,10 @@ import ScrollOverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import { Icon, Button } from 'antd';
 import QueueAnim from 'rc-queue-anim';
 
-export default function Page3({ isMobile }) {
-  return (
+
+export class Page3 extends React.Component {
+  render() {
+    return (
     <ScrollOverPack id="page3" className="content-wrapper page">
       <TweenOne
         key="image"
@@ -17,26 +19,26 @@ export default function Page3({ isMobile }) {
       <QueueAnim
         className="text-wrapper"
         key="text"
-        type={isMobile ? 'bottom' : 'right'}
+        type={this.props.isMobile ? 'bottom' : 'right'}
         leaveReverse
         style={{ top: '40%' }}
       >
-        <h2 key="h2">Gites'</h2>
+        <h2 key="h2">{this.props.headerName}</h2>
         <p key="p" style={{ maxWidth: 280 }}>
-          Gituwa
+        {this.props.paragraphName}
         </p>
         <div key="button">
           <a>
             <Button type="danger" size="large">
-              OK
+              {this.props.buttonName}
               <Icon type="right" />
             </Button>
           </a>
         </div>
       </QueueAnim>
     </ScrollOverPack>
-  );
+    )
+  }
 }
-Page3.propTypes = {
-  isMobile: PropTypes.bool,
-};
+
+export default Page3
