@@ -39,11 +39,14 @@ export class Banner extends React.Component {
             </a>
           </div>
         </QueueAnim>
-        <ScrollLink
+        
+        <a>
+          <ScrollLink
           to="offer"
-        >
+          >
           <Icon type="down" className="down" />
         </ScrollLink>
+          </a>
       </ScrollElement>
     </section>
     )

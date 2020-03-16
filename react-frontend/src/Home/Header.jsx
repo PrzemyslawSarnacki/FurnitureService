@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Menu, Row, Col, Icon, Button, Popover, Badge } from 'antd';
-import { Link, animateScroll as scroll } from "react-scroll";
+// import { ScrollLink, animateScroll as scroll } from "react-scroll";
+import ScrollLink from 'rc-scroll-anim/lib/ScrollLink';
 
 
 const searchEngine = 'Google';
@@ -49,7 +50,8 @@ export default class Header extends React.Component {
 
     const menu = [
       <Menu mode={menuMode} defaultSelectedKeys={['home']} id="nav" key="nav">
-          <Link
+        <Menu.Item key="home">
+          <ScrollLink
           activeClass="active"
           to="offer"
           spy={true}
@@ -57,21 +59,20 @@ export default class Header extends React.Component {
           offset={-70}
           duration= {500}
           >
-        <Menu.Item key="home">
           Oferta
+          </ScrollLink>
         </Menu.Item>
-          </Link>
-          <Link
+        <Menu.Item key="docs/spec">
+          <ScrollLink
           to="footer"
           spy={true}
           smooth={true}
           offset={-70}
           duration= {500}
           >
-        <Menu.Item key="docs/spec">
           Kontakt
+          </ScrollLink>
         </Menu.Item>
-          </Link>
         <Menu.Item key="docs/react">
           Lokalizacja
         </Menu.Item>

@@ -91,7 +91,7 @@ DATABASES = {
         'USER': 'furnitureuser',
         'PASSWORD': 'password',
         'HOST': 'localhost',
-        'PORT': '',
+        'PORT': '5433',
 }
 }
 
@@ -141,3 +141,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:3000',
+    'http://localhost:8000',
+    'http://localhost:8080',
+)
+
+
+STRIPE_PUBLIC_KEY = ('STRIPE_TEST_PUBLIC_KEY')
+STRIPE_SECRET_KEY = ('STRIPE_TEST_SECRET_KEY')

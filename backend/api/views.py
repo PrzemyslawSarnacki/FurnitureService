@@ -44,6 +44,18 @@ class ItemDetailView(RetrieveAPIView):
     queryset = Item.objects.all()
 
 
+class ItemCreateView(CreateAPIView):
+    permission_classes = (IsAuthenticated, )
+    serializer_class = ItemSerializer
+    queryset = Item.objects.all()
+
+
+class ItemUpdateView(UpdateAPIView):
+    permission_classes = (IsAuthenticated, )
+    serializer_class = ItemSerializer
+    queryset = Item.objects.all()
+
+
 class OrderQuantityUpdateView(APIView):
     def post(self, request, *args, **kwargs):
         slug = request.data.get('slug', None)
