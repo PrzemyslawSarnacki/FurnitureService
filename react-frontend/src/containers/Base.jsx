@@ -40,13 +40,13 @@ class CustomLayout extends React.Component {
     render() {
         return (
             <Layout className="layout">
-                     <Header key="header" isFirstScreen={this.state.isFirstScreen} isMobile={this.state.isMobile} />,
+                     <Header key="header" isFirstScreen={this.state.isFirstScreen} isMobile={this.state.isMobile} />
                      <Content >
                             <div style={{ background: '#fff', }}>
                                 {this.props.children}
                             </div>
                     </Content>
-                     <Footer key="footer" />,
+                     <Footer key="footer" />
         
             </Layout>
         );

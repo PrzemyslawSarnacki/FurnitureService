@@ -2,6 +2,7 @@
 .nav-phone-icon {
   display: none;
   position: absolute;
+  color: white;
   right: 30px;
   top: 32px;
   z-index: 1;
@@ -51,11 +52,37 @@
     }
   }
 
+  #nav li {
+    height: @header-height;
+    line-height: @header-height;
+    min-width: 72px;
+    text-align: center;
+    border-bottom-width: 3px;
+    &.ant-menu-item-selected a {
+      background: transparent;
+      color: red;
+      font-weight: bold;
+    }
+    &.ant-menu-item-selected:hover {
+      background: transparent;
+      font-weight: bold;
+    }
+    &.ant-menu-item-active a {
+      // background-color: whitesmoke;
+      color: white;
+      font-weight: bold;
+    }
+    &.ant-menu-item a {
+      color: black;
+    }
+  }
+
   .toc {
     display: none;
   }
 
   .nav-phone-icon {
+    color: rgba(255, 255, 255, .75);
     display: block;
   }
 
@@ -63,6 +90,7 @@
     content: "";
     display: block;
     border-radius: 2px;
+    color: rgba(255, 255, 255, .75);
     width: 16px;
     height: 2px;
     background: #777;
@@ -277,12 +305,14 @@
   }
 
   .nav-phone-icon {
+    color: rgba(255, 255, 255, .75);
     display: block;
   }
 
   .nav-phone-icon:before {
     content: "";
     display: block;
+    color: rgba(255, 255, 255, .75);
     border-radius: 2px;
     width: 16px;
     height: 2px;

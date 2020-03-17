@@ -4,6 +4,8 @@ import ScrollElement from 'rc-scroll-anim/lib/ScrollElement';
 import ScrollLink from 'rc-scroll-anim/lib/ScrollLink';
 import { Icon } from 'antd';
 import QueueAnim from 'rc-queue-anim';
+import './static/styles.less';
+
 // import { Link, animateScroll as scroll } from "react-scroll";
 
 
@@ -27,7 +29,7 @@ export class Banner extends React.Component {
         playScale={0.9}
       >
         <QueueAnim className="banner-text-wrapper" type={typeFunc} delay={300} key="banner">
-          <h2 key="h2"><p>MEBLE</p>idea</h2>
+          <h2 key="h2"><p>MEBLE</p><b className="italic" >idea</b></h2>
           <p key="content"> Najtańsze meble w mieście </p>
           <span className="line" key="line" />
           <div key="button1" className="start-button clearfix">
@@ -44,7 +46,7 @@ export class Banner extends React.Component {
           <ScrollLink
           to="offer"
           >
-          <Icon type="down" className="down" />
+          <Icon type="down" className="down" style={{ color: "rgba(255, 255, 255, .75)"}}/>
         </ScrollLink>
           </a>
       </ScrollElement>

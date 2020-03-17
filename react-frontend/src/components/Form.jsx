@@ -8,7 +8,7 @@ const FormItem = Form.Item;
 
 class CustomForm extends React.Component {
   
-  handleFormSubmit = async (event, requestType, articleID) => {
+  handleFormSubmit = async (event, requestType, itemID) => {
     event.preventDefault();
 
     const postObj = {
@@ -31,7 +31,7 @@ class CustomForm extends React.Component {
           }
         })
     } else if (requestType === "put") {
-      await axios.put(`http://127.0.0.1:8000/api/${articleID}/update/`, postObj)
+      await axios.put(`http://127.0.0.1:8000/api/${itemID}/update/`, postObj)
         .then(res => {
           if (res.status === 200) {
             this.props.history.push(`/`);
@@ -48,7 +48,7 @@ class CustomForm extends React.Component {
             this.handleFormSubmit(
               event,
               this.props.requestType,
-              this.props.articleID
+              this.props.itemID
             )
           }
         >
@@ -59,7 +59,7 @@ class CustomForm extends React.Component {
             <Input name="content" placeholder="Enter some content ..." />
           </FormItem>
           <FormItem>
-            <Button type="primary" htmlType="submit">
+            <Button type="danger" size="large" htmlType="submit">
               {this.props.btnText}
             </Button>
           </FormItem>

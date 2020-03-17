@@ -52,6 +52,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -147,6 +148,8 @@ CORS_ORIGIN_WHITELIST = (
     'http://localhost:8000',
     'http://localhost:8080',
 )
+
+CORS_ALLOW_CREDENTIALS = True
 
 
 STRIPE_PUBLIC_KEY = ('STRIPE_TEST_PUBLIC_KEY')

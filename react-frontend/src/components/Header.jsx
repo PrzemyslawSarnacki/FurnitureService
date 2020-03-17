@@ -115,6 +115,7 @@ export default class Header extends React.Component {
               className="nav-phone-icon"
               type="menu"
               onClick={this.handleShowMenu}
+              
             />
           </Popover>
         ) : null}
@@ -124,7 +125,7 @@ export default class Header extends React.Component {
             <a id="logo">
               <span>
               <img alt="logo" src="https://t.alipayobjects.com/images/rmsweb/T1B9hfXcdvXXXXXXXX.svg" />
-                <h2 key="h2"><p>MEBLE</p>idea</h2>
+                <h2 key="h2"><p>MEBLE</p><b className="italic" >idea</b></h2>
                 </span>
             </a>
             </Link>
