@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Menu, Row, Col, Icon, Button, Popover, Badge } from 'antd';
+import { Link, withRouter } from 'react-router-dom';
 // import { ScrollLink, animateScroll as scroll } from "react-scroll";
 import ScrollLink from 'rc-scroll-anim/lib/ScrollLink';
 
@@ -82,6 +83,19 @@ export default class Header extends React.Component {
         <Menu.Item key="docs/resource">
           Sth else
         </Menu.Item>
+        {
+          this.props.isAuthenticated ?
+
+          <Menu.Item key="2" onClick={this.props.logout}>
+              Logout
+          </Menu.Item>
+
+          :
+
+          <Menu.Item key="2">
+              <Link to="/login">Login</Link>
+          </Menu.Item>
+        }
       </Menu>,
     ];
 
@@ -106,11 +120,14 @@ export default class Header extends React.Component {
         ) : null}
         <Row>
           <Col lg={4} md={5} sm={24} xs={24}>
+            <Link to="/">
             <a id="logo">
               <span>
               <img alt="logo" src="https://t.alipayobjects.com/images/rmsweb/T1B9hfXcdvXXXXXXXX.svg" />
-                <h2 key="h2"><p>MEBLE</p>idea</h2></span>
+                <h2 key="h2"><p>MEBLE</p>idea</h2>
+                </span>
             </a>
+            </Link>
           </Col>
           <Col lg={20} md={19} sm={0} xs={0}>
             {menuMode === 'horizontal' ? menu : null}
