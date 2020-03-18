@@ -24,14 +24,14 @@ class CustomForm extends React.Component {
     };
     
     if (requestType === "post") {
-      await axios.post("http://127.0.0.1:8000/api/create/", postObj)
+      await axios.post("http://127.0.0.1:8000/api/products/create/", postObj)
         .then(res => { 
           if (res.status === 201) {
             this.props.history.push(`/`);
           }
         })
     } else if (requestType === "put") {
-      await axios.put(`http://127.0.0.1:8000/api/${itemID}/update/`, postObj)
+      await axios.put(`http://127.0.0.1:8000/api/products/${itemID}/update/`, postObj)
         .then(res => {
           if (res.status === 200) {
             this.props.history.push(`/`);
@@ -54,6 +54,12 @@ class CustomForm extends React.Component {
         >
           <FormItem label="Title">
             <Input name="title" placeholder="Put a title here" />
+          </FormItem>
+          <FormItem label="Content">
+            <Input name="content" placeholder="Enter some content ..." />
+          </FormItem>
+          <FormItem label="Content">
+            <Input name="content" placeholder="Enter some content ..." />
           </FormItem>
           <FormItem label="Content">
             <Input name="content" placeholder="Enter some content ..." />

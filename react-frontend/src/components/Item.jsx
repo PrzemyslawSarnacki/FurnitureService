@@ -37,7 +37,7 @@ const Items = props => {
             <img
               width={272}
               alt="logo"
-              src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
+              src={item.image}
             />
           }
         >
@@ -47,6 +47,11 @@ const Items = props => {
             description={item.description}
           />
           {item.content}
+        {item.category}
+        <p><b>Price:  </b>{item.price}</p>
+        {item.label}
+        
+
         </List.Item>
       )}
     />

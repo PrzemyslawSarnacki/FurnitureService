@@ -1,10 +1,14 @@
 from django.db.models.signals import post_save
 from django.conf import settings
+from django.contrib.auth import get_user_model
+from django.dispatch import receiver
 from django.db import models
 from django.db.models import Sum
 from django.shortcuts import reverse
 from django_countries.fields import CountryField
-
+from rest_framework.authtoken.models import Token
+from django.contrib.auth.models import User
+import os
 
 CATEGORY_CHOICES = (
     ('S', 'Shirt'),
@@ -22,6 +26,7 @@ ADDRESS_CHOICES = (
     ('B', 'Billing'),
     ('S', 'Shipping'),
 )
+
 
 
 class UserProfile(models.Model):
@@ -42,7 +47,7 @@ class Item(models.Model):
     label = models.CharField(choices=LABEL_CHOICES, max_length=1)
     slug = models.SlugField()
     description = models.TextField()
-    image = models.ImageField()
+    image = models.ImageField(upload_to='../media/')
 
     def __str__(self):
         return self.title
@@ -184,6 +189,7 @@ class Payment(models.Model):
     amount = models.DecimalField(max_digits=6, decimal_places=2)
     timestamp = models.DateTimeField(auto_now_add=True)
 
+
     def __str__(self):
         return self.user.username
 
@@ -210,5 +216,10 @@ def userprofile_receiver(sender, instance, created, *args, **kwargs):
     if created:
         userprofile = UserProfile.objects.create(user=instance)
 
+@receiver(post_save, sender=settings.AUTH_USER_MODEL)
+def create_auth_token(sender, instance=None, created=False, **kwargs):
+    if created:
+        Token.objects.create(user=instance)
 
-post_save.connect(userprofile_receiver, sender=settings.AUTH_USER_MODEL)
+# for user in User.objects.all():
+#     Token.objects.get_or_create(user=user)

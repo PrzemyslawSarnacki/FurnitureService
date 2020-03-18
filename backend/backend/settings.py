@@ -117,10 +117,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.AllowAny',
+        'rest_framework.permissions.IsAuthenticated',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
+        # 'rest_framework.authentication.BasicAuthentication',
     ),
 }
 
@@ -142,6 +143,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_URL = '/media/'
+
 
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
@@ -150,6 +154,8 @@ CORS_ORIGIN_WHITELIST = (
 )
 
 CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_ALLOW_ALL =  True
+
 
 
 STRIPE_PUBLIC_KEY = ('STRIPE_TEST_PUBLIC_KEY')
