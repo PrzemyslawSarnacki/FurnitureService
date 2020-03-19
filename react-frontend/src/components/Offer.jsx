@@ -3,8 +3,10 @@ import BannerAnim, { Element } from 'rc-banner-anim';
 import { Icon, Button } from 'antd';
 import TweenOne from 'rc-tween-one';
 import ScrollOverPack from 'rc-scroll-anim/lib/ScrollOverPack';
+import { Link, withRouter } from 'react-router-dom';
 import 'rc-banner-anim/assets/index.css';
 const BgElement = Element.BgElement;
+
 
 class Offer extends React.Component {
   render() {
@@ -53,8 +55,10 @@ class Offer extends React.Component {
           <div key="button" style={{marginTop: "12px"}}>
           <a>
             <Button type="danger" size="large">
-              Sprawdź
-              <Icon type="right" />
+              <Link to="/items">
+                  Sprawdź
+                  <Icon type="right" />
+                </Link>
             </Button>
           </a>
         </div>

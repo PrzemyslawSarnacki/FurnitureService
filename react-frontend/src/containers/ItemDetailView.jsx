@@ -3,7 +3,6 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { Button, Card } from "antd";
 import CustomForm from "../components/Form";
-import ScrollOverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 
 
 class ItemDetail extends React.Component {
@@ -37,10 +36,9 @@ class ItemDetail extends React.Component {
 
   render() {
     return (
-        <ScrollOverPack id="page1" className="content-wrapper page login-form"  style={{ padding: "20px", marginTop: "200px" }}>   
-      
-      <div>
-        <Card title={this.state.item.title}>
+      <div style={{ padding: "20px"}}>
+        <Card title={this.state.item.title} style={{marginTop: "80px"}}>
+          
           <p> {this.state.item.content} </p>
           <img
               width={272}
@@ -48,7 +46,6 @@ class ItemDetail extends React.Component {
               src={this.state.item.image}
             />
           {this.state.item.category}
-
         <p><b>Price:  </b>{this.state.item.price}</p>
         {this.state.item.label}
         </Card>
@@ -65,7 +62,6 @@ class ItemDetail extends React.Component {
           </Button>
         </form>
       </div>
-      </ScrollOverPack>
     );
   }
 }

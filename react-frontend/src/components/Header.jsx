@@ -87,7 +87,7 @@ export default class Header extends React.Component {
           this.props.isAuthenticated ?
 
           <Menu.Item key="2" onClick={this.props.logout}>
-              Logout
+              <Link to="/logout">Logout</Link>
           </Menu.Item>
 
           :

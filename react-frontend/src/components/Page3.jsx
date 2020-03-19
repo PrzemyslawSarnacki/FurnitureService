@@ -4,6 +4,7 @@ import TweenOne from 'rc-tween-one';
 import ScrollOverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import { Icon, Button } from 'antd';
 import QueueAnim from 'rc-queue-anim';
+import { Link, withRouter } from 'react-router-dom';
 
 
 export class Page3 extends React.Component {
@@ -30,8 +31,10 @@ export class Page3 extends React.Component {
         <div key="button">
           <a>
             <Button type="danger" size="large">
-              {this.props.buttonName}
-              <Icon type="right" />
+            <Link to="/items">
+                  {this.props.buttonName}
+                  <Icon type="right" />
+                </Link>
             </Button>
           </a>
         </div>

@@ -8,11 +8,11 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 
-const { Content} = Layout;
+const { Content } = Layout;
 
 let isMobile = false;
 enquireScreen((b) => {
-  isMobile = b;
+    isMobile = b;
 });
 
 class CustomLayout extends React.Component {
@@ -20,34 +20,34 @@ class CustomLayout extends React.Component {
     state = {
         isFirstScreen: true,
         isMobile,
-      };
-    
-      componentDidMount() {
+    };
+
+    componentDidMount() {
         enquireScreen((b) => {
-          this.setState({
-            isMobile: !!b,
-          });
+            this.setState({
+                isMobile: !!b,
+            });
+
         });
-      }
-    
-      onEnterChange = (mode) => {
+    }
+    onEnterChange = (mode) => {
         this.setState({
-          isFirstScreen: mode === 'enter',
+            isFirstScreen: mode === 'enter',
         });
-      }
-    
+    }
+
 
     render() {
         return (
             <Layout className="layout">
-                     <Header key="header" isFirstScreen={this.state.isFirstScreen} isMobile={this.state.isMobile} />
-                     <Content >
-                            <div style={{ background: '#fff', }}>
-                                {this.props.children}
-                            </div>
-                    </Content>
-                     <Footer key="footer" />
-        
+                <Header key="header" isFirstScreen={this.state.isFirstScreen} isMobile={this.state.isMobile} />
+                <Content >
+                    <div style={{ background: '#fff', }}>
+                        {this.props.children}
+                    </div>
+                </Content>
+                <Footer key="footer" />
+
             </Layout>
         );
     }
@@ -55,7 +55,7 @@ class CustomLayout extends React.Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        logout: () => dispatch(actions.logout()) 
+        logout: () => dispatch(actions.logout())
     }
 }
 

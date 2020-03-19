@@ -57,24 +57,25 @@ class RegistrationForm extends React.Component {
         <ScrollOverPack id="page1" className="content-wrapper page">
 
       <Form onSubmit={this.handleSubmit} className="login-form" style={{ padding: "20px", marginTop: "200px" }}>
-        
+        <div className="input">
+
         <FormItem>
             {getFieldDecorator('userName', {
-                rules: [{ required: true, message: 'Please input your username!' }],
+              rules: [{ required: true, message: 'Please input your username!' }],
             })(
                 <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
-            )}
+                )}
         </FormItem>
         
         <FormItem>
           {getFieldDecorator('email', {
-              rules: [{
+            rules: [{
                   type: 'email', message: 'The input is not valid E-mail!',
-            }, {
+                }, {
                 required: true, message: 'Please input your E-mail!',
-            }],
+              }],
         })(
-            <Input prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Email" />
+          <Input prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Email" />
             )}
         </FormItem>
 
@@ -82,9 +83,9 @@ class RegistrationForm extends React.Component {
           {getFieldDecorator('password', {
             rules: [{
                 required: true, message: 'Please input your password!',
-            }, {
+              }, {
                 validator: this.validateToNextPassword,
-            }],
+              }],
         })(
             <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" />
             )}
@@ -92,12 +93,12 @@ class RegistrationForm extends React.Component {
 
         <FormItem>
           {getFieldDecorator('confirm', {
-              rules: [{
-                  required: true, message: 'Please confirm your password!',
+            rules: [{
+              required: true, message: 'Please confirm your password!',
             }, {
                 validator: this.compareToFirstPassword,
             }],
-        })(
+          })(
             <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" onBlur={this.handleConfirmBlur} />
             )}
         </FormItem>
@@ -113,6 +114,7 @@ class RegistrationForm extends React.Component {
         </NavLink>
         </FormItem>
 
+            </div>
       </Form>
     </ScrollOverPack>
     );
