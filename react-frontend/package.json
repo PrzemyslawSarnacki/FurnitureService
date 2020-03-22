@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "antd": "^3.14.1",
+    "antd": "^4.0.3",
     "axios": "^0.19.2",
     "enquire-js": "^0.2.1",
     "rc-banner-anim": "^2.2.2",

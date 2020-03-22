@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Icon, Input, Button, Spin } from 'antd';
 import { connect } from 'react-redux';
 import { NavLink, Redirect } from 'react-router-dom';
-import { authLogin } from "../store/actions/auth";
+import { authLogin } from "../store/actions/auth.js";
 import '../components/static/styles.less';
 import Offer from '../components/Offer';
 
@@ -90,9 +90,9 @@ const WrappedNormalLoginForm = Form.create()(NormalLoginForm);
 
 const mapStateToProps = (state) => {
     return {
-        loading: state.auth.loading,
-        error: state.auth.error,
-        token: state.auth.token
+        loading: state.loading,
+        error: state.error,
+        token: state.token
     }
 }
 

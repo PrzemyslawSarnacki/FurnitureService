@@ -6,10 +6,12 @@ const IconText = ({ type, text }) => (
     <Icon
       type={type}
       style={{
-        marginRight: 8
+        marginRight: 8,
       }}
     />
-    {text}
+    <b>
+      {text}
+    </b>
   </span>
 );
 
@@ -30,9 +32,7 @@ const Items = props => {
         <List.Item
           key={item.title}
           actions={[
-            <IconText type="star-o" text="156" />,
-            <IconText type="like-o" text="156" />,
-            <IconText type="message" text="2" />
+            <IconText type="dollar" text={`${item.price} zł`} />
           ]}
           extra={
             <img
@@ -49,7 +49,7 @@ const Items = props => {
           />
           {item.content}
         {item.category}
-        <p><b>Price:  </b>{item.price}</p>
+        {/* <p><b>Price:  </b>{item.price}</p> */}
         {item.label}
         
 
