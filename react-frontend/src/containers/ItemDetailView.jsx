@@ -49,13 +49,13 @@ class ItemDetail extends React.Component {
         <p><b>Price:  </b>{this.state.item.price}</p>
         {this.state.item.label}
         </Card>
-        <CustomForm
+        {/* <CustomForm
           {...this.props}
           token={this.props.token}
           requestType
           itemID={this.props.match.params.itemID}
           btnText="Update"
-        />
+        /> */}
         <form onSubmit={this.handleDelete}>
           <Button type="danger" size="large" htmlType="submit" >
             Delete

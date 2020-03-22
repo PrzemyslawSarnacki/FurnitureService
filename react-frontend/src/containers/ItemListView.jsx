@@ -32,8 +32,8 @@ class ItemList extends React.Component {
     return (
         <div style={{ padding: "20px" }}>
         <Items data={this.state.items} />   <br/>
-        <h2> Create an Item </h2>
-        <CustomForm requestType="post" itemID={null} btnText="Create" />
+        {/* <h2> Create an Item </h2> */}
+        {/* <CustomForm requestType="post" itemID={null} btnText="Create" /> */}
       </div>
     );
   }
