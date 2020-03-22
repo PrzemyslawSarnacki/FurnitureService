@@ -2,7 +2,8 @@ import React from 'react'
 import TweenOne from 'rc-tween-one';
 import PropTypes from 'prop-types';
 import ScrollOverPack from 'rc-scroll-anim/lib/ScrollOverPack';
-import { Icon, Button } from 'antd';
+import { RightOutlined } from '@ant-design/icons';
+import { Button } from 'antd';
 import QueueAnim from 'rc-queue-anim';
 import { Link, withRouter } from 'react-router-dom';
 
@@ -29,7 +30,7 @@ class Page2 extends React.Component {
               <Button type="danger" size="large">
                 <Link to="/items">
                   {this.props.buttonName}
-                  <Icon type="right" />
+                  <RightOutlined />
                 </Link>
               </Button>
             </a>

@@ -1,9 +1,10 @@
 import React from "react";
-import { List, Avatar, Icon } from "antd";
+import { Icon as LegacyIcon } from '@ant-design/compatible';
+import { List, Avatar } from "antd";
 
 const IconText = ({ type, text }) => (
   <span>
-    <Icon
+    <LegacyIcon
       type={type}
       style={{
         marginRight: 8,

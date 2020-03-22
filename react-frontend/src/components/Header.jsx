@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { Menu, Row, Col, Icon, Button, Popover, Badge } from 'antd';
+import { MenuOutlined } from '@ant-design/icons';
+import { Menu, Row, Col, Button, Popover, Badge } from 'antd';
 import { Link, withRouter } from 'react-router-dom';
 // import { ScrollLink, animateScroll as scroll } from "react-scroll";
 import ScrollLink from 'rc-scroll-anim/lib/ScrollLink';
@@ -111,12 +112,7 @@ export default class Header extends React.Component {
             arrowPointAtCenter
             onVisibleChange={this.onMenuVisibleChange}
           >
-            <Icon
-              className="nav-phone-icon"
-              type="menu"
-              onClick={this.handleShowMenu}
-              
-            />
+            <MenuOutlined className="nav-phone-icon" onClick={this.handleShowMenu} />
           </Popover>
         ) : null}
         <Row>

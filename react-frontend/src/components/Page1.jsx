@@ -2,13 +2,13 @@ import React from 'react';
 import {Element} from 'rc-banner-anim';
 import TweenOne from 'rc-tween-one';
 import ScrollOverPack from 'rc-scroll-anim/lib/ScrollOverPack';
-import { Icon, Button } from 'antd';
+import { RightOutlined } from '@ant-design/icons';
+import { Button } from 'antd';
 import QueueAnim from 'rc-queue-anim';
 
 class Page1 extends React.Component {
   render(){
-    return(
-
+    return (
       <ScrollOverPack id="page1" className="content-wrapper page">
       <TweenOne
         key="image"
@@ -28,13 +28,13 @@ class Page1 extends React.Component {
           <a>
             <Button type="danger" size="large">
               Sprawdź
-              <Icon type="right" />
+              <RightOutlined />
             </Button>
           </a>
         </div>
       </QueueAnim>
     </ScrollOverPack>
-);
+    );
 }
 }
 
