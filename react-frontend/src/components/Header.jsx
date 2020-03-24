@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { MenuOutlined } from '@ant-design/icons';
-import { Menu, Row, Col, Button, Popover, Badge } from 'antd';
+import { MenuOutlined, UpOutlined} from '@ant-design/icons';
+import { Menu, Row, Col, Button, Popover, Badge, BackTop } from 'antd';
 import { Link, withRouter } from 'react-router-dom';
 // import { ScrollLink, animateScroll as scroll } from "react-scroll";
 import ScrollLink from 'rc-scroll-anim/lib/ScrollLink';
@@ -23,6 +23,7 @@ export default class Header extends React.Component {
       menuVisible: visible,
     });
   }
+  
   handleShowMenu = () => {
     this.setState({
       menuVisible: true,
@@ -120,7 +121,6 @@ export default class Header extends React.Component {
             <Link to="/">
             <a id="logo">
               <span>
-              <img alt="logo" src="https://t.alipayobjects.com/images/rmsweb/T1B9hfXcdvXXXXXXXX.svg" />
                 <h2 key="h2"><p>MEBLE</p><b className="italic" >idea</b></h2>
                 </span>
             </a>
@@ -130,6 +130,15 @@ export default class Header extends React.Component {
             {menuMode === 'horizontal' ? menu : null}
           </Col>
         </Row>
+   <div >
+
+        <BackTop>
+        <div style={{color: "white", backgroundColor: "gray", height: "40px", width: "40px", fontSize:"20px", lineHeight: "40px", textAlign: "center", borderRadius:"25px"}}>
+      <UpOutlined/>
+        </div>
+        </BackTop>
+   </div>
+
       </header>
     );
   }
