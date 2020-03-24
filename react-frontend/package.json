@@ -8,6 +8,7 @@
     "antd": "^4.0.3",
     "axios": "^0.19.2",
     "enquire-js": "^0.2.1",
+    "google-maps-react": "^2.0.2",
     "rc-banner-anim": "^2.2.2",
     "rc-queue-anim": "^1.6.12",
     "rc-scroll-anim": "^2.5.6",

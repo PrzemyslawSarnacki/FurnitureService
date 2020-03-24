@@ -6,9 +6,32 @@ import { RightOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import QueueAnim from 'rc-queue-anim';
 import { Link, withRouter } from 'react-router-dom';
+import MapModal from './MapModal';
 
 
 class Page2 extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = { visible: false }
+  }
+
+  showModal = () => {
+    this.setState({
+      visible: true,
+    });
+  };
+
+  handleOk = () => {
+    this.setState({ loading: true });
+    setTimeout(() => {
+      this.setState({ loading: false, visible: false });
+    }, 1000);
+  };
+
+  handleCancel = () => {
+    this.setState({ visible: false });
+  };
+
   render() {
     return (
       <ScrollOverPack
@@ -27,12 +50,13 @@ class Page2 extends React.Component {
           <p key="p" style={{ maxWidth: 260 }}>{this.props.paragraphName}</p>
           <div key="button">
             <a>
-              <Button type="danger" size="large">
-                <Link to="/items">
+              <Button type="danger" size="large" onClick={() => this.showModal()}>
+                {/* <Link to="/items"> */}
                   {this.props.buttonName}
                   <RightOutlined />
-                </Link>
+                {/* </Link> */}
               </Button>
+              <MapModal visible={this.state.visible} loading={this.state.loading} handleOk={this.handleOk} handleCancel={this.handleCancel}/>
             </a>
           </div>
         </QueueAnim>
