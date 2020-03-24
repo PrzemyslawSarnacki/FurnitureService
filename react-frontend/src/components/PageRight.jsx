@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import TweenOne from 'rc-tween-one';
 import ScrollOverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import { RightOutlined } from '@ant-design/icons';
@@ -8,10 +7,10 @@ import QueueAnim from 'rc-queue-anim';
 import { Link, withRouter } from 'react-router-dom';
 
 
-export class Page3 extends React.Component {
+export class PageRight extends React.Component {
   render() {
     return (
-      <ScrollOverPack id="page3" className="content-wrapper page">
+      <ScrollOverPack id="pageRight" className="content-wrapper page">
         <TweenOne
           key="image"
           className="image3 image-wrapper"
@@ -30,14 +29,12 @@ export class Page3 extends React.Component {
           {this.props.paragraphName}
           </p>
           <div key="button">
-            <a>
               <Button type="danger" size="large">
               <Link to="/items">
                     {this.props.buttonName}
                     <RightOutlined />
                   </Link>
               </Button>
-            </a>
           </div>
         </QueueAnim>
       </ScrollOverPack>
@@ -45,4 +42,4 @@ export class Page3 extends React.Component {
   }
 }
 
-export default Page3
+export default PageRight

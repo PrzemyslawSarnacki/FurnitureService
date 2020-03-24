@@ -1,15 +1,13 @@
 import React from 'react'
 import TweenOne from 'rc-tween-one';
-import PropTypes from 'prop-types';
 import ScrollOverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import { RightOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import QueueAnim from 'rc-queue-anim';
-import { Link, withRouter } from 'react-router-dom';
 import MapModal from './MapModal';
 
 
-class Page2 extends React.Component {
+class Localisation extends React.Component {
   constructor(props){
     super(props);
     this.state = { visible: false }
@@ -35,7 +33,7 @@ class Page2 extends React.Component {
   render() {
     return (
       <ScrollOverPack
-        id="page2"
+        id="Localisation"
         className="content-wrapper page"
       >
         <QueueAnim
@@ -49,7 +47,6 @@ class Page2 extends React.Component {
           <h2 key="h2">{this.props.headerName}</h2>
           <p key="p" style={{ maxWidth: 260 }}>{this.props.paragraphName}</p>
           <div key="button">
-            <a>
               <Button type="danger" size="large" onClick={() => this.showModal()}>
                 {/* <Link to="/items"> */}
                   {this.props.buttonName}
@@ -57,7 +54,6 @@ class Page2 extends React.Component {
                 {/* </Link> */}
               </Button>
               <MapModal visible={this.state.visible} loading={this.state.loading} handleOk={this.handleOk} handleCancel={this.handleCancel}/>
-            </a>
           </div>
         </QueueAnim>
         <TweenOne
@@ -71,4 +67,4 @@ class Page2 extends React.Component {
   }
 }
 
-export default Page2
+export default Localisation

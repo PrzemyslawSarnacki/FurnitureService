@@ -55,10 +55,7 @@ export default class Header extends React.Component {
       <Menu mode={menuMode} defaultSelectedKeys={['home']} id="nav" key="nav">
         <Menu.Item key="home">
           <ScrollLink
-          activeClass="active"
           to="offer"
-          spy={true}
-          smooth={true}
           offset={-70}
           duration= {500}
           >
@@ -68,8 +65,6 @@ export default class Header extends React.Component {
         <Menu.Item key="docs/spec">
           <ScrollLink
           to="footer"
-          spy={true}
-          smooth={true}
           offset={-70}
           duration= {500}
           >

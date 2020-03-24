@@ -49,6 +49,7 @@ export class Banner extends React.Component {
             <DownOutlined className="down" style={{ color: "rgba(255, 255, 255, .75)"}} />
           </ScrollLink>
             </a>
+          
         </ScrollElement>
       </section>
     );
