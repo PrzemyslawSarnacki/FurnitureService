@@ -72,7 +72,10 @@ export default class Header extends React.Component {
           </ScrollLink>
         </Menu.Item>
         <Menu.Item key="docs/react">
-          Lokalizacja
+        <ScrollLink 
+        to="location"
+        offset={-70}
+          duration= {500}>Lokalizacja</ScrollLink>
         </Menu.Item>
         <Menu.Item key="docs/pattern">
           Sklep

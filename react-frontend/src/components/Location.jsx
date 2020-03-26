@@ -7,7 +7,7 @@ import QueueAnim from 'rc-queue-anim';
 import MapModal from './MapModal';
 
 
-class Localisation extends React.Component {
+class Location extends React.Component {
   constructor(props){
     super(props);
     this.state = { visible: false }
@@ -33,7 +33,7 @@ class Localisation extends React.Component {
   render() {
     return (
       <ScrollOverPack
-        id="Localisation"
+        id="location"
         className="content-wrapper page"
       >
         <QueueAnim
@@ -48,10 +48,8 @@ class Localisation extends React.Component {
           <p key="p" style={{ maxWidth: 260 }}>{this.props.paragraphName}</p>
           <div key="button">
               <Button type="danger" size="large" onClick={() => this.showModal()}>
-                {/* <Link to="/items"> */}
                   {this.props.buttonName}
                   <RightOutlined />
-                {/* </Link> */}
               </Button>
               <MapModal visible={this.state.visible} loading={this.state.loading} handleOk={this.handleOk} handleCancel={this.handleCancel}/>
           </div>
@@ -67,4 +65,4 @@ class Localisation extends React.Component {
   }
 }
 
-export default Localisation
+export default Location
