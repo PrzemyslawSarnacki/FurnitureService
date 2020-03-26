@@ -19,7 +19,7 @@ const IconText = ({ type, text }) => (
 const Items = props => {
   return (
     <List
-    style={{marginTop: "100px" }}  
+    style={{marginTop: "50px" }}  
     itemLayout="vertical"
       size="large"
       pagination={{
