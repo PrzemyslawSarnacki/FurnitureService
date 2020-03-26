@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useState}from "react";
 import { Icon as LegacyIcon } from '@ant-design/compatible';
 import { List, Avatar } from "antd";
+import DetailModal from "../components/DetailModal";
 
 const IconText = ({ type, text }) => (
   <span>
@@ -17,6 +18,9 @@ const IconText = ({ type, text }) => (
 );
 
 const Items = props => {
+  const [visible, setVisible] = useState(false)
+
+  
   return (
     <List
     style={{marginTop: "50px" }}  
@@ -45,9 +49,12 @@ const Items = props => {
         >
           <List.Item.Meta
             avatar={<Avatar src={item.image} />}
-            title={<a href={`/items/${item.id}`}> {item.title} </a>}
+            // title={<a href={`/items/${item.id}`}> {item.title} </a>}
+            title={<a onClick={setVisible(true)}> {item.title} </a>}
             description={item.description}
           />
+          <DetailModal visible={visible} itemID={item.id}/>
+
           {item.content}
         {item.category}
         {/* <p><b>Price:  </b>{item.price}</p> */}

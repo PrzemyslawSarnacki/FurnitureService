@@ -3,6 +3,7 @@ import axios from "axios";
 import Items from "../components/Item";
 import CustomForm from "../components/Form";
 import SearchForm from "../components/SearchForm";
+import DetailModal from "../components/DetailModal";
 
 
 class ItemList extends React.Component {
@@ -11,7 +12,8 @@ class ItemList extends React.Component {
     this.state = {
       items: [],
       filteredItems: [],
-      value:''
+      value:'',
+      visible: false
     };
 this.onChangeValueHandler = this.onChangeValueHandler.bind(this)
   }
@@ -43,7 +45,6 @@ this.onChangeValueHandler = this.onChangeValueHandler.bind(this)
         return item.title.toLowerCase().indexOf(e.target.value.toLowerCase()) !== -1;
       })})
   }
-
 
   render() {
     const { value } = this.state;
