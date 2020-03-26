@@ -4,7 +4,7 @@ import axios from "axios";
 import { connect } from "react-redux";
 
 
-class DetailModal extends React.Component {
+class DetailModal extends React.PureComponent {
   constructor(props) {
     super(props);
   this.state = {
@@ -30,28 +30,25 @@ class DetailModal extends React.Component {
           onOk={this.props.handleOk}
           onCancel={this.props.handleCancel}
           footer={[
-
-            <Card title={this.state.item.title} style={{marginTop: "80px"}}>
-          
-            <p> {this.state.item.content} </p>
-            <img
-                width={272}
-                alt="logo"
-                src={this.state.item.image}
-              />
-            {this.state.item.category}
-          <p><b>Price:  </b>{this.state.item.price}</p>
-          {this.state.item.label}
-          </Card>,
-
             <Button key="back" onClick={this.props.handleCancel}>
               Wróć
             </Button>,
-            <Button key="submit" type="danger" loading={this.props.loading} onClick={this.props.handleOk}>
-                Pełny ekran
+            <Button key="submit" type="danger" onClick={this.props.handleOk}>
+                OK
             </Button>,
           ]}
         >
+          <Card title={this.state.item.title}>
+          <p> {this.state.item.content} </p>
+          <img
+              width={272}
+              alt="logo"
+              src={this.state.item.image}
+            />
+          {this.state.item.category}
+        <p><b>Price:  </b>{this.state.item.price}</p>
+        {this.state.item.label}
+        </Card>
         </Modal>
       </div>
     );

@@ -1,6 +1,6 @@
-import React, {useState}from "react";
+import React, { useState } from "react";
 import { Icon as LegacyIcon } from '@ant-design/compatible';
-import { List, Avatar } from "antd";
+import { List, Avatar, Button, Modal} from "antd";
 import DetailModal from "../components/DetailModal";
 
 const IconText = ({ type, text }) => (
@@ -17,14 +17,37 @@ const IconText = ({ type, text }) => (
   </span>
 );
 
-const Items = props => {
-  const [visible, setVisible] = useState(false)
 
+class Items extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      visible: false,
+      itemID: 1
+    }
+  }
   
-  return (
-    <List
-    style={{marginTop: "50px" }}  
-    itemLayout="vertical"
+  showModal = (item) => {
+    console.log(item)
+    this.setState({visible: true,
+    itemID:item,
+    })
+  }
+  
+  
+  handleCancel = () => {
+    this.setState({visible: false,})
+  }
+  
+  handleOK = () => {
+    this.setState({visible: false,})
+  }
+
+  render() {
+    return (
+      <List
+      style={{ marginTop: "50px" }}
+      itemLayout="vertical"
       size="large"
       pagination={{
         onChange: page => {
@@ -32,7 +55,7 @@ const Items = props => {
         },
         pageSize: 3
       }}
-      dataSource={props.data}
+      dataSource={this.props.data}
       renderItem={item => (
         <List.Item
           key={item.title}
@@ -49,22 +72,24 @@ const Items = props => {
         >
           <List.Item.Meta
             avatar={<Avatar src={item.image} />}
-            // title={<a href={`/items/${item.id}`}> {item.title} </a>}
-            title={<a onClick={setVisible(true)}> {item.title} </a>}
+            title={<a onClick={() => this.showModal(item.id)}> {item.title} </a>}
             description={item.description}
           />
-          <DetailModal visible={visible} itemID={item.id}/>
+          {item.id}
+        {(this.state.visible ? 
+        (<DetailModal visible={this.state.visible} handleCancel={this.handleCancel} handleOK={this.handleOK} itemID={this.state.itemID}/>)
+        : null)}
+
 
           {item.content}
-        {item.category}
-        {/* <p><b>Price:  </b>{item.price}</p> */}
-        {item.label}
-        
+          {item.category}
+          {item.label}
 
         </List.Item>
       )}
     />
   );
-};
+  }
+}
 
 export default Items;
