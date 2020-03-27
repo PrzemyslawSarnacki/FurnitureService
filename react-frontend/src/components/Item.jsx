@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { Icon as LegacyIcon } from '@ant-design/compatible';
-import { List, Avatar, Button, Modal } from "antd";
+import { List, Avatar } from "antd";
 import DetailModal from "../components/DetailModal";
 
 const IconText = ({ type, text }) => (
@@ -64,6 +64,7 @@ class Items extends React.Component {
                         ]}
                         extra={
                             <img
+                                onClick={() => this.showModal(item.id)}
                                 width={272}
                                 alt="logo"
                                 src={item.image}

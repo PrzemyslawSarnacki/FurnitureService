@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import ScrollElement from 'rc-scroll-anim/lib/ScrollElement';
 import ScrollLink from 'rc-scroll-anim/lib/ScrollLink';
 import { DownOutlined } from '@ant-design/icons';
@@ -33,10 +32,10 @@ export class Banner extends React.Component {
             <p key="content"> Najtańsze meble w mieście </p>
             <span className="line" key="line" />
             <div key="button1" className="start-button clearfix">
-              <a>
+              <a href="/">
                 Oferta
               </a>
-              <a>
+              <a href="/">
                 Zakupy
               </a>
             </div>

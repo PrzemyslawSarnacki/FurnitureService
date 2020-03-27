@@ -3,9 +3,6 @@ import { Modal, Button } from 'antd';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 
 class MapModal extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     return (

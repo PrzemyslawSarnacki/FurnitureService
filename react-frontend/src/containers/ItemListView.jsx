@@ -1,9 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Items from "../components/Item";
-import CustomForm from "../components/Form";
 import SearchForm from "../components/SearchForm";
-import DetailModal from "../components/DetailModal";
 
 
 class ItemList extends React.Component {

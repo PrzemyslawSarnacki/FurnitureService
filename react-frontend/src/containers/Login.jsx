@@ -1,6 +1,5 @@
 import React from 'react';
 import { LoadingOutlined, LockOutlined, UserOutlined } from '@ant-design/icons';
-import '@ant-design/compatible/assets/index.css';
 import { connect } from 'react-redux';
 import { NavLink, Redirect } from 'react-router-dom';
 import { authLogin } from "../store/actions/auth.js";
@@ -12,9 +11,6 @@ import { Form, Input, Button, Checkbox, Spin } from 'antd';
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
 
-const onFinishFailed = errorInfo => {
-    console.log('Failed:', errorInfo);
-    };
 
 class NormalLoginForm extends React.Component {
     formRef = React.createRef();
@@ -27,7 +23,7 @@ class NormalLoginForm extends React.Component {
       }
     
     handleSubmit = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         console.log(e)
         const { username, password } = this.state;
         console.log(this.state)
@@ -45,8 +41,7 @@ class NormalLoginForm extends React.Component {
       
 
     render() {
-        const { error, loading, token } = this.props;
-        const { username, password } = this.state;
+        const { error, token } = this.props;
         if (token) {
           return <Redirect to="/" />;
         }
@@ -55,12 +50,8 @@ class NormalLoginForm extends React.Component {
             <div className="input" style={{ marginTop: "200px", position: "center" }}>
                 {error && <p>{this.props.error.message}</p>}
 
-                {
-                    (this.props.loading ?
-
-
+                { this.props.loading ?
                         <Spin indicator={antIcon} />
-
                         :
                         <Offer key="offer" isMobile={null} />,     <Form
                         name="normal_login"
@@ -109,7 +100,7 @@ class NormalLoginForm extends React.Component {
                                           to='/signup/'> signup
                           </NavLink>
                         </Form.Item>
-                      </Form>)
+                      </Form>
                 }
             </div>
         );

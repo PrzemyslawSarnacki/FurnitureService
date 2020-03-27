@@ -41,7 +41,6 @@ class Location extends React.Component {
           className="text-wrapper left-text"
           key="text"
           duration={450}
-          type="bottom"
           leaveReverse
         >
           <h2 key="h2">{this.props.headerName}</h2>

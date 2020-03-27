@@ -4,7 +4,7 @@ import ScrollOverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import { RightOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import QueueAnim from 'rc-queue-anim';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 export class PageRight extends React.Component {

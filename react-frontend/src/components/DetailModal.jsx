@@ -1,5 +1,5 @@
 import React from 'react'
-import { Modal, Button, Card} from 'antd';
+import { Modal, Button, div} from 'antd';
 import axios from "axios";
 import { connect } from "react-redux";
 
@@ -26,7 +26,7 @@ class DetailModal extends React.PureComponent {
       <div>
         <Modal
           visible={this.props.visible}
-          title="Lokalizacja"
+          title={this.state.item.title}
           onOk={this.props.handleOk}
           onCancel={this.props.handleCancel}
           footer={[
@@ -38,17 +38,17 @@ class DetailModal extends React.PureComponent {
             </Button>,
           ]}
         >
-          <Card title={this.state.item.title}>
+          <div>
           <p> {this.state.item.content} </p>
           <img
-              width={272}
+              width={260}
               alt="logo"
               src={this.state.item.image}
             />
           {this.state.item.category}
         <p><b>Price:  </b>{this.state.item.price}</p>
         {this.state.item.label}
-        </Card>
+        </div>
         </Modal>
       </div>
     );

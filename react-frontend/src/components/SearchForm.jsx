@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Row, Col, Input, Button } from 'antd';
-import { DownOutlined, UpOutlined, SearchOutlined, SecurityScanTwoTone } from '@ant-design/icons';
+import { DownOutlined, UpOutlined, SearchOutlined} from '@ant-design/icons';
 
 const SearchForm = (props) => {
     const [expand, setExpand] = useState(false);
@@ -38,10 +38,6 @@ const SearchForm = (props) => {
         console.log('Received values of form: ', values);
     };
 
-    const handleSearch = e => {
-
-        console.log(e.target.value)
-    }
 
     return (
         <Form

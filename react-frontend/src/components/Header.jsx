@@ -1,16 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { MenuOutlined, UpOutlined} from '@ant-design/icons';
-import { Menu, Row, Col, Button, Popover, Badge, BackTop } from 'antd';
-import { Link, withRouter } from 'react-router-dom';
+import { MenuOutlined, UpOutlined } from '@ant-design/icons';
+import { Menu, Row, Col, Popover, BackTop } from 'antd';
+import { Link } from 'react-router-dom';
 // import { ScrollLink, animateScroll as scroll } from "react-scroll";
 import ScrollLink from 'rc-scroll-anim/lib/ScrollLink';
+import { logout } from "../store/actions/auth";
+import { connect } from "react-redux";
 
 
 const searchEngine = 'Google';
 
-export default class Header extends React.Component {
+class Header extends React.Component {
   static propTypes = {
     isFirstScreen: PropTypes.bool,
     isMobile: PropTypes.bool,
@@ -23,7 +25,7 @@ export default class Header extends React.Component {
       menuVisible: visible,
     });
   }
-  
+
   handleShowMenu = () => {
     this.setState({
       menuVisible: true,
@@ -42,6 +44,11 @@ export default class Header extends React.Component {
       optionValue.indexOf(value.toLowerCase()) > -1;
   }
 
+  // checkLocation = () => {
+  //   let location = useLocation();
+  //   console.log(location.pathname);
+  // }
+
   render() {
     const { isFirstScreen, isMobile } = this.props;
     const { menuVisible } = this.state;
@@ -50,35 +57,42 @@ export default class Header extends React.Component {
       clearfix: true,
       'home-nav-white': !isFirstScreen,
     });
+    console.log(this.props)
 
     const menu = [
-      <Menu mode={menuMode} defaultSelectedKeys={['home']} id="nav" key="nav">
-        <Menu.Item key="home">
-          <ScrollLink
-          to="offer"
-          offset={-70}
-          duration= {500}
-          >
-          Oferta
+      <Menu onClick={this.checkLocation} mode={menuMode} defaultSelectedKeys={['home']} id="nav" key="nav">
+        {this.props.currentPath === "/" || this.props.currentPath === "" ?
+          <Menu.Item key="home">
+            <ScrollLink
+              to="offer"
+              offset={-70}
+              duration={500}
+            >
+              Oferta
           </ScrollLink>
-        </Menu.Item>
+          </Menu.Item>
+          : null}
         <Menu.Item key="docs/spec">
           <ScrollLink
-          to="footer"
-          offset={-70}
-          duration= {500}
+            to="footer"
+            offset={-70}
+            duration={500}
           >
-          Kontakt
+            Kontakt
           </ScrollLink>
         </Menu.Item>
-        <Menu.Item key="docs/react">
-        <ScrollLink 
-        to="location"
-        offset={-70}
-          duration= {500}>Lokalizacja</ScrollLink>
+        {this.props.currentPath === "/" || this.props.currentPath === "" ? 
+          <Menu.Item key="docs/react">
+          <ScrollLink
+            to="location"
+            offset={-70}
+            duration={500}>Lokalizacja</ScrollLink>
         </Menu.Item>
+        : null}
         <Menu.Item key="docs/pattern">
-          Sklep
+          <Link to="/items">
+            Sklep
+          </Link>
         </Menu.Item>
         <Menu.Item key="docs/resource">
           Sth else
@@ -86,15 +100,15 @@ export default class Header extends React.Component {
         {
           this.props.isAuthenticated ?
 
-          <Menu.Item key="2" onClick={this.props.logout}>
-              <Link to="/logout">Logout</Link>
-          </Menu.Item>
+            <Menu.Item key="2" onClick={() => this.props.logout()}>
+              Logout
+            </Menu.Item>
 
-          :
+            :
 
-          <Menu.Item key="2">
+            <Menu.Item key="2">
               <Link to="/login">Login</Link>
-          </Menu.Item>
+            </Menu.Item>
         }
       </Menu>,
     ];
@@ -117,27 +131,41 @@ export default class Header extends React.Component {
         <Row>
           <Col lg={4} md={5} sm={24} xs={24}>
             <Link to="/">
-            <a id="logo">
-              <span>
-                <h2 key="h2"><p>MEBLE</p><b className="italic" >idea</b></h2>
+              <div id="logo">
+                <span>
+                  <h2 key="h2"><p>MEBLE</p><b className="italic" >idea</b></h2>
                 </span>
-            </a>
+              </div>
             </Link>
           </Col>
           <Col lg={20} md={19} sm={0} xs={0}>
             {menuMode === 'horizontal' ? menu : null}
           </Col>
         </Row>
-   <div >
+        <div >
 
-        <BackTop>
-        <div style={{color: "white", backgroundColor: "gray", height: "40px", width: "40px", fontSize:"20px", lineHeight: "40px", textAlign: "center", borderRadius:"25px"}}>
-      <UpOutlined/>
+          <BackTop>
+            <div style={{ color: "white", backgroundColor: "gray", height: "40px", width: "40px", fontSize: "20px", lineHeight: "40px", textAlign: "center", borderRadius: "25px" }}>
+              <UpOutlined />
+            </div>
+          </BackTop>
         </div>
-        </BackTop>
-   </div>
 
       </header>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    isAuthenticated: state.token !== null
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    logout: () => dispatch(logout()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

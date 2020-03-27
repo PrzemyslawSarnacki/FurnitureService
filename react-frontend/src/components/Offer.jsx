@@ -4,7 +4,7 @@ import { RightOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import TweenOne from 'rc-tween-one';
 import ScrollOverPack from 'rc-scroll-anim/lib/ScrollOverPack';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import 'rc-banner-anim/assets/index.css';
 const BgElement = Element.BgElement;
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { LockOutlined, MailOutlined, UserOutlined } from '@ant-design/icons';
 import { Form } from '@ant-design/compatible';
 import '@ant-design/compatible/assets/index.css';
+import '../components/static/styles.less';
 import { Input, Button } from 'antd';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { enquireScreen } from 'enquire-js';
-import { Layout, Menu, Breadcrumb } from 'antd';
-import { Link, withRouter } from 'react-router-dom';
+import { Layout} from 'antd';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../store/actions/auth';
 import Header from '../components/Header';
@@ -20,9 +20,10 @@ class CustomLayout extends React.Component {
     state = {
         isFirstScreen: true,
         isMobile,
+        currentPath: "",
     };
 
-    componentDidMount() {
+    componentDidMount(prevProps) {
         enquireScreen((b) => {
             this.setState({
                 isMobile: !!b,
@@ -30,6 +31,13 @@ class CustomLayout extends React.Component {
 
         });
     }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.location.pathname !== prevProps.location.pathname) {
+            this.setState({currentPath: this.props.location.pathname})
+        }
+      }
+
     onEnterChange = (mode) => {
         this.setState({
             isFirstScreen: mode === 'enter',
@@ -40,7 +48,7 @@ class CustomLayout extends React.Component {
     render() {
         return (
             <Layout className="layout">
-                <Header key="header" isFirstScreen={this.state.isFirstScreen} isMobile={this.state.isMobile} />
+                <Header key="header" isFirstScreen={this.state.isFirstScreen} isMobile={this.state.isMobile} currentPath={this.state.currentPath}/>
                 <Content >
                     <div style={{ background: '#fff', }}>
                         {this.props.children}
