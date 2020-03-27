@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { Form, Row, Col, Input, Button } from 'antd';
-import { DownOutlined, UpOutlined, SearchOutlined} from '@ant-design/icons';
+import { DownOutlined, UpOutlined, SearchOutlined } from '@ant-design/icons';
 
 const SearchForm = (props) => {
     const [expand, setExpand] = useState(false);
     const [form] = Form.useForm();
-    // const { value , onChangeValue } = props;
 
 
     const getFields = () => {
@@ -42,7 +41,6 @@ const SearchForm = (props) => {
     return (
         <Form
             style={{ marginTop: "100px" }}
-            // value={value}
             form={form}
             onChange={props.onChangeValue}
             name="advanced_search"
@@ -80,7 +78,7 @@ const SearchForm = (props) => {
                         }}
                     >
                         {expand ? <UpOutlined /> : <DownOutlined />} Więcej
-          </a>
+                    </a>
                 </Col>
             </Row>
         </Form>

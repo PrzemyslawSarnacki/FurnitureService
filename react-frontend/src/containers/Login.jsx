@@ -24,21 +24,13 @@ class NormalLoginForm extends React.Component {
     
     handleSubmit = (e) => {
         // e.preventDefault();
-        console.log(e)
         const { username, password } = this.state;
-        console.log(this.state)
         this.props.login(username, password);
-        console.log(this.props.login)
     };
 
     handleChange = e => {
         this.setState({ [e.target.name]: e.target.value });
-        console.log(this.state.username)
-        console.log(e.target.name)
-        console.log(e.target.value)
-
     };
-      
 
     render() {
         const { error, token } = this.props;

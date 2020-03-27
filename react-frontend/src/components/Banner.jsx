@@ -3,6 +3,7 @@ import ScrollElement from 'rc-scroll-anim/lib/ScrollElement';
 import ScrollLink from 'rc-scroll-anim/lib/ScrollLink';
 import { DownOutlined } from '@ant-design/icons';
 import QueueAnim from 'rc-queue-anim';
+import Button from 'antd';
 import './static/styles.less';
 
 // import { Link, animateScroll as scroll } from "react-scroll";
@@ -41,13 +42,11 @@ export class Banner extends React.Component {
             </div>
           </QueueAnim>
           
-          <a>
             <ScrollLink
             to="offer"
             >
             <DownOutlined className="down" style={{ color: "rgba(255, 255, 255, .75)"}} />
           </ScrollLink>
-            </a>
           
         </ScrollElement>
       </section>

@@ -1,11 +1,11 @@
 import React from "react";
-import { Icon as LegacyIcon } from '@ant-design/compatible';
 import { List, Avatar } from "antd";
+import { DollarCircleOutlined } from "@ant-design/icons";
 import DetailModal from "../components/DetailModal";
 
 const IconText = ({ type, text }) => (
     <span>
-        <LegacyIcon
+        <DollarCircleOutlined
             type={type}
             style={{
                 marginRight: 8,

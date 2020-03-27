@@ -4,7 +4,6 @@ import classNames from 'classnames';
 import { MenuOutlined, UpOutlined } from '@ant-design/icons';
 import { Menu, Row, Col, Popover, BackTop } from 'antd';
 import { Link } from 'react-router-dom';
-// import { ScrollLink, animateScroll as scroll } from "react-scroll";
 import ScrollLink from 'rc-scroll-anim/lib/ScrollLink';
 import { logout } from "../store/actions/auth";
 import { connect } from "react-redux";
@@ -44,10 +43,6 @@ class Header extends React.Component {
       optionValue.indexOf(value.toLowerCase()) > -1;
   }
 
-  // checkLocation = () => {
-  //   let location = useLocation();
-  //   console.log(location.pathname);
-  // }
 
   render() {
     const { isFirstScreen, isMobile } = this.props;
@@ -57,7 +52,6 @@ class Header extends React.Component {
       clearfix: true,
       'home-nav-white': !isFirstScreen,
     });
-    console.log(this.props)
 
     const menu = [
       <Menu onClick={this.checkLocation} mode={menuMode} defaultSelectedKeys={['home']} id="nav" key="nav">
