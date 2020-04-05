@@ -25,6 +25,8 @@ class DetailModal extends React.PureComponent {
         super(props);
         this.state = {
             item: [],
+            imageRef: "",
+
         }
     }
 
@@ -34,6 +36,11 @@ class DetailModal extends React.PureComponent {
             this.setState({
                 item: res.data
             });
+        });
+    }
+    handleImageChange = (attachment) => {
+        this.setState({
+            imageRef: attachment,
         });
     }
 
@@ -57,11 +64,19 @@ class DetailModal extends React.PureComponent {
                 >
                     <div>
                         <p> {this.state.item.content} </p>
+                        {this.state.imageRef ? 
+                        <img
+                            width={260}
+                            alt="logo"
+                            src={this.state.imageRef}
+                            />
+                        : 
                         <img
                             width={260}
                             alt="logo"
                             src={this.state.item.image}
-                        />,
+                            />
+                        },
                         <p><IconText type="dollar" text={`${this.state.item.price} zł`} /></p>
                         {this.state.item.label}
                         {this.state.item.description}
@@ -98,7 +113,7 @@ class DetailModal extends React.PureComponent {
 
 
                                                             {iv.attachment && (
-                                                                <Avatar shape="square" size={64}
+                                                                <Avatar shape="square" size={64} onClick={() => this.handleImageChange(`http://127.0.0.1:8000${iv.attachment}`)}
                                                                     src={`http://127.0.0.1:8000${iv.attachment}`}
                                                                 />
 
