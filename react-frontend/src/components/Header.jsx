@@ -56,7 +56,7 @@ class Header extends React.Component {
     const menu = [
       <Menu onClick={this.checkLocation} mode={menuMode} defaultSelectedKeys={['home']} id="nav" key="nav">
         {this.props.currentPath === "/" || this.props.currentPath === "" ?
-          <Menu.Item key="home">
+          <Menu.Item onClick={this.handleHideMenu} key="home">
             <ScrollLink
               to="offer"
               offset={-70}
@@ -66,7 +66,7 @@ class Header extends React.Component {
           </ScrollLink>
           </Menu.Item>
           : null}
-        <Menu.Item key="docs/spec">
+        <Menu.Item onClick={this.handleHideMenu} key="docs/spec">
           <ScrollLink
             to="footer"
             offset={-70}
@@ -76,31 +76,31 @@ class Header extends React.Component {
           </ScrollLink>
         </Menu.Item>
         {this.props.currentPath === "/" || this.props.currentPath === "" ? 
-          <Menu.Item key="docs/react">
+          <Menu.Item onClick={this.handleHideMenu} key="docs/react">
           <ScrollLink
             to="location"
             offset={-70}
             duration={500}>Lokalizacja</ScrollLink>
         </Menu.Item>
         : null}
-        <Menu.Item key="docs/pattern">
+        <Menu.Item onClick={this.handleHideMenu} key="docs/pattern">
           <Link to="/items">
             Sklep
           </Link>
         </Menu.Item>
-        <Menu.Item key="docs/resource">
+        <Menu.Item onClick={this.handleHideMenu} key="docs/resource">
           Sth else
         </Menu.Item>
         {
           this.props.isAuthenticated ?
 
-            <Menu.Item key="2" onClick={() => this.props.logout()}>
+            <Menu.Item onClick={this.handleHideMenu} key="2" onClick={() => this.props.logout()}>
               Logout
             </Menu.Item>
 
             :
 
-            <Menu.Item key="2">
+            <Menu.Item onClick={this.handleHideMenu} key="2">
               <Link to="/login">Login</Link>
             </Menu.Item>
         }

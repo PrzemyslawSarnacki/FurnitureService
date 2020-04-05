@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 import BaseRouter from './routes';
 import 'antd/dist/antd.css';
 import * as actions from './store/actions/auth';
-
+import ScrollToTop from './components/ScrollToTop'
 import CustomLayout from './containers/Base';
+
 
 class App extends Component {
 
@@ -18,7 +19,9 @@ class App extends Component {
       <div>
         <Router>
           <CustomLayout {...this.props}>
+          <ScrollToTop>
               <BaseRouter />
+          </ScrollToTop>
           </CustomLayout>
         </Router>
       </div>
