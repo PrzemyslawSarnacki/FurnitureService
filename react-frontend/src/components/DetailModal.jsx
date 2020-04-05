@@ -3,6 +3,9 @@ import { Modal, Button, Avatar, Row, Col } from 'antd';
 import axios from "axios";
 import { connect } from "react-redux";
 import { DollarCircleOutlined, ShoppingCartOutlined } from "@ant-design/icons";
+import { productDetailURL, addToCartURL } from "../constants";
+import { authAxios } from "../utils";
+import { fetchCart } from "../store/actions/cart";
 
 
 const IconText = ({ type, text }) => (
@@ -26,7 +29,10 @@ class DetailModal extends React.PureComponent {
         this.state = {
             item: [],
             imageRef: "",
-
+            loading: false,
+            error: null,
+            formVisible: false,
+            formData: {},
         }
     }
 
@@ -38,14 +44,49 @@ class DetailModal extends React.PureComponent {
             });
         });
     }
-    handleImageChange = (attachment) => {
+    handleImageChange = attachment => {
         this.setState({
             imageRef: attachment,
         });
     }
 
+    handleFormatData = formData => {
+        return Object.keys(formData).map(key => {
+            return formData[key];
+        });
+    };
+
+    handleAddToCart = slug => {
+        this.setState({ loading: true });
+        const { formData } = this.state;
+        // const variations = this.handleFormatData(formData);
+        const variations = [2, 3]
+        authAxios
+            .post(addToCartURL, { slug, variations })
+            .then(res => {
+                this.props.refreshCart();
+                this.setState({ loading: false });
+            })
+            .catch(err => {
+                this.setState({ error: err, loading: false });
+            });
+    };
+
+    handleChange = (name, value) => {
+        console.log(name, value)
+        const { formData } = this.state;
+
+        const updatedFormData = {
+            ...formData,
+            [name]: value
+        };
+        this.setState({ formData: updatedFormData });
+        console.log(updatedFormData)
+        console.log(this.handleFormatData(updatedFormData))
+    };
+
+
     render() {
-        console.log(this.state.item.variations)
         return (
             <div>
                 <Modal
@@ -56,45 +97,45 @@ class DetailModal extends React.PureComponent {
                     footer={[
                         <Button key="back" onClick={this.props.handleCancel}>
                             Wróć
-            </Button>,
+                        </Button>,
                         <Button key="submit" type="danger" onClick={this.props.handleOk}>
                             OK
-            </Button>,
+                        </Button>,
                     ]}
                 >
                     <div>
                         <p> {this.state.item.content} </p>
-                        {this.state.imageRef ? 
-                        <img
-                            width={260}
-                            alt="logo"
-                            src={this.state.imageRef}
+                        {this.state.imageRef ?
+                            <img
+                                width={260}
+                                alt="logo"
+                                src={this.state.imageRef}
                             />
-                        : 
-                        <img
-                            width={260}
-                            alt="logo"
-                            src={this.state.item.image}
+                            :
+                            <img
+                                width={260}
+                                alt="logo"
+                                src={this.state.item.image}
                             />
                         },
                         <p><IconText type="dollar" text={`${this.state.item.price} zł`} /></p>
                         {this.state.item.label}
                         {this.state.item.description}
                         <p>
-                        <React.Fragment>
-                            <Button type="primary">
-                                Dodaj do Koszyka
+                            <React.Fragment>
+                                <Button type="primary" onClick={() => this.handleAddToCart(this.state.item.slug)}>
+                                    Dodaj do Koszyka
                         <ShoppingCartOutlined
-                                    style={{
-                                        marginRight: 8,
-                                        size: 50,
-                                    }}
+                                        style={{
+                                            marginRight: 8,
+                                            size: 50,
+                                        }}
                                     />
-                            </Button>
-                        </React.Fragment>
-                                    </p>
-                        
-                          <Row>
+                                </Button>
+                            </React.Fragment>
+                        </p>
+
+                        <Row>
                             {this.state.item.variations &&
                                 this.state.item.variations.map(v => {
 
@@ -113,7 +154,10 @@ class DetailModal extends React.PureComponent {
 
 
                                                             {iv.attachment && (
-                                                                <Avatar shape="square" size={64} onClick={() => this.handleImageChange(`http://127.0.0.1:8000${iv.attachment}`)}
+                                                                <Avatar shape="square" size={64} onClick={() => {
+                                                                    this.handleImageChange(`http://127.0.0.1:8000${iv.attachment}`);
+                                                                    this.handleChange(v.id, iv.id);
+                                                                }}
                                                                     src={`http://127.0.0.1:8000${iv.attachment}`}
                                                                 />
 
@@ -136,10 +180,12 @@ class DetailModal extends React.PureComponent {
     }
 }
 
-const mapStateToProps = state => {
+
+const mapDispatchToProps = dispatch => {
     return {
-        token: state.token
+        refreshCart: () => dispatch(fetchCart())
     };
 };
 
-export default connect(mapStateToProps)(DetailModal);
+
+export default connect(null, mapDispatchToProps)(DetailModal);
