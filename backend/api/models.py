@@ -8,7 +8,7 @@ from django.shortcuts import reverse
 from django_countries.fields import CountryField
 from rest_framework.authtoken.models import Token
 from django.contrib.auth.models import User
-import os
+
 
 CATEGORY_CHOICES = (
     ('S', 'Shirt'),
@@ -220,6 +220,3 @@ def userprofile_receiver(sender, instance, created, *args, **kwargs):
 def create_auth_token(sender, instance=None, created=False, **kwargs):
     if created:
         Token.objects.create(user=instance)
-
-# for user in User.objects.all():
-#     Token.objects.get_or_create(user=user)

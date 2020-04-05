@@ -74,7 +74,7 @@ class Items extends React.Component {
                         <List.Item.Meta
                             avatar={<Avatar src={item.image} />}
                             title={<a onClick={() => this.showModal(item.id)}> {item.title} </a>}
-                            description={item.description}
+                            // description={item.description}
                         />
                         {(this.state.visible ?
                             (<DetailModal visible={this.state.visible} handleCancel={this.handleCancel} handleOK={this.handleOK} itemID={this.state.itemID} />)
