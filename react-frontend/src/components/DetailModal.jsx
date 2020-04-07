@@ -50,17 +50,10 @@ class DetailModal extends React.PureComponent {
         });
     }
 
-    handleFormatData = formData => {
-        return Object.keys(formData).map(key => {
-            return formData[key];
-        });
-    };
-
     handleAddToCart = slug => {
         this.setState({ loading: true });
         const { formData } = this.state;
-        // const variations = this.handleFormatData(formData);
-        const variations = [2, 3]
+        const variations = formData
         authAxios
             .post(addToCartURL, { slug, variations })
             .then(res => {
@@ -72,17 +65,9 @@ class DetailModal extends React.PureComponent {
             });
     };
 
-    handleChange = (name, value) => {
-        console.log(name, value)
-        const { formData } = this.state;
-
-        const updatedFormData = {
-            ...formData,
-            [name]: value
-        };
+    handleChange = (value) => {
+        const updatedFormData = [value];
         this.setState({ formData: updatedFormData });
-        console.log(updatedFormData)
-        console.log(this.handleFormatData(updatedFormData))
     };
 
 
@@ -156,7 +141,7 @@ class DetailModal extends React.PureComponent {
                                                             {iv.attachment && (
                                                                 <Avatar shape="square" size={64} onClick={() => {
                                                                     this.handleImageChange(`http://127.0.0.1:8000${iv.attachment}`);
-                                                                    this.handleChange(v.id, iv.id);
+                                                                    this.handleChange(iv.id);
                                                                 }}
                                                                     src={`http://127.0.0.1:8000${iv.attachment}`}
                                                                 />

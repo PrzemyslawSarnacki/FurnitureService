@@ -6,6 +6,9 @@ import { connect } from 'react-redux';
 import * as actions from '../store/actions/auth';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { logout } from "../store/actions/auth";
+import { fetchCart } from "../store/actions/cart";
+
 
 
 const { Content } = Layout;
@@ -61,10 +64,19 @@ class CustomLayout extends React.Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+      authenticated: state.token !== null,
+    //   cart: state.cart.shoppingCart,
+    //   loading: state.cart.loading
+    };
+  };  
+
 const mapDispatchToProps = dispatch => {
     return {
-        logout: () => dispatch(actions.logout())
-    }
-}
+      logout: () => dispatch(logout()),
+      fetchCart: () => dispatch(fetchCart())
+    };
+  };  
 
-export default withRouter(connect(null, mapDispatchToProps)(CustomLayout));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CustomLayout));
