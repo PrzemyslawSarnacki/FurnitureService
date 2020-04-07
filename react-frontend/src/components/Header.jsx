@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import ScrollLink from 'rc-scroll-anim/lib/ScrollLink';
 import { logout } from "../store/actions/auth";
 import { connect } from "react-redux";
+import { fetchCart } from "../store/actions/cart";
 
 
 const searchEngine = 'Google';
@@ -19,6 +20,11 @@ class Header extends React.Component {
   state = {
     menuVisible: false,
   };
+
+  componentDidMount() {
+    this.props.fetchCart();
+  }
+
   onMenuVisibleChange = (visible) => {
     this.setState({
       menuVisible: visible,
@@ -45,6 +51,8 @@ class Header extends React.Component {
 
 
   render() {
+    const { authenticated, cart, loading } = this.props;
+    console.log(cart)
     const { isFirstScreen, isMobile } = this.props;
     const { menuVisible } = this.state;
     const menuMode = isMobile ? 'inline' : 'horizontal';
@@ -75,21 +83,25 @@ class Header extends React.Component {
             Kontakt
           </ScrollLink>
         </Menu.Item>
-        {this.props.currentPath === "/" || this.props.currentPath === "" ? 
+        {this.props.currentPath === "/" || this.props.currentPath === "" ?
           <Menu.Item onClick={this.handleHideMenu} key="docs/react">
-          <ScrollLink
-            to="location"
-            offset={-70}
-            duration={500}>Lokalizacja</ScrollLink>
-        </Menu.Item>
-        : null}
+            <ScrollLink
+              to="location"
+              offset={-70}
+              duration={500}>Lokalizacja</ScrollLink>
+          </Menu.Item>
+          : null}
+        {cart !== null ? (
         <Menu.Item onClick={this.handleHideMenu} key="docs/pattern">
           <Link to="/items">
             Sklep
+            {/* {cart.order_items.length < 1 ? (
+                            <p>1</p>
+                          ) : null} */}
           </Link>
-        </Menu.Item>
+        </Menu.Item>):null}
         <Menu.Item onClick={this.handleHideMenu} key="docs/resource">
-          Sth else
+          Koszyk
         </Menu.Item>
         {
           this.props.isAuthenticated ?
@@ -152,12 +164,15 @@ class Header extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    isAuthenticated: state.token !== null
+    isAuthenticated: state.token !== null,
+    cart: state.shoppingCart,
+    // loading: state.loading
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
+    fetchCart: () => dispatch(fetchCart()),
     logout: () => dispatch(logout()),
   };
 };

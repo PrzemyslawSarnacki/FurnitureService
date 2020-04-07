@@ -100,13 +100,6 @@ class AddToCartView(APIView):
             return Response({"message": "Invalid request"}, status=HTTP_400_BAD_REQUEST)
 
         item = get_object_or_404(Item, slug=slug)
-        print(item)
-
-        # minimum_variation_count = Variation.objects.filter(item=item).count()
-        # if len(variations) < minimum_variation_count:
-        #     print(minimum_variation_count)
-        #     print("wrong")
-        #     return Response({"message": "Please specify the required variation types"}, status=HTTP_400_BAD_REQUEST)
 
         order_item_qs = OrderItem.objects.filter(
             item=item,
@@ -114,11 +107,9 @@ class AddToCartView(APIView):
             ordered=False
         )
         for v in variations:
-            print(v)
             order_item_qs = order_item_qs.filter(
                 Q(item_variations__exact=v)
             )
-            print(order_item_qs)
 
         if order_item_qs.exists():
             order_item = order_item_qs.first()

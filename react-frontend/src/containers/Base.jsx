@@ -67,8 +67,6 @@ class CustomLayout extends React.Component {
 const mapStateToProps = state => {
     return {
       authenticated: state.token !== null,
-    //   cart: state.cart.shoppingCart,
-    //   loading: state.cart.loading
     };
   };  
 
