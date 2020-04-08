@@ -12,12 +12,16 @@ import {
 
 
 class OrderSummary extends React.Component {
-    state = {
-        data: null,
-        error: null,
-        loading: false
-    };
-
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+            data: null,
+            error: null,
+            loading: false
+        }
+    }
+    
     componentDidMount() {
         this.handleFetchOrder();
     }
@@ -41,6 +45,7 @@ class OrderSummary extends React.Component {
                 }
             });
     };
+
 
     renderVariations = orderItem => {
         let text = "";
@@ -94,62 +99,35 @@ class OrderSummary extends React.Component {
     };
 
     render() {
-    // const { data } = this.state;
+        const formatData = (data) => {
+            var formData = {};
+            var finalData = [];
+            console.log(data)
+            if (data !== null) {
+                
+                {data.order_items.map((orderItem, i) => {
+                    // formatData['key'] = orderItem.id;
+                    formData['key'] = i + 1
+                    formData['name'] = orderItem.item.title
+                    formData['quantity'] = orderItem.quantity
+                    formData['price'] = orderItem.item.price
+                    formData['totalPrice'] = orderItem.final_price
+                    formData['action'] = "Delete"
 
+                })
+            finalData.push(formData)
+            }
+            }
 
-        const data = [
+        return finalData;
+    }
 
-            {
-              key: '1',
-              name: "Nazwa",
-              price: 100,
-              quantity: 100,
-              totalPrice: 100,
-              action: "Delete",
-            },
+        console.log(this.state.data)
+  
 
-            {
-              key: '2',
-              name: "Nazwa",
-              price: 100,
-              quantity: 100,
-              totalPrice: 100,
-              action: "Delete",
-            },
-            {
-              key: '3',
-              name: "Nazwa",
-              price: 100,
-              quantity: 100,
-              totalPrice: 100,
-              action: "Delete",
-            },
-            {
-              key: '4',
-              name: "Nazwa",
-              price: 100,
-              quantity: 100,
-              totalPrice: 100,
-              action: "Delete",
-            },
-            {
-              key: '5',
-              name: "Nazwa",
-              price: 100,
-              quantity: 100,
-              totalPrice: 100,
-              action: "Delete",
-            },
-            {
-              key: '6',
-              name: "Nazwa",
-              price: 100,
-              quantity: 100,
-              totalPrice: 100,
-              action: "Delete",
-            },
-          ];
-          
+        console.log(formatData(this.state.data))
+        const data = formatData(this.state.data)
+
         const columns = [
             {
               title: 'Lp.',
@@ -179,9 +157,11 @@ class OrderSummary extends React.Component {
           
           
         return (
+            
             <Table
+            style={{marginTop: "200px", marginBottom: "200px"}}
             columns={columns}
-            dataSource={data}
+            dataSource={(data)}
             pagination={false}
             bordered
             summary={pageData => {
