@@ -100,32 +100,29 @@ class OrderSummary extends React.Component {
 
     render() {
         const formatData = (data) => {
-            var formData = {};
             var finalData = [];
             console.log(data)
             if (data !== null) {
                 
                 {data.order_items.map((orderItem, i) => {
                     // formatData['key'] = orderItem.id;
-                    formData['key'] = i + 1
-                    formData['name'] = orderItem.item.title
-                    formData['quantity'] = orderItem.quantity
-                    formData['price'] = orderItem.item.price
-                    formData['totalPrice'] = orderItem.final_price
-                    formData['action'] = "Delete"
+                    finalData.push(
+                        {
+                        key : i + 1,
+                        name : orderItem.item.title,
+                        quantity : orderItem.quantity,
+                        price : orderItem.item.price,
+                        totalPrice : orderItem.final_price,
+                        action : "Delete",
+                    }
+                    )
 
                 })
-            finalData.push(formData)
             }
             }
 
         return finalData;
     }
-
-        console.log(this.state.data)
-  
-
-        console.log(formatData(this.state.data))
         const data = formatData(this.state.data)
 
         const columns = [
