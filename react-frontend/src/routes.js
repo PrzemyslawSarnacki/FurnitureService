@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 
 import ItemList from "./containers/ItemListView";
 import ItemDetail from "./containers/ItemDetailView";
+import OrderSummary from "./containers/OrderSummary";
 import Login from "./containers/Login";
 import Home from "./containers/Home";
 import Signup from "./containers/Signup";
@@ -12,6 +13,7 @@ const BaseRouter = () => (
     <Route exact path="/" component={Home} />{" "}
     <Route exact path="/items/" component={ItemList} />{" "}
     <Route exact path="/items/:itemID/" component={ItemDetail} />{" "}
+    <Route exact path="/order-summary/" component={OrderSummary} />{" "}
     <Route exact path="/login/" component={Login} />{" "}
     <Route exact path="/signup/" component={Signup} />{" "}
   </div>
