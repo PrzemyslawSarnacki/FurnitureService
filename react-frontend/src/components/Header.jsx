@@ -2,12 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { MenuOutlined, UpOutlined } from '@ant-design/icons';
-import { Menu, Row, Col, Popover, BackTop } from 'antd';
+import { Menu, Row, Col, Popover, BackTop, Dropdown } from 'antd';
 import { Link } from 'react-router-dom';
 import ScrollLink from 'rc-scroll-anim/lib/ScrollLink';
 import { logout } from "../store/actions/auth";
 import { connect } from "react-redux";
 import { fetchCart } from "../store/actions/cart";
+
 
 
 const searchEngine = 'Google';
@@ -20,6 +21,10 @@ class Header extends React.Component {
   state = {
     menuVisible: false,
   };
+
+
+
+
 
   componentDidMount() {
     this.props.fetchCart();
@@ -50,9 +55,9 @@ class Header extends React.Component {
   }
 
 
+
   render() {
-    const { authenticated, cart, loading } = this.props;
-    console.log(cart)
+    const { isAuthenticated, cart, loading } = this.props;
     const { isFirstScreen, isMobile } = this.props;
     const { menuVisible } = this.state;
     const menuMode = isMobile ? 'inline' : 'horizontal';
@@ -60,6 +65,39 @@ class Header extends React.Component {
       clearfix: true,
       'home-nav-white': !isFirstScreen,
     });
+    console.log(cart)
+
+    const cartView = (
+      <Menu
+      //  onClick={handleMenuClick}
+      >
+        {cart !== null ? (
+          <React.Fragment>
+            {cart.order_items.map(order_item => {
+              return (
+                <Menu.Item key={order_item.id}>
+                  {order_item.quantity} x {order_item.item.title}
+                </Menu.Item>
+              );
+            })}
+            {cart.order_items.length < 1 ? (
+              <Menu.Item>Koszyk jest pusty</Menu.Item>
+            ) : null}
+
+            <Menu.Item
+              icon="arrow right"
+              text="Checkout"
+              onClick={() =>
+                this.props.history.push("/order-summary")
+              }
+            />
+          </React.Fragment>
+        ) : (
+            <Menu.Item>Koszyk jest pusty</Menu.Item>
+          )}
+
+      </Menu>
+    );
 
     const menu = [
       <Menu onClick={this.checkLocation} mode={menuMode} defaultSelectedKeys={['home']} id="nav" key="nav">
@@ -91,30 +129,37 @@ class Header extends React.Component {
               duration={500}>Lokalizacja</ScrollLink>
           </Menu.Item>
           : null}
-        {cart !== null ? (
+
         <Menu.Item onClick={this.handleHideMenu} key="docs/pattern">
           <Link to="/items">
             Sklep
-            {/* {cart.order_items.length < 1 ? (
-                            <p>1</p>
-                          ) : null} */}
           </Link>
-        </Menu.Item>):null}
-        <Menu.Item onClick={this.handleHideMenu} key="docs/resource">
-          Koszyk
         </Menu.Item>
-        {
-          this.props.isAuthenticated ?
+        {cart !== null ? (
+          <Menu.Item onClick={this.handleHideMenu} key="docs/resource">
+            <Dropdown overlay={cartView}>
 
-            <Menu.Item onClick={this.handleHideMenu} key="2" onClick={() => this.props.logout()}>
-              Logout
+              <Link to="/items">
+                Koszyk
+          {cart !== null ? (
+                  ` (${cart.order_items.length})`
+                ) : cart}
+              </Link>
+            </Dropdown>
+          </Menu.Item>
+        )
+          : null}
+
+        {isAuthenticated ?
+          <Menu.Item onClick={this.handleHideMenu} key="2" onClick={() => this.props.logout()}>
+            Logout
             </Menu.Item>
 
-            :
+          :
 
-            <Menu.Item onClick={this.handleHideMenu} key="2">
-              <Link to="/login">Login</Link>
-            </Menu.Item>
+          <Menu.Item onClick={this.handleHideMenu} key="2">
+            <Link to="/login">Login</Link>
+          </Menu.Item>
         }
       </Menu>,
     ];
@@ -164,9 +209,9 @@ class Header extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    isAuthenticated: state.token !== null,
-    cart: state.shoppingCart,
-    // loading: state.loading
+    isAuthenticated: state.auth.token !== null,
+    cart: state.cart.shoppingCart,
+    loading: state.cart.loading
   };
 };
 

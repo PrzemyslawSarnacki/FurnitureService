@@ -29,9 +29,9 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = () => {
+const mapStateToProps = state => {
   return {
-    isAuthenticated: localStorage.token !== null
+    isAuthenticated: state.auth.token !== null
   }
 }
 

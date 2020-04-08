@@ -29,9 +29,11 @@ export const fetchCart = () => {
       .get(orderSummaryURL)
       .then(res => {
         dispatch(cartSuccess(res.data));
+        console.log(res.data)
       })
       .catch(err => {
         dispatch(cartFail(err));
+        console.log(err)
       });
   };
 };
