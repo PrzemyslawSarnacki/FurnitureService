@@ -7,6 +7,7 @@ import OrderSummary from "./containers/OrderSummary";
 import Login from "./containers/Login";
 import Home from "./containers/Home";
 import Signup from "./containers/Signup";
+import Checkout from "./containers/Checkout";
 
 const BaseRouter = () => (
   <div>
@@ -16,6 +17,7 @@ const BaseRouter = () => (
     <Route exact path="/order-summary/" component={OrderSummary} />{" "}
     <Route exact path="/login/" component={Login} />{" "}
     <Route exact path="/signup/" component={Signup} />{" "}
+    <Route exact path="/checkout/" component={Checkout} />{" "}
   </div>
 );
 

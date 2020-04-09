@@ -221,7 +221,11 @@ class OrderSummary extends React.Component {
                                 <td>
                                 </td>
                             </tr>
-
+                        <Button>
+                        <Link to="/checkout">
+                            Kup teraz
+                        </Link>
+                        </Button>
                         </>
                     );
                 }}
