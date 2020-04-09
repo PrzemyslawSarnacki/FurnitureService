@@ -14,20 +14,21 @@ import {
 class OrderSummary extends React.Component {
     constructor(props) {
         super(props)
-    
+
         this.state = {
             data: null,
             error: null,
             loading: false
         }
     }
-    
+
     componentDidMount() {
         this.handleFetchOrder();
     }
 
     handleFetchOrder = () => {
         this.setState({ loading: true });
+        console.log("object")
         authAxios
             .get(orderSummaryURL)
             .then(res => {
@@ -35,6 +36,7 @@ class OrderSummary extends React.Component {
                 this.setState({ data: res.data, loading: false });
             })
             .catch(err => {
+                console.log(err)
                 if (err.response.status === 404) {
                     this.setState({
                         error: "You currently do not have an order",
@@ -103,94 +105,116 @@ class OrderSummary extends React.Component {
             var finalData = [];
             console.log(data)
             if (data !== null) {
-                
-                {data.order_items.map((orderItem, i) => {
-                    // formatData['key'] = orderItem.id;
-                    finalData.push(
-                        {
-                        key : i + 1,
-                        name : orderItem.item.title,
-                        quantity : orderItem.quantity,
-                        price : orderItem.item.price,
-                        totalPrice : orderItem.final_price,
-                        action : "Delete",
-                    }
-                    )
+                {
+                    data.order_items.map((orderItem, i) => {
+                        console.log(orderItem)
+                        // formatData['key'] = orderItem.id;
+                        if (orderItem.item_variations.length > 0) {
+                            orderItem.item_variations.map((itemVariation) => {
+                                console.log(itemVariation)
+                                finalData.push(
+                                    {
+                                        key: i + 1,
+                                        name: itemVariation.variation.name,
+                                        quantity: orderItem.quantity,
+                                        price: orderItem.item.price,
+                                        totalPrice: orderItem.final_price,
+                                        value: itemVariation.value,
+                                        action: "Delete",
+                                    }
+                                )
+                            })
+                        } else {
+                            finalData.push(
+                                {
+                                    key: i + 1,
+                                    name: orderItem.item.title,
+                                    quantity: orderItem.quantity,
+                                    price: orderItem.item.price,
+                                    totalPrice: orderItem.final_price,
+                                    value: "",
+                                    action: "Delete",
 
-                })
-            }
+                                }
+                            )
+                        }
+                    })
+                }
             }
 
-        return finalData;
-    }
+            return finalData;
+        }
         const data = formatData(this.state.data)
 
         const columns = [
             {
-              title: 'Lp.',
-              dataIndex: 'key',
+                title: 'Lp.',
+                dataIndex: 'key',
             },
             {
-              title: 'Nazwa',
-              dataIndex: 'name',
+                title: 'Nazwa',
+                dataIndex: 'name',
             },
             {
-              title: 'Cena',
-              dataIndex: 'price',
+                title: 'Cena',
+                dataIndex: 'price',
             },
             {
-              title: 'Ilość',
-              dataIndex: 'quantity',
+                title: 'Ilość',
+                dataIndex: 'quantity',
             },
             {
-              title: 'Cena całkowita',
-              dataIndex: 'totalPrice',
+                title: 'Cena całkowita',
+                dataIndex: 'totalPrice',
             },
             {
-              title: 'Akcja',
-              dataIndex: 'action',
+                title: 'Akcja',
+                dataIndex: 'action',
             },
-          ];
-          
-          
-        return (
-            
-            <Table
-            style={{marginTop: "200px", marginBottom: "200px"}}
-            columns={columns}
-            dataSource={(data)}
-            pagination={false}
-            bordered
-            summary={pageData => {
-              let total = 0;
-              let totalRepayment = 0;
-        
-              pageData.forEach(({ totalPrice }) => {
-                total += totalPrice;
-              });
-        
-              return (
-                <>
-                  <tr>
-                    <th>Całkowicie:</th>
-                    <td>
-                    </td>
-                    <td>
-                    </td>
-                    <td>
-                    </td>
-                    <td>
-              <Typography><b>{total}</b></Typography>
-                    </td>
-                    <td>
-                    </td>
-                  </tr>
+        ];
 
-                </>
-              );
-            }}
-          />
-            )
+
+        return (
+
+            <Table
+                style={{ marginTop: "200px", marginBottom: "200px" }}
+                columns={columns}
+                expandable={{
+                    expandedRowRender: record => <p style={{ margin: 0 }}>{record.value}</p>,
+                    rowExpandable: record => record.value !== "",
+                }}
+                dataSource={(data)}
+                pagination={false}
+                bordered
+                summary={pageData => {
+                    let total = 0;
+
+                    pageData.forEach(({ totalPrice }) => {
+                        total += totalPrice;
+                    });
+
+                    return (
+                        <>
+                            <tr>
+                                <th>Całkowicie:</th>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                    <Typography><b>{total}</b></Typography>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+
+                        </>
+                    );
+                }}
+            />
+        )
     }
 }
 
