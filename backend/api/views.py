@@ -59,6 +59,7 @@ class ItemUpdateView(UpdateAPIView):
 class OrderQuantityUpdateView(APIView):
     def post(self, request, *args, **kwargs):
         slug = request.data.get('slug', None)
+        variations = request.data.get('variations', [])
         if slug is None:
             return Response({"message": "Invalid data"}, status=HTTP_400_BAD_REQUEST)
         item = get_object_or_404(Item, slug=slug)
@@ -66,20 +67,30 @@ class OrderQuantityUpdateView(APIView):
             user=request.user,
             ordered=False
         )
+        order = order_qs[0]
+            # check if the order item is in the order
         if order_qs.exists():
             order = order_qs[0]
             # check if the order item is in the order
             if order.items.filter(item__slug=item.slug).exists():
+                print(variations)
                 order_item = OrderItem.objects.filter(
                     item=item,
                     user=request.user,
                     ordered=False
-                )[0]
+                )
+                if variations:
+                    for v in variations:
+                        order_item = order_item.filter(
+                                Q(item_variations__exact=v)
+                            )
+                order_item = order_item.first()
                 if order_item.quantity > 1:
                     order_item.quantity -= 1
                     order_item.save()
                 else:
                     order.items.remove(order_item)
+
                 return Response(status=HTTP_200_OK)
             else:
                 return Response({"message": "This item was not in your cart"}, status=HTTP_400_BAD_REQUEST)

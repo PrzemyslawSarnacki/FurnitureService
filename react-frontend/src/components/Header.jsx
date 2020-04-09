@@ -65,9 +65,9 @@ class Header extends React.Component {
 
 
     const cartView = [
-      <React.Fragment>
+      <React.Fragment key="cartv">
         {cart !== null ? (
-          <React.Fragment>
+          <React.Fragment key="cart">
             {cart.order_items.map(order_item => {
               return (
                 <p key={order_item.id}>
@@ -81,12 +81,12 @@ class Header extends React.Component {
                 </Link>
                   </Button>
             {cart.order_items.length < 1 ? (
-              <p>Koszyk jest pusty</p>
+              <p key="empty">Koszyk jest pusty</p>
             ) : null}
 
           </React.Fragment>
         ) : (
-            <p>Koszyk jest pusty</p>
+            <p key="empty">Koszyk jest pusty</p>
           )}
 
       </React.Fragment>
@@ -147,13 +147,13 @@ class Header extends React.Component {
           : null}
 
         {isAuthenticated ?
-          <Menu.Item onClick={this.handleHideMenu} key="2" onClick={() => this.props.logout()}>
+          <Menu.Item onClick={this.handleHideMenu} key="logout" onClick={() => this.props.logout()}>
             Logout
             </Menu.Item>
 
           :
 
-          <Menu.Item onClick={this.handleHideMenu} key="2">
+          <Menu.Item onClick={this.handleHideMenu} key="login">
             <Link to="/login">Login</Link>
           </Menu.Item>
         }

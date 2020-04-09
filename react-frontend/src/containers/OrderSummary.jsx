@@ -2,7 +2,8 @@ import React from 'react'
 import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import { authAxios } from "../utils";
-import { Table, Typography } from 'antd'
+import { Table, Typography, Button } from 'antd'
+import { MinusOutlined, PlusOutlined } from '@ant-design/icons'
 import {
     addToCartURL,
     orderSummaryURL,
@@ -28,15 +29,12 @@ class OrderSummary extends React.Component {
 
     handleFetchOrder = () => {
         this.setState({ loading: true });
-        console.log("object")
         authAxios
             .get(orderSummaryURL)
             .then(res => {
-                console.log(res.data)
                 this.setState({ data: res.data, loading: false });
             })
             .catch(err => {
-                console.log(err)
                 if (err.response.status === 404) {
                     this.setState({
                         error: "You currently do not have an order",
@@ -68,7 +66,7 @@ class OrderSummary extends React.Component {
         this.setState({ loading: true });
         const variations = this.handleFormatData(itemVariations);
         authAxios
-            .post(addToCartURL, { slug, variations })
+        .post(addToCartURL, { slug, variations })
             .then(res => {
                 this.handleFetchOrder();
                 this.setState({ loading: false });
@@ -77,12 +75,18 @@ class OrderSummary extends React.Component {
                 this.setState({ error: err, loading: false });
             });
     };
-
-    handleRemoveQuantityFromCart = slug => {
+    
+    handleRemoveQuantityFromCart = (slug, itemVariations) => {
+        this.setState({ loading: true });
+        let variations = []
+        if (itemVariations !== undefined && itemVariations.length > 0) {
+            variations = this.handleFormatData(itemVariations);
+        }
         authAxios
-            .post(orderItemUpdateQuantityURL, { slug })
+            .post(orderItemUpdateQuantityURL, { slug, variations })
             .then(res => {
                 this.handleFetchOrder();
+                this.setState({ loading: false });
             })
             .catch(err => {
                 this.setState({ error: err });
@@ -107,33 +111,40 @@ class OrderSummary extends React.Component {
             if (data !== null) {
                 {
                     data.order_items.map((orderItem, i) => {
-                        console.log(orderItem)
                         // formatData['key'] = orderItem.id;
                         if (orderItem.item_variations.length > 0) {
                             orderItem.item_variations.map((itemVariation) => {
-                                console.log(itemVariation)
                                 finalData.push(
                                     {
                                         key: i + 1,
                                         name: itemVariation.variation.name,
-                                        quantity: orderItem.quantity,
+                                        quantity: (<div>
+                                            <Button onClick={() => this.handleRemoveQuantityFromCart(orderItem.item.slug, orderItem.item_variations)}><MinusOutlined /></Button>  
+                                            {orderItem.quantity }
+                                            <Button onClick={() => this.handleAddToCart(orderItem.item.slug, orderItem.item_variations)}><PlusOutlined /></Button>
+                                            </div> ),
                                         price: orderItem.item.price,
                                         totalPrice: orderItem.final_price,
                                         value: itemVariation.value,
-                                        action: "Delete",
+                                        action: <Button onClick={() => this.handleRemoveItem(orderItem.id)} >Usuń</Button>,
                                     }
-                                )
-                            })
-                        } else {
-                            finalData.push(
+                                    )
+                                })
+                            } else {
+                                finalData.push(
                                 {
                                     key: i + 1,
                                     name: orderItem.item.title,
-                                    quantity: orderItem.quantity,
+                                    quantity: 
+                                        (<div>
+                                        <Button onClick={() => this.handleRemoveQuantityFromCart(orderItem.item.slug)}><MinusOutlined /></Button>  
+                                        {orderItem.quantity }
+                                        <Button onClick={() => this.handleAddToCart(orderItem.item.slug, orderItem.item_variations)}><PlusOutlined /></Button>
+                                        </div> ),
                                     price: orderItem.item.price,
                                     totalPrice: orderItem.final_price,
                                     value: "",
-                                    action: "Delete",
+                                    action: <Button onClick={() => this.handleRemoveItem(orderItem.id)} >Usuń</Button>,
 
                                 }
                             )
@@ -170,6 +181,7 @@ class OrderSummary extends React.Component {
             {
                 title: 'Akcja',
                 dataIndex: 'action',
+
             },
         ];
 
