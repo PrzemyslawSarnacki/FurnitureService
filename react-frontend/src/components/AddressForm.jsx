@@ -1,5 +1,5 @@
 import React from 'react'
-import {Form, Input, Button, Select} from 'antd'
+import {Form, Input, Button, Select, Checkbox} from 'antd'
 
 export class AddressForm extends React.Component {
 constructor(props) {
@@ -127,8 +127,52 @@ constructor(props) {
             <div>
                 
                 <Form onSubmit={this.handleSubmit} success={success} error={error}>
+                    <Form.Item label="Miejscowość" name="">
+                        <Input placeholder="input " />
+                    </Form.Item>
+                    <Form.Item label="Ulica" name="street_address">
+                        <Input placeholder="Ulica" />
+                    </Form.Item>
+                    <Form.Item label="Kraj" name="country">
+                        <Select defaultValue="Polska" style={{ width: 120 }} placeholder="kraj">
+                            <Select.Option value="Poland">Polska</Select.Option>
+                        </Select>
+                    </Form.Item>
+                    <Form.Item label="Adres pocztowy" name="zip">
+                        <Input placeholder="input placeholder" />
+                    </Form.Item>
+                    <Form.Item
+                            name="phone_number"
+                            label="Numer kontaktowy"
+                            rules={[
+                            {
+                                required: true,
+                                message: 'Please input your phone number!',
+                            },
+                            ]}
+                        >
+                                <Input
+                                addonBefore={
+                                    <Form.Item name="prefix" noStyle>
+                                    <Select
+                                      style={{
+                                        width: 70,
+                                      }}
+                                    >
+                                      <Select.Option value="48">+48</Select.Option>
+                                    </Select>
+                                  </Form.Item>
+                              
 
-                    
+                                }
+                                style={{
+                                    width: '100%',
+                                }}
+                                />
+                    </Form.Item>
+
+                    <Checkbox checked={formData.default} onChange={this.handleToggleDefault}>Ustawić jako domyślny?</Checkbox>
+                    <Button>Zapisz</Button>
                 </Form>
 
             </div>
