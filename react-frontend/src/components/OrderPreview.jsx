@@ -13,20 +13,24 @@ class OrderPreview extends React.Component {
         const { data } = this.props;
         console.log(data)
         return (
-            <React.Fragment>
+            <div style={{ textAlign: "center", position: "relative"}}>
+            <React.Fragment >
                 {data && (
             <React.Fragment>
                     <React.Fragment>
                         <List itemLayout="horizontal" dataSource={data.order_items} renderItem={orderItem => (
-                            <List.Item style={{ textAlign: "center"}}>
+                            <List.Item style={{display: "block", marginLeft:"auto", marginRight:"auto"}}>
+                                <div style={{textAlign:"200px", left: "50%"}}>
                                 <List.Item.Meta
                                     
-                                    avatar={<img src={`http://127.0.0.1:8000${orderItem.item.image}`} />}
+                                    avatar={<Avatar src={`http://127.0.0.1:8000${orderItem.item.image}`} />}
                                     title={
                                         `${orderItem.quantity} x ${orderItem.item.title}`
                                     }
                                     description={<Tag  color="magenta">{orderItem.final_price} zł</Tag>}
                                     />
+
+                                    </div>
                             </List.Item>
                             
                             )}
@@ -50,7 +54,7 @@ class OrderPreview extends React.Component {
                )}
 
             </React.Fragment>
-
+            </div>
         )
 
     }

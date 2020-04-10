@@ -172,9 +172,9 @@ class Checkout extends React.Component {
         console.log(data)
         return (
             <div
-            style={{ marginTop: "10px", position: "center", textAlign: "center",}}
+            style={{ textAlign: "center",}}
             >
-                <OrderPreview style={{marginTop: "200px", alignContent: "center"}} data={data} />
+                <OrderPreview  data={data} />
 
 
             <div style={{ display: 'inline-flex', justifyContent: 'center', alignItems: 'center'}}
