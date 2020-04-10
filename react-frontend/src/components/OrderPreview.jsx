@@ -1,63 +1,73 @@
 import React from 'react'
-import { Tag, List, Avatar } from 'antd';
+import { Tag, List, Avatar, Divider } from 'antd';
 import { orderItemDeleteURL } from '../constants';
 
 
 class OrderPreview extends React.Component {
-    constructor(props) {
-        super(props)
-    }
+
+
 
 
     render() {
         const { data } = this.props;
         console.log(data)
         return (
-            <div style={{ textAlign: "center", position: "relative"}}>
-            <React.Fragment >
-                {data && (
-            <React.Fragment>
-                    <React.Fragment>
-                        <List itemLayout="horizontal" dataSource={data.order_items} renderItem={orderItem => (
-                            <List.Item style={{display: "block", marginLeft:"auto", marginRight:"auto"}}>
-                                <div style={{textAlign:"200px", left: "50%"}}>
-                                <List.Item.Meta
-                                    
-                                    avatar={<Avatar src={`http://127.0.0.1:8000${orderItem.item.image}`} />}
-                                    title={
-                                        `${orderItem.quantity} x ${orderItem.item.title}`
-                                    }
-                                    description={<Tag  color="magenta">{orderItem.final_price} zł</Tag>}
-                                    />
+    
+    
+    
+    <React.Fragment >
+    
+                {data.length == 0 ? null :
 
-                                    </div>
+                    (
+
+                        <React.Fragment>
+                            <React.Fragment >
+                                {data.order_items.map((orderItem) => {
+                                    return (
+
+                                        <React.Fragment style={{ textAlign: "center",}}>
+
+                                            <Avatar src={`http://127.0.0.1:8000${orderItem.item.image}`} />
+                                            <div style={{ textAlign: "center", marginTop: "10px" }}>
+
+                                                <b>{orderItem.quantity} x {orderItem.item.title}</b>
+                                            
+                                                <p><Tag style={{ marginTop: "10px" }} color="magenta">{orderItem.final_price} zł</Tag></p>
+                                            </div>
+                                            <Divider />
+                                        </React.Fragment>
+                                    )
+
+
+                                })
+                                }
+
+
+                            </React.Fragment>
+
+                            <List.Item>
+
+                                <List.Item.Meta
+                                    title={`Order Total: ${data.total} zł`}
+                                // description={{data.coupon && (
+                                //     <Tag color="magenta">
+                                //     Current coupon: {data.coupon.code} for $
+                                //     {data.coupon.amount}
+                                //     </Tag>
+                                //     )}}
+                                />
                             </List.Item>
-                            
-                            )}
-                            />
-                    </React.Fragment>
-               
-                <List.Item>
-                        
-                <List.Item.Meta
-                    title={`Order Total: ${data.total} zł`}
-                    // description={{data.coupon && (
-                    //     <Tag color="magenta">
-                    //     Current coupon: {data.coupon.code} for $
-                    //     {data.coupon.amount}
-                    //     </Tag>
-                    //     )}}
-                    />
-                </List.Item>    
-                   
-               </React.Fragment>
-               )}
+
+                        </React.Fragment>
+                    )}
 
             </React.Fragment>
-            </div>
         )
 
     }
+
+
 }
 
 export default OrderPreview

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 import { authAxios } from "../utils";
-import {Button} from 'antd'
+import {Button, Avatar} from 'antd'
 import OrderPreview from "../components/OrderPreview";
 
 import {
@@ -174,6 +174,7 @@ class Checkout extends React.Component {
             <div
             style={{ textAlign: "center",}}
             >
+                <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
                 <OrderPreview  data={data} />
 
 
