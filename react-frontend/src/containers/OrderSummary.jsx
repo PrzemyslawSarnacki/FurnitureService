@@ -61,7 +61,7 @@ class OrderSummary extends React.Component {
             return itemVariations[key].id;
         });
     };
-
+        
     handleAddToCart = (slug, itemVariations) => {
         this.setState({ loading: true });
         const variations = this.handleFormatData(itemVariations);

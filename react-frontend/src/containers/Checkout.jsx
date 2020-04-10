@@ -1,10 +1,15 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 import { authAxios } from "../utils";
+import {Button} from 'antd'
+import OrderPreview from "../components/OrderPreview";
 
 import {
-    addToCartURL,
+    checkoutURL,
     orderSummaryURL,
+    addCouponURL,  
+    addToCartURL,
+    addressListURL,
     orderItemDeleteURL,
     orderItemUpdateQuantityURL
 } from "../constants";
@@ -15,7 +20,7 @@ class Checkout extends React.Component {
         super(props)
 
         this.state = {
-            data: null,
+            data: [],
             loading: false,
             error: null,
             success: false,
@@ -93,11 +98,12 @@ class Checkout extends React.Component {
                 this.setState({ data: res.data, loading: false });
             })
             .catch(err => {
-                if (err.response.status === 404) {
-                    this.props.history.push("/products");
-                } else {
-                    this.setState({ error: err, loading: false });
-                }
+                // if (err.response.status === 404) {
+                //     this.props.history.push("/products");
+                // } else {
+                console.log(err)    
+                this.setState({ error: err, loading: false });
+                // }
             });
     };
 
@@ -162,10 +168,28 @@ class Checkout extends React.Component {
             shippingAddresses,
             selectedBillingAddress,
             selectedShippingAddress
-          } = this.state;
-      
+        } = this.state;
+        console.log(data)
         return (
-            <div>
+            <div
+            style={{ marginTop: "10px", position: "center", textAlign: "center",}}
+            >
+                <OrderPreview style={{marginTop: "200px", alignContent: "center"}} data={data} />
+
+
+            <div style={{ display: 'inline-flex', justifyContent: 'center', alignItems: 'center'}}
+            >
+
+                <Button
+                    style={{ marginTop: "10px", position: "center", textAlign: "center",}}
+                    loading={loading}
+                    disabled={loading}
+                    primary
+                    onClick={this.submit}
+                >
+                    Potwierdź
+             </Button>
+            </div>
 
             </div>
         )
