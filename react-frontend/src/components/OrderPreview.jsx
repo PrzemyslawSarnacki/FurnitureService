@@ -15,7 +15,7 @@ class OrderPreview extends React.Component {
     
     
     
-    <React.Fragment >
+    <React.Fragment style={{ marginBottom: "200px",}}>
     
                 {data.length == 0 ? null :
 
@@ -30,7 +30,7 @@ class OrderPreview extends React.Component {
 
                                             <div style={{ textAlign: "center" }}>
                                             <div style={{marginRight : "45px"}}>
-                                            <Avatar style={{marginRight: "10px"}} src={`http://127.0.0.1:8000${orderItem.item.image}`} />
+                                            <Avatar style={{marginRight: "10px",}} src={`http://127.0.0.1:8000${orderItem.item.image}`} />
 
                                                 <b>{orderItem.quantity} x {orderItem.item.title}</b>
 
