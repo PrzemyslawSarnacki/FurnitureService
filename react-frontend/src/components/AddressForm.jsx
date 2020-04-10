@@ -1,5 +1,10 @@
 import React from 'react'
 import {Form, Input, Button, Select, Checkbox} from 'antd'
+import {
+    addressCreateURL,
+    addressUpdateURL} 
+from "../constants";
+
 
 export class AddressForm extends React.Component {
 constructor(props) {
@@ -10,7 +15,8 @@ constructor(props) {
         loading: false,
         formData: {
           address_type: "",
-          apartment_address: "",
+          city: "",
+          phone_number: "",
           country: "",
           default: false,
           id: "",
@@ -83,7 +89,7 @@ constructor(props) {
             user: userID,
             address_type: activeItem === "billingAddress" ? "B" : "S"
           })
-          .then(res => {
+          .then(() => {
             this.setState({
               saving: false,
               success: true,
@@ -105,7 +111,7 @@ constructor(props) {
             user: userID,
             address_type: activeItem === "billingAddress" ? "B" : "S"
           })
-          .then(res => {
+          .then(() => {
             this.setState({
               saving: false,
               success: true,
@@ -121,8 +127,7 @@ constructor(props) {
       
       
       render() {        
-          const { countries } = this.props;
-          const { error, formData, success, saving } = this.state;
+          const { error, formData, success } = this.state;
         return (
             <div>
                 

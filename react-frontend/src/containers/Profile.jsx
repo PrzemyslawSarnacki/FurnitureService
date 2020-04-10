@@ -4,14 +4,14 @@ import { Redirect } from "react-router-dom";
 import {
     countryListURL,
     addressListURL,
-    addressCreateURL,
-    addressUpdateURL,
     addressDeleteURL,
-    userIDURL,
-    paymentListURL
-} from "../constants";
+    userIDURL} 
+from "../constants";
 import { authAxios } from "../utils";
 import { Menu, Button, Divider, Card } from 'antd';
+import AddressForm from "../components/AddressForm";
+import PaymentHistory from "../components/PaymentHistory";
+
 
 const UPDATE_FORM = "UPDATE_FORM";
 const CREATE_FORM = "CREATE_FORM";
@@ -68,7 +68,7 @@ class Profile extends React.Component {
     handleDeleteAddress = addressID => {
         authAxios
             .delete(addressDeleteURL(addressID))
-            .then(res => {
+            .then(() => {
                 this.handleCallback();
             })
             .catch(err => {
@@ -150,8 +150,9 @@ class Profile extends React.Component {
                                     <Tag color="green">Domyślny adres</Tag>
                                 )}
                                 <h1>
-                                    {a.street_address}, {a.apartment_address}
+                                    {a.street_address}, {a.city}
                                 </h1>
+                                <p>{a.phone_number}</p>
                                 <p>{a.country}</p>
                                 <p>{a.zip}</p>
                             </React.Fragment>
@@ -185,7 +186,7 @@ class Profile extends React.Component {
 
 
     render() {
-        const { activeItem, error, loading } = this.state;
+        const { activeItem } = this.state;
         const { isAuthenticated } = this.props;
         if (!isAuthenticated) {
             return <Redirect to="/login" />;
@@ -206,7 +207,7 @@ class Profile extends React.Component {
                                     Adres wysyłki
                         </Menu.Item>
                             <Menu.Item key="2">
-                                <CalendarOutlined />
+                                <MailOutlined />
                                 Adres płatności
                         </Menu.Item>
                             <Menu.Item key="3">
