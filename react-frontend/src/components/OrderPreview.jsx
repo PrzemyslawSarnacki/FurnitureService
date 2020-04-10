@@ -28,12 +28,14 @@ class OrderPreview extends React.Component {
 
                                         <React.Fragment style={{ textAlign: "center",}}>
 
-                                            <Avatar src={`http://127.0.0.1:8000${orderItem.item.image}`} />
-                                            <div style={{ textAlign: "center", marginTop: "10px" }}>
+                                            <div style={{ textAlign: "center" }}>
+                                            <div style={{marginRight : "45px"}}>
+                                            <Avatar style={{marginRight: "10px"}} src={`http://127.0.0.1:8000${orderItem.item.image}`} />
 
                                                 <b>{orderItem.quantity} x {orderItem.item.title}</b>
-                                            
-                                                <p><Tag style={{ marginTop: "10px" }} color="magenta">{orderItem.final_price} zł</Tag></p>
+
+                                            </div>
+                                                <p><Tag style={{ marginTop: "5px" }} color="magenta">{orderItem.final_price} zł</Tag></p>
                                             </div>
                                             <Divider />
                                         </React.Fragment>

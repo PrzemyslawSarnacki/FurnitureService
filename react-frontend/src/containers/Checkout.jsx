@@ -171,10 +171,9 @@ class Checkout extends React.Component {
         } = this.state;
         console.log(data)
         return (
-            <div
-            style={{ textAlign: "center",}}
+            <div 
+            style={{ textAlign: "center", marginTop: "90px"}}
             >
-                <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
                 <OrderPreview  data={data} />
 
 
