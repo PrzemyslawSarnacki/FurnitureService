@@ -22,9 +22,9 @@ constructor(props) {
           address_type: "",
           city: "",
           phone_number: "",
-          country: "",
+          country: "Poland",
           default: false,
-          id: "",
+          // id: "",
           street_address: "",
           user: 1,
           zip: ""
@@ -54,6 +54,7 @@ constructor(props) {
     
       handleChange = e => {
         const { formData } = this.state;
+        console.log(e.target.name)
         const updatedFormdata = {
           ...formData,
           [e.target.name]: e.target.value
@@ -76,7 +77,7 @@ constructor(props) {
     
       handleSubmit = e => {
         this.setState({ saving: true });
-        e.preventDefault();
+        // e.preventDefault();
         const { formType } = this.props;
         if (formType === UPDATE_FORM) {
           this.handleUpdateAddress();
@@ -136,20 +137,20 @@ constructor(props) {
         return (
             <div>
                 
-                <Form onSubmit={this.handleSubmit} success={success} error={error}>
-                    <Form.Item label="Miejscowość" name="">
-                        <Input placeholder="input " />
+                <Form onFinish={this.handleSubmit} success={success} error={error}>
+                    <Form.Item label="Miejscowość" name="city">
+                        <Input placeholder="input " name="city" onChange={this.handleChange}/>
                     </Form.Item>
                     <Form.Item label="Ulica" name="street_address">
-                        <Input placeholder="Ulica" />
+                        <Input placeholder="Ulica" name="street_address" onChange={this.handleChange}/>
                     </Form.Item>
                     <Form.Item label="Kraj" name="country">
-                        <Select defaultValue="Polska" style={{ width: 120 }} placeholder="kraj">
-                            <Select.Option value="Poland">Polska</Select.Option>
+                        <Select key="countrySelect" defaultValue="Poland" name="country" style={{ width: 120 }} placeholder="kraj" onChange={this.handleChange}>
+                            <Select.Option key="country" value="Poland" name="country">Polska</Select.Option>
                         </Select>
                     </Form.Item>
                     <Form.Item label="Adres pocztowy" name="zip">
-                        <Input placeholder="input placeholder" />
+                        <Input placeholder="input placeholder" name="zip" onChange={this.handleChange} />
                     </Form.Item>
                     <Form.Item
                             name="phone_number"
@@ -162,18 +163,19 @@ constructor(props) {
                             ]}
                         >
                                 <Input
-                                addonBefore={
+                               onChange={this.handleChange}
+                                name="phone_number"
+                               addonBefore={
                                     <Form.Item name="prefix" noStyle>
                                     <Select
+                                    defaultValue="+48"
                                       style={{
                                         width: 70,
                                       }}
                                     >
-                                      <Select.Option value="48">+48</Select.Option>
+                                      <Select.Option value="+48">+48</Select.Option>
                                     </Select>
                                   </Form.Item>
-                              
-
                                 }
                                 style={{
                                     width: '100%',
@@ -181,8 +183,8 @@ constructor(props) {
                                 />
                     </Form.Item>
 
-                    <Checkbox checked={formData.default} onChange={this.handleToggleDefault}>Ustawić jako domyślny?</Checkbox>
-                    <Button>Zapisz</Button>
+                    <Checkbox checked={formData.default} name="default" onChange={this.handleToggleDefault}>Ustawić jako domyślny?</Checkbox>
+                    <Button htmlType="submit">Zapisz</Button>
                 </Form>
 
             </div>

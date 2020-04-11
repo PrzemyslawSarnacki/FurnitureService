@@ -17,7 +17,7 @@ class OrderPreview extends React.Component {
     
     <React.Fragment style={{ marginBottom: "200px",}}>
     
-                {data.length == 0 ? null :
+                {data.length === 0 ? null :
 
                     (
 

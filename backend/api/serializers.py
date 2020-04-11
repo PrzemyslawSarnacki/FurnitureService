@@ -192,9 +192,10 @@ class AddressSerializer(serializers.ModelSerializer):
             'id',
             'user',
             'street_address',
-            'apartment_address',
+            'city',
             'country',
             'zip',
+            'phone_number',
             'address_type',
             'default'
         )
