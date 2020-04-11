@@ -19,7 +19,6 @@ const UPDATE_FORM = "UPDATE_FORM";
 const CREATE_FORM = "CREATE_FORM";
 
 
-
 class Profile extends React.Component {
     constructor(props) {
         super(props)
@@ -226,7 +225,7 @@ class Profile extends React.Component {
                         </Menu>
                     </Col>
                     <Col flex={3}>
-                        <h1>{this.handleGetActiveItem()}</h1>
+                        <h1 style={{textAlign: "center"}}>{this.handleGetActiveItem()}</h1>
                         <Divider />
                         { (activeItem === "paymentHistory") ? 
                             <PaymentHistory />
@@ -235,9 +234,7 @@ class Profile extends React.Component {
                                 ?
                                 <OrderHistory />
                                 :
-                                this.renderAddresses()
-                            
-                            
+                                this.renderAddresses()         
                             )}
                     </Col>
 
