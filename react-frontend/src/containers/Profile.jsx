@@ -49,11 +49,13 @@ class Profile extends React.Component {
     handleGetActiveItem = () => {
         const { activeItem } = this.state;
         if (activeItem === "billingAddress") {
-            return "Billing Address";
+            return "Adres Płatności";
         } else if (activeItem === "shippingAddress") {
-            return "Shipping Address";
+            return "Adres Wysyłki";
+        } else if (activeItem === "orderHistory") {
+            return "Historia Zakupów";
         }
-        return "Payment History";
+        return "Historia Płatności";
     };
 
     handleFormatCountries = countries => {
@@ -197,9 +199,9 @@ class Profile extends React.Component {
         return (
             <div style={{marginTop: "90px"}}>
                 <Row>
-                    <Col span={6}>
+                    <Col flex={2}>
                         <Menu
-                            style={{ width: 256 }}
+                            style={{ width: 256, textAlign: "center" }}
                             defaultSelectedKeys={['1']}
                             defaultOpenKeys={['sub1']}
                             mode={this.state.mode}
@@ -223,7 +225,7 @@ class Profile extends React.Component {
                         </Menu.Item>
                         </Menu>
                     </Col>
-                    <Col span={18}>
+                    <Col flex={3}>
                         <h1>{this.handleGetActiveItem()}</h1>
                         <Divider />
                         { (activeItem === "paymentHistory") ? 

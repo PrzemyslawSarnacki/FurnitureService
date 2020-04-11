@@ -106,7 +106,7 @@ class OrderHistory extends React.Component {
         return (
             <div>
                 <Table
-                    style={{ marginTop: "200px", marginBottom: "200px" }}
+                    style={{ marginTop: "200px", marginBottom: "200px",  overflow: "auto"  }}
                     columns={columns}
                     expandable={{
                         expandedRowRender: record => <p style={{ margin: 0 }}>{record.value}</p>,
