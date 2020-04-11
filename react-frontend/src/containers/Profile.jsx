@@ -8,7 +8,8 @@ import {
     userIDURL} 
 from "../constants";
 import { authAxios } from "../utils";
-import { Menu, Button, Divider, Card } from 'antd';
+import { Menu, Button, Divider, Card, Col, Row, Tag } from 'antd';
+import { CalendarOutlined, MailOutlined,  } from '@ant-design/icons';
 import AddressForm from "../components/AddressForm";
 import PaymentHistory from "../components/PaymentHistory";
 
@@ -134,12 +135,12 @@ class Profile extends React.Component {
                     title="Default size card"
                     extra={
                         <React.Fragment>
-                            <Button color="yellow" onClick={() => this.handleSelectAddress(a)}>
+                            {/* <Button color="yellow" onClick={() => this.handleSelectAddress(a)}> */}
                                 Update
-                            </Button>
-                            <Button color="red" onClick={() => this.handleDeleteAddress(a.id)}>
+                            {/* </Button> */}
+                            {/* // <Button color="red" onClick={() => this.handleDeleteAddress(a.id)}> */}
                                 Delete
-                            </Button>
+                            {/* // </Button> */}
                         </React.Fragment>}
                     style={{ width: 300 }}
                 >
@@ -217,7 +218,7 @@ class Profile extends React.Component {
                         </Menu>
                     </Col>
                     <Col span={18}>
-                        <Header>{this.handleGetActiveItem()}</Header>
+                        <h1>{this.handleGetActiveItem()}</h1>
                         <Divider />
                         {activeItem === "paymentHistory" ? (
                             <PaymentHistory />

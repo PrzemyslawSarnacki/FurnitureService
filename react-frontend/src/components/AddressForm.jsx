@@ -4,6 +4,11 @@ import {
     addressCreateURL,
     addressUpdateURL} 
 from "../constants";
+import { authAxios } from "../utils";
+
+
+const UPDATE_FORM = "UPDATE_FORM";
+const CREATE_FORM = "CREATE_FORM";
 
 
 export class AddressForm extends React.Component {

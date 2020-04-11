@@ -8,6 +8,7 @@ import Login from "./containers/Login";
 import Home from "./containers/Home";
 import Signup from "./containers/Signup";
 import Checkout from "./containers/Checkout";
+import Profile from "./containers/Profile";
 
 const BaseRouter = () => (
   <div>
@@ -16,6 +17,7 @@ const BaseRouter = () => (
     <Route exact path="/items/:itemID/" component={ItemDetail} />{" "}
     <Route exact path="/order-summary/" component={OrderSummary} />{" "}
     <Route exact path="/login/" component={Login} />{" "}
+    <Route exact path="/profile/" component={Profile} />{" "}
     <Route exact path="/signup/" component={Signup} />{" "}
     <Route exact path="/checkout/" component={Checkout} />{" "}
   </div>

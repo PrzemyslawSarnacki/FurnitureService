@@ -46,14 +46,15 @@ class AddressAdmin(admin.ModelAdmin):
     list_display = [
         'user',
         'street_address',
-        'apartment_address',
+        'city',
         'country',
         'zip',
+        'phone_number',
         'address_type',
         'default'
     ]
     list_filter = ['default', 'address_type', 'country']
-    search_fields = ['user', 'street_address', 'apartment_address', 'zip']
+    search_fields = ['user', 'street_address', 'city', 'zip']
 
 
 class ItemVariationAdmin(admin.ModelAdmin):
