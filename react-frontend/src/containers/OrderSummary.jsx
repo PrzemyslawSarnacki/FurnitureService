@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import { authAxios } from "../utils";
 import { Table, Typography, Button } from 'antd'
-import { MinusOutlined, PlusOutlined } from '@ant-design/icons'
+import { MinusOutlined, PlusOutlined, DeleteOutlined } from '@ant-design/icons'
 import {
     addToCartURL,
     orderSummaryURL,
@@ -107,7 +107,6 @@ class OrderSummary extends React.Component {
     render() {
         const formatData = (data) => {
             var finalData = [];
-            console.log(data)
             if (data !== null) {
                 {
                     data.order_items.map((orderItem, i) => {
@@ -119,14 +118,14 @@ class OrderSummary extends React.Component {
                                         key: i + 1,
                                         name: itemVariation.variation.name,
                                         quantity: (<div>
-                                            <Button onClick={() => this.handleRemoveQuantityFromCart(orderItem.item.slug, orderItem.item_variations)}><MinusOutlined /></Button>  
-                                            {orderItem.quantity }
-                                            <Button onClick={() => this.handleAddToCart(orderItem.item.slug, orderItem.item_variations)}><PlusOutlined /></Button>
+                                            <Button size="small" icon={<MinusOutlined/>} onClick={() => this.handleRemoveQuantityFromCart(orderItem.item.slug, orderItem.item_variations)}/>  
+                                            { orderItem.quantity }
+                                            <Button size="small" icon={<PlusOutlined />} onClick={() => this.handleAddToCart(orderItem.item.slug, orderItem.item_variations)}/>
                                             </div> ),
                                         price: orderItem.item.price,
                                         totalPrice: orderItem.final_price,
                                         value: itemVariation.value,
-                                        action: <Button onClick={() => this.handleRemoveItem(orderItem.id)} >Usuń</Button>,
+                                        action: <Button size="small" icon={<DeleteOutlined />} onClick={() => this.handleRemoveItem(orderItem.id)} />,
                                     }
                                     )
                                 })
@@ -137,14 +136,14 @@ class OrderSummary extends React.Component {
                                     name: orderItem.item.title,
                                     quantity: 
                                         (<div>
-                                        <Button onClick={() => this.handleRemoveQuantityFromCart(orderItem.item.slug)}><MinusOutlined /></Button>  
+                                        <Button size="small" icon={<MinusOutlined/>} onClick={() => this.handleRemoveQuantityFromCart(orderItem.item.slug)} />  
                                         {orderItem.quantity }
-                                        <Button onClick={() => this.handleAddToCart(orderItem.item.slug, orderItem.item_variations)}><PlusOutlined /></Button>
+                                        <Button size="small" icon={<PlusOutlined />} onClick={() => this.handleAddToCart(orderItem.item.slug, orderItem.item_variations)} />
                                         </div> ),
                                     price: orderItem.item.price,
                                     totalPrice: orderItem.final_price,
                                     value: "",
-                                    action: <Button onClick={() => this.handleRemoveItem(orderItem.id)} >Usuń</Button>,
+                                    action: <Button size="small" icon={<DeleteOutlined />} onClick={() => this.handleRemoveItem(orderItem.id)} />,
 
                                 }
                             )
@@ -161,6 +160,7 @@ class OrderSummary extends React.Component {
             {
                 title: 'Lp.',
                 dataIndex: 'key',
+                width: 10,
             },
             {
                 title: 'Nazwa',
@@ -177,19 +177,22 @@ class OrderSummary extends React.Component {
             {
                 title: 'Cena całkowita',
                 dataIndex: 'totalPrice',
+                width: 90,
             },
             {
-                title: 'Akcja',
+                title: '',
                 dataIndex: 'action',
+                width: 10,
 
             },
         ];
 
 
         return (
+            <React.Fragment>
 
             <Table
-                style={{ marginTop: "200px", marginBottom: "200px" }}
+                style={{ marginTop: "90px",  overflow: "auto" }}
                 columns={columns}
                 expandable={{
                     expandedRowRender: record => <p style={{ margin: 0 }}>{record.value}</p>,
@@ -208,28 +211,30 @@ class OrderSummary extends React.Component {
                     return (
                         <>
                             <tr>
-                                <th>Całkowicie:</th>
-                                <td>
+                                <th colSpan="2">Całkowicie:</th>
+                                <td colSpan="3">
                                 </td>
-                                <td>
-                                </td>
-                                <td>
-                                </td>
+                                
                                 <td>
                                     <Typography><b>{total}</b></Typography>
                                 </td>
                                 <td>
                                 </td>
                             </tr>
-                        <Button>
-                        <Link to="/checkout">
-                            Kup teraz
-                        </Link>
-                        </Button>
+                        
                         </>
                     );
                 }}
             />
+            <div style={{textAlign: "center", margin: "20px"}}>
+                        <Button>
+                        <Link to="/checkout">
+                            Kup teraz
+                        </Link>
+                        </Button>                 
+            </div>
+
+                        </React.Fragment>
         )
     }
 }
