@@ -1,6 +1,7 @@
 import React from 'react'
 import { Table } from 'antd'
-import {orderSummaryURL} from "../constants";
+import { orderSummaryURL } from "../constants";
+import { authAxios } from "../utils";
 
 
 class OrderHistory extends React.Component {
@@ -52,7 +53,21 @@ class OrderHistory extends React.Component {
                     }
                     )
                 })
-            }
+            }else {
+                finalData.push(
+                {
+                    key: i + 1,
+                    name: orderItem.item.title,
+                    quantity: orderItem.quantity, 
+                    price: orderItem.item.price,
+                    totalPrice: orderItem.final_price,
+                    value: "",
+
+                }
+            )
+        }
+    
+
         }
                 )
     }

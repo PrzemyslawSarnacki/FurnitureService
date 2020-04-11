@@ -12,6 +12,7 @@ import { Menu, Button, Divider, Card, Col, Row, Tag } from 'antd';
 import { CalendarOutlined, MailOutlined,  } from '@ant-design/icons';
 import AddressForm from "../components/AddressForm";
 import PaymentHistory from "../components/PaymentHistory";
+import OrderHistory from "../components/OrderHistory";
 
 
 const UPDATE_FORM = "UPDATE_FORM";
@@ -189,11 +190,12 @@ class Profile extends React.Component {
     render() {
         const { activeItem } = this.state;
         const { isAuthenticated } = this.props;
-        if (!isAuthenticated) {
-            return <Redirect to="/login" />;
-        }
+        console.log(isAuthenticated)
+        // if (!isAuthenticated) {
+        //     return <Redirect to="/login" />;
+        // }
         return (
-            <div>
+            <div style={{marginTop: "90px"}}>
                 <Row>
                     <Col span={6}>
                         <Menu
@@ -203,27 +205,37 @@ class Profile extends React.Component {
                             mode={this.state.mode}
                             theme={this.state.theme}
                         >
-                            <Menu.Item key="1">
+                            <Menu.Item key="1" onClick={() => this.handleItemClick("shippingAddress")}>
                                 <MailOutlined />
                                     Adres wysyłki
                         </Menu.Item>
-                            <Menu.Item key="2">
+                            <Menu.Item key="2" onClick={() => this.handleItemClick("billingAddress")}>
                                 <MailOutlined />
                                 Adres płatności
                         </Menu.Item>
-                            <Menu.Item key="3">
+                            <Menu.Item key="3" onClick={() => this.handleItemClick("paymentHistory")}>
                                 <CalendarOutlined />
                                     Historia płatności
+                        </Menu.Item>
+                            <Menu.Item key="4" onClick={() => this.handleItemClick("orderHistory")}>
+                                <CalendarOutlined />
+                                    Historia zamówień
                         </Menu.Item>
                         </Menu>
                     </Col>
                     <Col span={18}>
                         <h1>{this.handleGetActiveItem()}</h1>
                         <Divider />
-                        {activeItem === "paymentHistory" ? (
+                        { (activeItem === "paymentHistory") ? 
                             <PaymentHistory />
-                        ) : (
+                            : (
+                                (activeItem === "orderHistory")
+                                ?
+                                <OrderHistory />
+                                :
                                 this.renderAddresses()
+                            
+                            
                             )}
                     </Col>
 
