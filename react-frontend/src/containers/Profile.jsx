@@ -192,9 +192,9 @@ class Profile extends React.Component {
         const { activeItem } = this.state;
         const { isAuthenticated } = this.props;
         console.log(isAuthenticated)
-        // if (!isAuthenticated) {
-        //     return <Redirect to="/login" />;
-        // }
+        if (!isAuthenticated) {
+            return <Redirect to="/login" />;
+        }
         return (
             <div style={{marginTop: "90px"}}>
                 <Row>
@@ -217,7 +217,7 @@ class Profile extends React.Component {
                             <Menu.Item key="3" onClick={() => this.handleItemClick("paymentHistory")}>
                                 <CalendarOutlined />
                                     Historia płatności
-                        </Menu.Item>
+                        </Menu.Item> 
                             <Menu.Item key="4" onClick={() => this.handleItemClick("orderHistory")}>
                                 <CalendarOutlined />
                                     Historia zamówień
@@ -237,10 +237,7 @@ class Profile extends React.Component {
                                 this.renderAddresses()         
                             )}
                     </Col>
-
                 </Row>
-
-
             </div>
         )
     }
