@@ -48,7 +48,7 @@ class Offer extends React.Component {
               >
               Naszą Ofertę
             <div key="button" style={{marginTop: "12px"}}>
-              <Button type="danger" size="large">
+              <Button type="primary" size="large">
                 <Link to="/items">
                     Sprawdź
                     <RightOutlined />

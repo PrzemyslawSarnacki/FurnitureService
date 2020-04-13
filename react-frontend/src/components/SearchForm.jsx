@@ -55,7 +55,7 @@ const SearchForm = (props) => {
                         textAlign: 'left',
                     }}
                 >
-                    <Button type="danger" htmlType="submit">
+                    <Button type="primary" htmlType="submit">
                         Szukaj<SearchOutlined />
                     </Button>
                     <Button

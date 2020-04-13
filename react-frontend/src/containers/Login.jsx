@@ -66,7 +66,7 @@ class NormalLoginForm extends React.Component {
                         >
                           <Input.Password
                             prefix={<LockOutlined className="site-form-item-icon" />}
-                            type="danger"
+                            type="primary"
                             placeholder="Password"
                             name="password"
                             onChange={this.handleChange}
@@ -83,7 +83,7 @@ class NormalLoginForm extends React.Component {
                         </Form.Item>
                   
                         <Form.Item>
-                          <Button type="danger" htmlType="submit" className="login-form-button" style={{ marginRight: '10px'}}>
+                          <Button type="primary" htmlType="submit" className="login-form-button" style={{ marginRight: '10px'}}>
                             Log in
                           </Button>
                            Or 

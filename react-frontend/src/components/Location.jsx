@@ -46,7 +46,7 @@ class Location extends React.Component {
           <h2 key="h2">{this.props.headerName}</h2>
           <p key="p" style={{ maxWidth: 260 }}>{this.props.paragraphName}</p>
           <div key="button">
-              <Button type="danger" size="large" onClick={() => this.showModal()}>
+              <Button type="primary" size="large" onClick={() => this.showModal()}>
                   {this.props.buttonName}
                   <RightOutlined />
               </Button>

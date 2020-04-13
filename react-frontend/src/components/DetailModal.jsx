@@ -83,7 +83,7 @@ class DetailModal extends React.PureComponent {
                         <Button key="back" onClick={this.props.handleCancel}>
                             Wróć
                         </Button>,
-                        <Button key="submit" type="danger" onClick={this.props.handleOk}>
+                        <Button key="submit" type="primary" onClick={this.props.handleOk}>
                             OK
                         </Button>,
                     ]}

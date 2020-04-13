@@ -57,7 +57,7 @@ class ItemDetail extends React.Component {
           btnText="Update"
         /> */}
         <form onSubmit={this.handleDelete}>
-          <Button type="danger" size="large" htmlType="submit" >
+          <Button type="primary" size="large" htmlType="submit" >
             Delete
           </Button>
         </form>

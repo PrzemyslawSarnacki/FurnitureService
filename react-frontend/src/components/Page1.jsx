@@ -26,7 +26,7 @@ class Page1 extends React.Component {
         <p key="p" style={{ maxWidth: 310 }}>Zobacz ofertę w naszym sklepie</p>
         <div key="button">
           <a>
-            <Button type="danger" size="large">
+            <Button type="primary" size="large">
               Sprawdź
               <RightOutlined />
             </Button>

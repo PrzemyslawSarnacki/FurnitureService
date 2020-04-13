@@ -29,7 +29,7 @@ export class PageRight extends React.Component {
           {this.props.paragraphName}
           </p>
           <div key="button">
-              <Button type="danger" size="large">
+              <Button type="primary" size="large">
               <Link to="/items">
                     {this.props.buttonName}
                     <RightOutlined />

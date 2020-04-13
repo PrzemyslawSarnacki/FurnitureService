@@ -17,7 +17,7 @@ class Footer extends React.Component {
             </div>
         ),
         iconType: 'primary',
-        okType: 'danger',
+        okType: 'primary',
         onOk() { },
     });
 };

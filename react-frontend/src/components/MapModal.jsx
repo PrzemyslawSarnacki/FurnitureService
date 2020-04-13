@@ -16,7 +16,7 @@ class MapModal extends React.Component {
             <Button key="back" onClick={this.props.handleCancel}>
               Wróć
             </Button>,
-            <Button key="submit" type="danger" loading={this.props.loading} onClick={this.props.handleOk}>
+            <Button key="submit" type="primary" loading={this.props.loading} onClick={this.props.handleOk}>
               <a href="https://www.google.com/maps/place/Meble+idea/@53.1639094,22.0544312,15z/data=!4m5!3m4!1s0x0:0x85616f733b3c1f81!8m2!3d53.1639094!4d22.0544312">
                 Pełny ekran
               </a>

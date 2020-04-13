@@ -67,7 +67,7 @@ class CustomForm extends React.Component {
             <Input name="content" placeholder="Enter some content ..." />
           </FormItem>
           <FormItem>
-            <Button type="danger" size="large" htmlType="submit">
+            <Button type="primary" size="large" htmlType="submit">
               {this.props.btnText}
             </Button>
           </FormItem>

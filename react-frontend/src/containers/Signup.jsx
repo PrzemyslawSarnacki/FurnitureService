@@ -108,7 +108,7 @@ class RegistrationForm extends React.Component {
       </FormItem>
 
       <FormItem>
-      <Button type="danger" size="large" htmlType="submit" style={{marginRight: '10px'}}>
+      <Button type="primary" size="large" htmlType="submit" style={{marginRight: '10px'}}>
           Signup
       </Button>
       Or 
