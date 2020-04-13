@@ -8,6 +8,7 @@ export const productListURL = `${endpoint}/products/`;
 export const productDetailURL = id => `${endpoint}/products/${id}/`;
 export const addToCartURL = `${endpoint}/add-to-cart/`;
 export const orderSummaryURL = `${endpoint}/order-summary/`;
+export const orderHistoryURL = `${endpoint}/order-history/`;
 export const checkoutURL = `${endpoint}/checkout/`;
 export const addCouponURL = `${endpoint}/add-coupon/`;
 export const countryListURL = `${endpoint}/countries/`;

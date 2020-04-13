@@ -137,12 +137,7 @@ class Profile extends React.Component {
                     title="Default size card"
                     extra={
                         <React.Fragment>
-                            {/* <Button color="yellow" onClick={() => this.handleSelectAddress(a)}> */}
-                                Update
-                            {/* </Button> */}
-                            {/* // <Button color="red" onClick={() => this.handleDeleteAddress(a.id)}> */}
-                                Delete
-                            {/* // </Button> */}
+                            
                         </React.Fragment>}
                     style={{ width: 300 }}
                 >
@@ -158,6 +153,12 @@ class Profile extends React.Component {
                                 <p>{a.phone_number}</p>
                                 <p>{a.country}</p>
                                 <p>{a.zip}</p>
+                                <Button  onClick={() => this.handleSelectAddress(a)}>
+                                Update
+                            </Button> 
+                             <Button  onClick={() => this.handleDeleteAddress(a.id)}>
+                                Delete
+                             </Button>
                             </React.Fragment>
                 );
                     })}
@@ -191,10 +192,9 @@ class Profile extends React.Component {
     render() {
         const { activeItem } = this.state;
         const { isAuthenticated } = this.props;
-        console.log(this.props.isAuthenticated)
-        if (!isAuthenticated) {
-            return <Redirect to="/login" />;
-        }
+        // if (!isAuthenticated) {
+        //     return <Redirect to="/login" />;
+        // }
         return (
             <div style={{marginTop: "90px"}}>
                 <Row>

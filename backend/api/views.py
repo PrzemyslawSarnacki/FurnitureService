@@ -260,3 +260,15 @@ class PaymentListView(ListAPIView):
 
     def get_queryset(self):
         return Payment.objects.filter(user=self.request.user)
+
+
+class OrderHistoryDetailView(RetrieveAPIView):
+    permission_classes = (IsAuthenticated, )
+    serializer_class = OrderSerializer
+
+    def get_object(self):
+        try:
+            order = Order.objects.get(user=self.request.user, ordered=True)
+            return order
+        except ObjectDoesNotExist:
+            raise Http404("You do not have an active order")

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Table } from 'antd'
-import { orderSummaryURL } from "../constants";
+import { orderHistoryURL } from "../constants";
 import { authAxios } from "../utils";
 
 
@@ -22,7 +22,7 @@ class OrderHistory extends React.Component {
     handleFetchOrders = () => {
         this.setState({ loading: true });
         authAxios
-            .get(orderSummaryURL)
+            .get(orderHistoryURL)
             .then(res => {
                 this.setState({
                     data: res.data,
