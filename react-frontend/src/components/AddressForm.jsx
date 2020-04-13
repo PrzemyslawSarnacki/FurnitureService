@@ -139,7 +139,7 @@ constructor(props) {
                 
                 <Form onFinish={this.handleSubmit} success={success} error={error}>
                     <Form.Item label="Miejscowość" name="city">
-                        <Input placeholder="input " name="city" onChange={this.handleChange}/>
+                        <Input placeholder="Miejscowość" name="city" onChange={this.handleChange}/>
                     </Form.Item>
                     <Form.Item label="Ulica" name="street_address">
                         <Input placeholder="Ulica" name="street_address" onChange={this.handleChange}/>
@@ -150,7 +150,7 @@ constructor(props) {
                         </Select>
                     </Form.Item>
                     <Form.Item label="Adres pocztowy" name="zip">
-                        <Input placeholder="input placeholder" name="zip" onChange={this.handleChange} />
+                        <Input placeholder="Adres pocztowy" name="zip" onChange={this.handleChange} />
                     </Form.Item>
                     <Form.Item
                             name="phone_number"
@@ -165,10 +165,11 @@ constructor(props) {
                                 <Input
                                onChange={this.handleChange}
                                 name="phone_number"
-                               addonBefore={
+                                placeholder="Numer kontaktowy"
+                                addonBefore={
                                     <Form.Item name="prefix" noStyle>
                                     <Select
-                                    defaultValue="+48"
+                                      defaultValue="+48"
                                       style={{
                                         width: 70,
                                       }}

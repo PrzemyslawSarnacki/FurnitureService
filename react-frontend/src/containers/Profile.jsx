@@ -80,6 +80,7 @@ class Profile extends React.Component {
     };
 
     handleSelectAddress = address => {
+        console.log(address)
         this.setState({ selectedAddress: address });
     };
 
@@ -134,7 +135,7 @@ class Profile extends React.Component {
         return (
             <React.Fragment>
                 <Card
-                    title="Default size card"
+                    title="Adres"
                     extra={
                         <React.Fragment>
                             
