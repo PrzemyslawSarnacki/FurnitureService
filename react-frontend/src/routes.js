@@ -10,8 +10,10 @@ import Signup from "./containers/Signup";
 import Checkout from "./containers/Checkout";
 import Profile from "./containers/Profile";
 
+const Hoc = props => props.children;
+
 const BaseRouter = () => (
-  <div>
+  <Hoc>
     <Route exact path="/" component={Home} />{" "}
     <Route exact path="/items/" component={ItemList} />{" "}
     <Route exact path="/items/:itemID/" component={ItemDetail} />{" "}
@@ -20,7 +22,7 @@ const BaseRouter = () => (
     <Route exact path="/profile/" component={Profile} />{" "}
     <Route exact path="/signup/" component={Signup} />{" "}
     <Route exact path="/checkout/" component={Checkout} />{" "}
-  </div>
+  </Hoc>
 );
 
 export default BaseRouter;

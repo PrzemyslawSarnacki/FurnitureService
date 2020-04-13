@@ -191,7 +191,7 @@ class Profile extends React.Component {
     render() {
         const { activeItem } = this.state;
         const { isAuthenticated } = this.props;
-        console.log(isAuthenticated)
+        console.log(this.props.isAuthenticated)
         if (!isAuthenticated) {
             return <Redirect to="/login" />;
         }
@@ -245,6 +245,7 @@ class Profile extends React.Component {
 
 
 const mapStateToProps = state => {
+    console.log(state)
     return {
         isAuthenticated: state.auth.token !== null
     };

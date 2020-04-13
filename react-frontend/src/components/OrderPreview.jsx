@@ -15,7 +15,7 @@ class OrderPreview extends React.Component {
     
     
     
-    <React.Fragment style={{ marginBottom: "200px",}}>
+    <React.Fragment >
     
                 {data.length === 0 ? null :
 
@@ -26,7 +26,7 @@ class OrderPreview extends React.Component {
                                 {data.order_items.map((orderItem) => {
                                     return (
 
-                                        <React.Fragment style={{ textAlign: "center",}}>
+                                        <React.Fragment key={orderItem.id}>
 
                                             <div style={{ textAlign: "center" }}>
                                             <div style={{marginRight : "45px"}}>

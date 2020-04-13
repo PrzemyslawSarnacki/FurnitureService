@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 import { authAxios } from "../utils";
-import {Button, Avatar, Divider, Select, message} from 'antd'
+import { Button, Avatar, Divider, Select, message } from 'antd'
 import OrderPreview from "../components/OrderPreview";
 
 import {
     checkoutURL,
     orderSummaryURL,
-    addCouponURL,  
+    addCouponURL,
     addToCartURL,
     addressListURL,
     orderItemDeleteURL,
@@ -55,7 +55,7 @@ class Checkout extends React.Component {
                     billingAddresses: res.data.map(a => {
                         return {
                             key: a.id,
-                            text: `${a.street_address}, ${a.apartment_address}, ${a.country}`,
+                            text: `${a.street_address}, ${a.city}, ${a.country}`,
                             value: a.id
                         };
                     }),
@@ -77,7 +77,7 @@ class Checkout extends React.Component {
                     shippingAddresses: res.data.map(a => {
                         return {
                             key: a.id,
-                            text: `${a.street_address}, ${a.apartment_address}, ${a.country}`,
+                            text: `${a.street_address}, ${a.city}, ${a.country}`,
                             value: a.id
                         };
                     }),
@@ -101,7 +101,7 @@ class Checkout extends React.Component {
                 // if (err.response.status === 404) {
                 //     this.props.history.push("/products");
                 // } else {
-                console.log(err)    
+                console.log(err)
                 this.setState({ error: err, loading: false });
                 // }
             });
@@ -122,21 +122,19 @@ class Checkout extends React.Component {
     };
 
     handleSelectChange = (e, { name, value }) => {
+        console.log("change")
         this.setState({ [name]: value });
     };
-    
+
     handleMessage = (msg, status) => {
-        if (status === "")
-        {
+        if (status === "success") {
             message.success(msg)
         }
-        else if (status === "")
-        {
+        else if (status === "") {
             message.warning(msg)
         }
-        else
-        {
-            message.warning(msg)
+        else {
+            message.error(msg)
         }
     };
 
@@ -185,74 +183,81 @@ class Checkout extends React.Component {
             selectedShippingAddress
         } = this.state;
         console.log(data)
+        console.log(this.state)
         return (
-            <div 
-            style={{ textAlign: "center", marginTop: "90px"}}
+            <div
+                style={{ textAlign: "center", marginTop: "90px" }}
             >
-                <OrderPreview  data={data} />
+                <OrderPreview data={data} />
 
 
-            <div style={{ display: 'inline-flex', justifyContent: 'center', alignItems: 'center'}}
-            >
+                <div style={{  }}
+                >
 
-{billingAddresses.length > 0 ? (
-          <Select
-            name="selectedBillingAddress"
-            value={selectedBillingAddress}
-            clearable
-            options={billingAddresses}
-            selection
-            onChange={this.handleSelectChange}
-          />
-        ) : (
-          <p>
-            You need to <Link to="/profile">add a billing address</Link>
-          </p>
-        )}
-        <h1>Select a shipping address</h1>
-        {shippingAddresses.length > 0 ? (
-          <Select
-            name="selectedShippingAddress"
-            value={selectedShippingAddress}
-            clearable
-            options={shippingAddresses}
-            selection
-            onChange={this.handleSelectChange}
-          />
-        ) : (
-          <p>
-            You need to <Link to="/profile">add a shipping address</Link>
-          </p>
-        )}
-        <Divider />
+                    {billingAddresses.length > 0 ? (
+                        <Select
+                            name="selectedBillingAddress"
+                            value={selectedBillingAddress}
+                            options={billingAddresses}
+                            onChange={this.handleSelectChange}
+                        >
+                            {console.log(billingAddresses)}
+                            {billingAddresses.map(billingAddress =>
+                                <Select.Option value={billingAddress}>{billingAddress}</Select.Option>
+                            )}
+                        </Select>
+                    ) : (
+                            <p>
+                                You need to <Link to="/profile">add a billing address</Link>
+                            </p>
+                        )}
+                    <h1>Select a shipping address</h1>
+                        {console.log(shippingAddresses)}
+                    {shippingAddresses.length > 0 ? (
+                
+                        <Select
+                            name="selectedShippingAddress"
+                            value={selectedShippingAddress}
+                            onChange={this.handleSelectChange}
+                        >
+                            {shippingAddresses.map(shippingAddress =>
+                                <Select.Option value={shippingAddress}>{shippingAddress}</Select.Option>
+                            )}
 
-        {billingAddresses.length < 1 || shippingAddresses.length < 1 ? (
-          <p>You need to add addresses before you can complete your purchase</p>
-        ) : (
-          <React.Fragment>
-            <h1>Would you like to complete the purchase?</h1>
-            {success && (
-              <div>
-              {this.handleMessage("Your payment was successful")}
-                <p>
-                  Go to your <b>profile</b> to see the order delivery status.
-                </p>
-              </div>
-            )}
+                        </Select>
+                    ) : (
+                            <p>
+                                You need to <Link to="/profile">add a shipping address</Link>
+                            </p>
+                        )}
+                    <Divider />
 
-                <Button
-                    style={{ marginTop: "10px", position: "center", textAlign: "center",}}
-                    loading={loading}
-                    disabled={loading}
-                    primary
-                    onClick={this.submit}
-                    >
-                    Potwierdź
-             </Button>
-          </React.Fragment>
+                    {billingAddresses.length < 1 || shippingAddresses.length < 1 ? (
+                        <p>You need to add addresses before you can complete your purchase</p>
+                    ) : (
+                            <React.Fragment>
+                                <h1>Would you like to complete the purchase?</h1>
+                                {success && (
+                                    <div>
+                                        {this.handleMessage("Your payment was successful", "success")}
+                                        <p>
+                                            Go to your <b>profile</b> to see the order delivery status.
+                                        </p>
+                                    </div>
+                                )}
 
-                    )}
-            </div>
+                                <Button
+                                    style={{ marginTop: "10px", position: "center", textAlign: "center", }}
+                                    loading={loading}
+                                    disabled={loading}
+                                    onClick={this.submit}
+                                >
+                                    Potwierdź
+                                </Button>
+                            </React.Fragment>
+
+                        )}
+                </div>
 
             </div>
         )

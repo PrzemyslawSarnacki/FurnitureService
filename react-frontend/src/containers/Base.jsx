@@ -49,9 +49,10 @@ class CustomLayout extends React.Component {
 
 
     render() {
+        console.log(this.props.cart)
         return (
             <Layout className="layout">
-                <Header key="header" isFirstScreen={this.state.isFirstScreen} isMobile={this.state.isMobile} currentPath={this.state.currentPath}/>
+                <Header key="header" isFirstScreen={this.state.isFirstScreen} isMobile={this.state.isMobile} currentPath={this.state.currentPath} />
                 <Content >
                     <div style={{ background: '#fff', }}>
                         {this.props.children}
@@ -66,7 +67,9 @@ class CustomLayout extends React.Component {
 
 const mapStateToProps = state => {
     return {
-      authenticated: state.token !== null,
+        isAuthenticated: state.auth.token !== null,
+        cart: state.cart.shoppingCart,
+        loading: state.cart.loading  
     };
   };  
 
