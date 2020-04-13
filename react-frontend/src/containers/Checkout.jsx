@@ -40,6 +40,7 @@ class Checkout extends React.Component {
 
     handleGetDefaultAddress = addresses => {
         const filteredAddresses = addresses.filter(el => el.default === true);
+        console.log(addresses)
         if (filteredAddresses.length > 0) {
             return filteredAddresses[0].id;
         }
@@ -197,13 +198,13 @@ class Checkout extends React.Component {
                     {billingAddresses.length > 0 ? (
                         <Select
                             name="selectedBillingAddress"
-                            value={selectedBillingAddress}
-                            options={billingAddresses}
+                            defaultValue={selectedBillingAddress}
                             onChange={this.handleSelectChange}
                         >
                             {console.log(billingAddresses)}
                             {billingAddresses.map(billingAddress =>
-                                <Select.Option value={billingAddress}>{billingAddress}</Select.Option>
+                                
+                                <Select.Option value={billingAddress.key}>{billingAddress.text}</Select.Option>
                             )}
                         </Select>
                     ) : (
@@ -214,14 +215,14 @@ class Checkout extends React.Component {
                     <h1>Select a shipping address</h1>
                         {console.log(shippingAddresses)}
                     {shippingAddresses.length > 0 ? (
-                
+
                         <Select
                             name="selectedShippingAddress"
-                            value={selectedShippingAddress}
+                            defaultValue={selectedShippingAddress}
                             onChange={this.handleSelectChange}
                         >
                             {shippingAddresses.map(shippingAddress =>
-                                <Select.Option value={shippingAddress}>{shippingAddress}</Select.Option>
+                                <Select.Option value={shippingAddress.key}>{shippingAddress.text}</Select.Option>
                             )}
 
                         </Select>
