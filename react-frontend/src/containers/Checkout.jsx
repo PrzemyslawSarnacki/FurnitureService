@@ -142,33 +142,25 @@ class Checkout extends React.Component {
     submit = ev => {
         ev.preventDefault();
         this.setState({ loading: true });
-        if (this.props.stripe) {
-            this.props.stripe.createToken().then(result => {
-                if (result.error) {
-                    this.setState({ error: result.error.message, loading: false });
-                } else {
-                    this.setState({ error: null });
-                    const {
-                        selectedBillingAddress,
-                        selectedShippingAddress
-                    } = this.state;
-                    authAxios
-                        .post(checkoutURL, {
-                            stripeToken: result.token.id,
-                            selectedBillingAddress,
-                            selectedShippingAddress
-                        })
-                        .then(res => {
-                            this.setState({ loading: false, success: true });
-                        })
-                        .catch(err => {
-                            this.setState({ loading: false, error: err });
-                        });
-                }
+        const {
+            selectedBillingAddress,
+            selectedShippingAddress
+        } = this.state;
+        this.setState({ error: null });
+        console.log(selectedBillingAddress)
+        console.log(selectedShippingAddress)
+        authAxios
+            .post(checkoutURL, {
+                stripeToken:  21, //result.token.id,
+                selectedBillingAddress,
+                selectedShippingAddress
+            })
+            .then(res => {
+                this.setState({ loading: false, success: true });
+            })
+            .catch(err => {
+                this.setState({ loading: false, error: err });
             });
-        } else {
-            console.log("Stripe is not loaded");
-        }
     };
 
 
@@ -195,6 +187,7 @@ class Checkout extends React.Component {
                 <div style={{  }}
                 >
 
+                    <h1>Zaznacz adres płatności</h1>
                     {billingAddresses.length > 0 ? (
                         <Select
                             name="selectedBillingAddress"
@@ -212,7 +205,7 @@ class Checkout extends React.Component {
                                 You need to <Link to="/profile">add a billing address</Link>
                             </p>
                         )}
-                    <h1>Select a shipping address</h1>
+                    <h1>Zaznacz adres dostawy</h1>
                         {console.log(shippingAddresses)}
                     {shippingAddresses.length > 0 ? (
 
@@ -237,12 +230,12 @@ class Checkout extends React.Component {
                         <p>You need to add addresses before you can complete your purchase</p>
                     ) : (
                             <React.Fragment>
-                                <h1>Would you like to complete the purchase?</h1>
+                                <h1>Czy chcesz kontynuwać zamówienie?</h1>
                                 {success && (
                                     <div>
                                         {this.handleMessage("Your payment was successful", "success")}
                                         <p>
-                                            Go to your <b>profile</b> to see the order delivery status.
+                                            Przejdź do swojego <b>profilu</b> aby zobaczyć szczegóły zamówienia.
                                         </p>
                                     </div>
                                 )}
