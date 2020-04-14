@@ -3,7 +3,7 @@ import { Modal, Button, Avatar, Row, Col } from 'antd';
 import axios from "axios";
 import { connect } from "react-redux";
 import { DollarCircleOutlined, ShoppingCartOutlined } from "@ant-design/icons";
-import { productDetailURL, addToCartURL } from "../constants";
+import { addToCartURL } from "../constants";
 import { authAxios } from "../utils";
 import { fetchCart } from "../store/actions/cart";
 

@@ -53,10 +53,9 @@ class Header extends React.Component {
 
 
   render() {
-    const { isAuthenticated, cart, loading } = this.props;
+    const { isAuthenticated, cart } = this.props;
     const { isFirstScreen, isMobile } = this.props;
     const { menuVisible } = this.state;
-    console.log(this.props)
     const menuMode = isMobile ? 'inline' : 'horizontal';
     const headerClassName = classNames({
       clearfix: true,
@@ -75,11 +74,16 @@ class Header extends React.Component {
                 </p>
               );
             })}
-                 <Button>
-                <Link to="/order-summary">
-                  Szczegóły
+            <Button>
+              <Link to="/order-summary">
+                Zamówienie
                 </Link>
-                  </Button>
+            </Button>
+            <Button>
+              <Link to="/profile">
+                Profil
+                </Link>
+            </Button>
             {cart.order_items.length < 1 ? (
               <p key="empty">Koszyk jest pusty</p>
             ) : null}
@@ -147,14 +151,17 @@ class Header extends React.Component {
           : null}
 
         {isAuthenticated ?
-          <Menu.Item onClick={this.handleHideMenu} key="logout" onClick={() => this.props.logout()}>
-            Logout
+          <Menu.Item key="logout" onClick={() => {
+            this.handleHideMenu()
+            this.props.logout()
+          }}>
+            Wyloguj
             </Menu.Item>
 
           :
 
           <Menu.Item onClick={this.handleHideMenu} key="login">
-            <Link to="/login">Login</Link>
+            <Link to="/login">Zaloguj</Link>
           </Menu.Item>
         }
       </Menu>,
@@ -207,7 +214,6 @@ const mapStateToProps = state => {
   return {
     isAuthenticated: state.auth.token !== null,
     cart: state.cart.shoppingCart,
-    loading: state.cart.loading
   };
 };
 

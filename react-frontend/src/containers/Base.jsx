@@ -3,7 +3,6 @@ import { enquireScreen } from 'enquire-js';
 import { Layout} from 'antd';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import * as actions from '../store/actions/auth';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { logout } from "../store/actions/auth";
@@ -49,7 +48,6 @@ class CustomLayout extends React.Component {
 
 
     render() {
-        console.log(this.props.cart)
         return (
             <Layout className="layout">
                 <Header key="header" isFirstScreen={this.state.isFirstScreen} isMobile={this.state.isMobile} currentPath={this.state.currentPath} />

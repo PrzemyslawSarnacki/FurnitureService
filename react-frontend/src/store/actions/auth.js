@@ -39,7 +39,6 @@ export const checkAuthTimeout = expirationTime => {
 
 export const authLogin = (username, password) => {
     return dispatch => {
-        console.log(password)
         dispatch(authStart());
         axios.defaults.headers = {
             "Content-Type": "application/json",
@@ -56,7 +55,6 @@ export const authLogin = (username, password) => {
                 localStorage.setItem("expirationDate", expirationDate);
                 dispatch(authSuccess(token));
                 dispatch(checkAuthTimeout(3600));
-                console.log(token)
             })
             .catch(err => {
                 dispatch(authFail(err));

@@ -36,42 +36,34 @@ class OrderHistory extends React.Component {
 
     formatData = data => {
         var finalData = [];
-        console.log(data)
         if (data !== null) {
-            {
-                data.order_items.map((orderItem, i) => {
-        if (orderItem.item_variations.length > 0) {
-            orderItem.item_variations.map((itemVariation) => {
-                finalData.push(
-                    {
-                        key: i + 1,
-                        name: itemVariation.variation.name,
-                        quantity: orderItem.quantity,
-                        price: orderItem.item.price,
-                        totalPrice: orderItem.final_price,
-                        value: itemVariation.value,
-                    }
+            data.order_items.forEach((orderItem, i) => {
+                if (orderItem.item_variations.length > 0) {
+                    orderItem.item_variations.forEach((itemVariation) => {
+                        finalData.push({
+                                key: i + 1,
+                                name: itemVariation.variation.name,
+                                quantity: orderItem.quantity,
+                                price: orderItem.item.price,
+                                totalPrice: orderItem.final_price,
+                                value: itemVariation.value,
+                            })
+                    })
+                } else {
+                    finalData.push(
+                        {
+                            key: i + 1,
+                            name: orderItem.item.title,
+                            quantity: orderItem.quantity,
+                            price: orderItem.item.price,
+                            totalPrice: orderItem.final_price,
+                            value: "",
+
+                        }
                     )
-                })
-            }else {
-                finalData.push(
-                {
-                    key: i + 1,
-                    name: orderItem.item.title,
-                    quantity: orderItem.quantity, 
-                    price: orderItem.item.price,
-                    totalPrice: orderItem.final_price,
-                    value: "",
-
                 }
-            )
+           })
         }
-    
-
-        }
-                )
-    }
-    }
         return finalData;
     }
 
@@ -106,7 +98,7 @@ class OrderHistory extends React.Component {
         return (
             <div>
                 <Table
-                    style={{ marginTop: "200px", marginBottom: "200px",  overflow: "auto"  }}
+                    style={{ marginTop: "200px", marginBottom: "200px", overflow: "auto" }}
                     columns={columns}
                     expandable={{
                         expandedRowRender: record => <p style={{ margin: 0 }}>{record.value}</p>,

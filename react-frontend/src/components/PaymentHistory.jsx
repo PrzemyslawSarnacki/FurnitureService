@@ -26,7 +26,6 @@ class PaymentHistory extends React.Component {
                     loading: false,
                     payments: res.data
                 });
-                console.log(res.data)
             })
             .catch(err => {
                 this.setState({ error: err, loading: false });
@@ -35,18 +34,13 @@ class PaymentHistory extends React.Component {
 
     formatData = payments => {
         var finalData = [];
-        console.log(payments)
         if (payments !== null || payments !== []) {
-
-            payments.map(p => {
-                console.log(p)
-                finalData.push(
-                    {
-                        key: p.id,
-                        amount: p.amount,
-                        date: new Date(p.timestamp).toUTCString(),
-                    }
-                )
+            payments.forEach(p => {
+                finalData.push({
+                    key: p.id,
+                    amount: p.amount,
+                    date: new Date(p.timestamp).toUTCString(),
+                })
             })
         }
 

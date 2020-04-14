@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { NavLink, Redirect } from 'react-router-dom';
 import { authLogin } from "../store/actions/auth.js";
 import '../components/static/styles.less';
-import Offer from '../components/Offer';
 import { Form, Input, Button, Checkbox, Spin } from 'antd';
 
 
@@ -39,13 +38,14 @@ class NormalLoginForm extends React.Component {
         }
 
         return (
-            <div className="input" style={{ marginTop: "200px", position: "center" }}>
+            <div className="input" style={{ position: "center" }}>
                 {error && <p>{this.props.error.message}</p>}
-
                 { this.props.loading ?
                         <Spin indicator={antIcon} />
                         :
-                        <Offer key="offer" isMobile={null} />,     <Form
+                        <React.Fragment>
+                        <Form
+                        style={{ marginTop: "200px"}}
                         name="normal_login"
                         className="login-form"
                         initialValues={{ remember: true }}
@@ -77,22 +77,20 @@ class NormalLoginForm extends React.Component {
                             <Checkbox  style={{checked:{backgroundColor: 'red'} }} >Remember me</Checkbox>
                           </Form.Item>
                   
-                          <a className="login-form-forgot " style={{color: 'red' }} href="">
-                            Forgot password
-                          </a>
                         </Form.Item>
                   
                         <Form.Item>
                           <Button type="primary" htmlType="submit" className="login-form-button" style={{ marginRight: '10px'}}>
-                            Log in
+                          Zaloguj się
                           </Button>
-                           Or 
+                           Lub
                           <NavLink
                                           style={{ marginRight: '10px', color: 'red' }}
-                                          to='/signup/'> signup
+                                          to='/signup/'> Załóż konto
                           </NavLink>
                         </Form.Item>
                       </Form>
+                      </React.Fragment>
                 }
             </div>
         );

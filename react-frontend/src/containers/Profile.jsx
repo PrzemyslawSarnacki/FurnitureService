@@ -80,7 +80,6 @@ class Profile extends React.Component {
     };
 
     handleSelectAddress = address => {
-        console.log(address)
         this.setState({ selectedAddress: address });
     };
 
@@ -193,9 +192,9 @@ class Profile extends React.Component {
     render() {
         const { activeItem } = this.state;
         const { isAuthenticated } = this.props;
-        // if (!isAuthenticated) {
-        //     return <Redirect to="/login" />;
-        // }
+        if (!isAuthenticated) {
+            return <Redirect to="/login" />;
+        }
         return (
             <div style={{marginTop: "90px"}}>
                 <Row>
@@ -246,7 +245,6 @@ class Profile extends React.Component {
 
 
 const mapStateToProps = state => {
-    console.log(state)
     return {
         isAuthenticated: state.auth.token !== null
     };

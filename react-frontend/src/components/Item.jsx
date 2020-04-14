@@ -34,7 +34,6 @@ class Items extends React.Component {
         })
     }
 
-
     handleCancel = () => {
         this.setState({ visible: false, })
     }
@@ -50,9 +49,6 @@ class Items extends React.Component {
                 itemLayout="vertical"
                 size="large"
                 pagination={{
-                    onChange: page => {
-                        console.log(page);
-                    },
                     pageSize: 3
                 }}
                 dataSource={this.props.data}
@@ -73,8 +69,7 @@ class Items extends React.Component {
                     >
                         <List.Item.Meta
                             avatar={<Avatar src={item.image} />}
-                            title={<a onClick={() => this.showModal(item.id)}> {item.title} </a>}
-                            // description={item.description}
+                            title={<a type="link" onClick={() => this.showModal(item.id)}> {item.title} </a>}
                         />
                         {(this.state.visible ?
                             (<DetailModal visible={this.state.visible} handleCancel={this.handleCancel} handleOK={this.handleOK} itemID={this.state.itemID} />)

@@ -1,18 +1,14 @@
 import React from 'react'
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { authAxios } from "../utils";
-import { Button, Avatar, Divider, Select, message } from 'antd'
+import { Button, Divider, Select, message } from 'antd'
 import OrderPreview from "../components/OrderPreview";
 
 import {
     checkoutURL,
     orderSummaryURL,
     addCouponURL,
-    addToCartURL,
-    addressListURL,
-    orderItemDeleteURL,
-    orderItemUpdateQuantityURL
-} from "../constants";
+    addressListURL} from "../constants";
 
 
 class Checkout extends React.Component {
@@ -40,7 +36,6 @@ class Checkout extends React.Component {
 
     handleGetDefaultAddress = addresses => {
         const filteredAddresses = addresses.filter(el => el.default === true);
-        console.log(addresses)
         if (filteredAddresses.length > 0) {
             return filteredAddresses[0].id;
         }
@@ -99,12 +94,7 @@ class Checkout extends React.Component {
                 this.setState({ data: res.data, loading: false });
             })
             .catch(err => {
-                // if (err.response.status === 404) {
-                //     this.props.history.push("/products");
-                // } else {
-                console.log(err)
                 this.setState({ error: err, loading: false });
-                // }
             });
     };
 
@@ -113,7 +103,7 @@ class Checkout extends React.Component {
         this.setState({ loading: true });
         authAxios
             .post(addCouponURL, { code })
-            .then(res => {
+            .then(() => {
                 this.setState({ loading: false });
                 this.handleFetchOrder();
             })
@@ -123,7 +113,6 @@ class Checkout extends React.Component {
     };
 
     handleSelectChange = (e, { name, value }) => {
-        console.log("change")
         this.setState({ [name]: value });
     };
 
@@ -147,15 +136,13 @@ class Checkout extends React.Component {
             selectedShippingAddress
         } = this.state;
         this.setState({ error: null });
-        console.log(selectedBillingAddress)
-        console.log(selectedShippingAddress)
         authAxios
             .post(checkoutURL, {
                 stripeToken:  21, //result.token.id,
                 selectedBillingAddress,
                 selectedShippingAddress
             })
-            .then(res => {
+            .then(() => {
                 this.setState({ loading: false, success: true });
             })
             .catch(err => {
@@ -167,7 +154,6 @@ class Checkout extends React.Component {
     render() {
         const {
             data,
-            error,
             loading,
             success,
             billingAddresses,
@@ -175,8 +161,10 @@ class Checkout extends React.Component {
             selectedBillingAddress,
             selectedShippingAddress
         } = this.state;
-        console.log(data)
-        console.log(this.state)
+        const { isAuthenticated } = this.props;
+        if (!isAuthenticated) {
+            return <Redirect to="/login" />;
+        }
         return (
             <div
                 style={{ textAlign: "center", marginTop: "90px" }}
@@ -194,7 +182,6 @@ class Checkout extends React.Component {
                             defaultValue={selectedBillingAddress}
                             onChange={this.handleSelectChange}
                         >
-                            {console.log(billingAddresses)}
                             {billingAddresses.map(billingAddress =>
                                 
                                 <Select.Option value={billingAddress.key}>{billingAddress.text}</Select.Option>
@@ -206,7 +193,6 @@ class Checkout extends React.Component {
                             </p>
                         )}
                     <h1>Zaznacz adres dostawy</h1>
-                        {console.log(shippingAddresses)}
                     {shippingAddresses.length > 0 ? (
 
                         <Select

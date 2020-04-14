@@ -8,7 +8,6 @@ import { authAxios } from "../utils";
 
 
 const UPDATE_FORM = "UPDATE_FORM";
-const CREATE_FORM = "CREATE_FORM";
 
 
 export class AddressForm extends React.Component {
@@ -54,7 +53,6 @@ constructor(props) {
     
       handleChange = e => {
         const { formData } = this.state;
-        console.log(e.target.name)
         const updatedFormdata = {
           ...formData,
           [e.target.name]: e.target.value

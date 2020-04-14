@@ -1,6 +1,5 @@
 import React from 'react'
 import { Tag, List, Avatar, Divider } from 'antd';
-import { orderItemDeleteURL } from '../constants';
 
 
 class OrderPreview extends React.Component {
@@ -10,11 +9,7 @@ class OrderPreview extends React.Component {
 
     render() {
         const { data } = this.props;
-        console.log(data)
         return (
-    
-    
-    
     <React.Fragment >
     
                 {data.length === 0 ? null :
