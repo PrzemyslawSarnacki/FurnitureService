@@ -1,11 +1,7 @@
 import React from "react";
-import { Form } from '@ant-design/compatible';
-import '@ant-design/compatible/assets/index.css';
-import { Input, Button } from "antd";
+import { Input, Button, Form } from "antd";
 import { connect } from "react-redux";
 import axios from "axios";
-
-const FormItem = Form.Item;
 
 
 class CustomForm extends React.Component {
@@ -54,23 +50,23 @@ class CustomForm extends React.Component {
             )
           }
         >
-          <FormItem label="Title">
+          <Form.Item label="Title">
             <Input name="title" placeholder="Put a title here" />
-          </FormItem>
-          <FormItem label="Content">
+          </Form.Item>
+          <Form.Item label="Content">
             <Input name="content" placeholder="Enter some content ..." />
-          </FormItem>
-          <FormItem label="Content">
+          </Form.Item>
+          <Form.Item label="Content">
             <Input name="content" placeholder="Enter some content ..." />
-          </FormItem>
-          <FormItem label="Content">
+          </Form.Item>
+          <Form.Item label="Content">
             <Input name="content" placeholder="Enter some content ..." />
-          </FormItem>
-          <FormItem>
+          </Form.Item>
+          <Form.Item>
             <Button type="primary" size="large" htmlType="submit">
               {this.props.btnText}
             </Button>
-          </FormItem>
+          </Form.Item>
         </Form>
       </div>
     );

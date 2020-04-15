@@ -73,8 +73,6 @@ class Items extends React.Component {
                             avatar={<Avatar src={item.image} />}
                             title={<a type="link" onClick={() => this.showModal(item.id)}> {item.title} </a>}
                         />
-
-
                         {item.content}
                         {item.category}
                         {item.label}

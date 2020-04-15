@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { NavLink, Redirect } from 'react-router-dom';
 import { authLogin } from "../store/actions/auth.js";
 import '../components/static/styles.less';
-import { Form, Input, Button, Checkbox, Spin } from 'antd';
+import { Form, Input, Button, Checkbox, Spin, Space } from 'antd';
 
 
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
@@ -44,17 +44,20 @@ class NormalLoginForm extends React.Component {
                         <Spin indicator={antIcon} />
                         :
                         <React.Fragment>
+                        <Space size={100} direction="vertical">
+                            <p></p>
+                          </Space>
                         <Form
                         style={{ marginTop: "200px"}}
                         name="normal_login"
                         className="login-form"
                         initialValues={{ remember: true }}
                         onFinish={this.handleSubmit}
-                      >
+                        >
                         <Form.Item
                           name="username"
                           rules={[{ required: true, message: 'Please input your Username!' }]}
-                        >
+                          >
                           <Input 
                           name="username"
                           onChange={this.handleChange} prefix={<UserOutlined className="site-form-item-icon " />} placeholder="Username" />

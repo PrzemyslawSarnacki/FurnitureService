@@ -44,6 +44,7 @@ class DetailModal extends React.Component {
             });
         });
     }
+    
     handleImageChange = attachment => {
         this.setState({
             imageRef: attachment,
@@ -125,19 +126,14 @@ class DetailModal extends React.Component {
                                 this.state.item.variations.map(v => {
 
                                     return (
-
                                         <React.Fragment key={v.id}>
                                             <Col xs={4} sm={4} md={6} xl={8}>
-
                                                 <h4>
                                                     {v.name}
                                                 </h4>
                                                 {v.item_variations.map(iv => {
                                                     return (
-
                                                         <React.Fragment key={iv.id}>
-
-
                                                             {iv.attachment && (
                                                                 <Avatar shape="square" size={64} onClick={() => {
                                                                     this.handleImageChange(`http://127.0.0.1:8000${iv.attachment}`);
@@ -145,16 +141,13 @@ class DetailModal extends React.Component {
                                                                 }}
                                                                     src={`http://127.0.0.1:8000${iv.attachment}`}
                                                                 />
-
                                                             )}
                                                             <IconText type="dollar" text={`${iv.value} zł`} />
-
                                                         </React.Fragment>
                                                     );
                                                 })}
                                             </Col>
                                         </React.Fragment>
-
                                     );
                                 })}
                         </Row>
