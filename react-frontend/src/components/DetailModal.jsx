@@ -23,7 +23,7 @@ const IconText = ({ type, text }) => (
 );
 
 
-class DetailModal extends React.PureComponent {
+class DetailModal extends React.Component {
     constructor(props) {
         super(props);
         this.state = {

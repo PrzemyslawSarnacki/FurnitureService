@@ -145,12 +145,10 @@ class Header extends React.Component {
               </Link>
             </Popover >
           </Menu.Item>
-
-
         )
           : null}
 
-        {isAuthenticated ?
+          {isAuthenticated ?
           <Menu.Item key="logout" onClick={() => {
             this.handleHideMenu()
             this.props.logout()

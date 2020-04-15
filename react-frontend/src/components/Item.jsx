@@ -44,6 +44,8 @@ class Items extends React.Component {
 
     render() {
         return (
+            <div>
+
             <List
                 style={{ marginTop: "50px" }}
                 itemLayout="vertical"
@@ -54,7 +56,7 @@ class Items extends React.Component {
                 dataSource={this.props.data}
                 renderItem={item => (
                     <List.Item
-                        key={item.title}
+                    key={item.title}
                         actions={[
                             <IconText type="dollar" text={`${item.price} zł`} />
                         ]}
@@ -71,9 +73,6 @@ class Items extends React.Component {
                             avatar={<Avatar src={item.image} />}
                             title={<a type="link" onClick={() => this.showModal(item.id)}> {item.title} </a>}
                         />
-                        {(this.state.visible ?
-                            (<DetailModal visible={this.state.visible} handleCancel={this.handleCancel} handleOK={this.handleOK} itemID={this.state.itemID} />)
-                            : null)}
 
 
                         {item.content}
@@ -82,7 +81,11 @@ class Items extends React.Component {
 
                     </List.Item>
                 )}
-            />
+                />
+                {(this.state.visible ?
+                    (<div><DetailModal visible={this.state.visible} handleCancel={this.handleCancel} handleOK={this.handleOK} itemID={this.state.itemID} /></div>)
+                    : null)}
+                </div>
         );
     }
 }

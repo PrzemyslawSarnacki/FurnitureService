@@ -162,9 +162,9 @@ class Checkout extends React.Component {
             selectedShippingAddress
         } = this.state;
         const { isAuthenticated } = this.props;
-        if (!isAuthenticated) {
-            return <Redirect to="/login" />;
-        }
+        // if (!isAuthenticated) {
+        //     return <Redirect to="/login" />;
+        // }
         return (
             <div
                 style={{ textAlign: "center", marginTop: "90px" }}
