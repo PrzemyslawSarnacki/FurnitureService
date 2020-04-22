@@ -18,7 +18,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Router>
+        <Router basename='/FurnitureService'>
           <CustomLayout {...this.props}>
           <ScrollToTop>
               <BaseRouter />
