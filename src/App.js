@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter, BrowserRouter as HashRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import BaseRouter from './routes';
 
