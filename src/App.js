@@ -18,7 +18,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Router basename='/FurnitureService'>
+        <Router basename={process.env.PUBLIC_URL} >
           <CustomLayout {...this.props}>
           <ScrollToTop>
               <BaseRouter />
