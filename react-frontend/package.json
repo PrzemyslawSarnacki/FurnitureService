@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@ant-design/icons": "^4.1.0",
-    "antd": "^4.1.0",
+    "@ant-design/icons": "^4.0.6",
+    "antd": "^4.1.4",
     "axios": "^0.19.2",
     "enquire-js": "^0.2.1",
+    "gh-pages": "^2.2.0",
     "google-maps-react": "^2.0.2",
     "rc-banner-anim": "^2.2.2",
     "rc-queue-anim": "^1.6.12",
