@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import BaseRouter from './routes';
 
@@ -18,13 +18,14 @@ class App extends Component {
   render() {
     return (
       <div>
-        <HashRouter basename='/' >
+        <Router basename={process.env.PUBLIC_URL} >
+          <Redirect/>
           <CustomLayout {...this.props}>
           <ScrollToTop>
               <BaseRouter />
           </ScrollToTop>
           </CustomLayout>
-        </HashRouter>
+        </Router>
       </div>
     );
   }

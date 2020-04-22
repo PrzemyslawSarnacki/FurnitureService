@@ -22,6 +22,7 @@ const BaseRouter = () => (
     <Route path="/profile/" component={Profile} />{" "}
     <Route path="/signup/" component={Signup} />{" "}
     <Route path="/checkout/" component={Checkout} />{" "}
+    <Route path="/FurnitureService/" component={<Redirect to="/" />} />{" "}
   </Hoc>
 ); 
 
