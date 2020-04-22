@@ -1,5 +1,6 @@
 {
   "name": "landing-create-react-app-example",
+  "homepage": "https://przemyslawsarnacki.github.io/FurnitureService",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
