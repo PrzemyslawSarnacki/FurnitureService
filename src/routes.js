@@ -14,7 +14,7 @@ const Hoc = props => props.children;
 
 const BaseRouter = () => (
   <Hoc>
-    <Route path={process.env.PUBLIC_URL + "/"} component={Home} />{" "}
+    <Route path={process.env.PUBLIC_URL + "/FurnitureService"} component={Home} />{" "}
     <Route exact path="/items/" component={ItemList} />{" "}
     <Route exact path="/items/:itemID/" component={ItemDetail} />{" "}
     <Route exact path="/order-summary/" component={OrderSummary} />{" "}
