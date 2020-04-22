@@ -23,6 +23,6 @@ const BaseRouter = () => (
     <Route exact path="/signup/" component={Signup} />{" "}
     <Route exact path="/checkout/" component={Checkout} />{" "}
   </Hoc>
-);
+); 
 
 export default BaseRouter;
