@@ -1,5 +1,5 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 
 import ItemList from "./containers/ItemListView";
 import ItemDetail from "./containers/ItemDetailView";
