@@ -14,14 +14,14 @@ const Hoc = props => props.children;
 
 const BaseRouter = () => (
   <Hoc>
-    <Route path={process.env.PUBLIC_URL + "/FurnitureService"} component={Home} />{" "}
-    <Route exact path="/items/" component={ItemList} />{" "}
-    <Route exact path="/items/:itemID/" component={ItemDetail} />{" "}
-    <Route exact path="/order-summary/" component={OrderSummary} />{" "}
-    <Route exact path="/login/" component={Login} />{" "}
-    <Route exact path="/profile/" component={Profile} />{" "}
-    <Route exact path="/signup/" component={Signup} />{" "}
-    <Route exact path="/checkout/" component={Checkout} />{" "}
+    <Route exact path="/" component={Home} />{" "}
+    <Route path="/items/" component={ItemList} />{" "}
+    <Route path="/items/:itemID/" component={ItemDetail} />{" "}
+    <Route path="/order-summary/" component={OrderSummary} />{" "}
+    <Route path="/login/" component={Login} />{" "}
+    <Route path="/profile/" component={Profile} />{" "}
+    <Route path="/signup/" component={Signup} />{" "}
+    <Route path="/checkout/" component={Checkout} />{" "}
   </Hoc>
 ); 
 
