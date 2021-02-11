@@ -2,5 +2,9 @@
     "python.pythonPath": "venv\\Scripts\\python.exe",
     "python.linting.pylintArgs": ["--load-plugins", "pylint_django"],
     "python.linting.pylintEnabled": true,
-    "python.linting.enabled": true
+    "python.linting.enabled": true,
+    "python.linting.pylintArgs": [
+        "--disable=django-not-configured",
+    ],
+    "python.formatting.provider": "black"
 }
