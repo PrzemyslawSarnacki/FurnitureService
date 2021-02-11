@@ -30,7 +30,7 @@
             "type": "python",
             "request": "launch",
             "stopOnEntry": true,
-            "pythonPath": "${config:python.pythonPath}",
+            "python": "${command:python.interpreterPath}",
             "program": "${workspaceFolder}\\manage.py",
             "args": [
                 "runserver",
