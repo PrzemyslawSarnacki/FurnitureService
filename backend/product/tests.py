@@ -6,7 +6,7 @@ from rest_framework.test import APIClient, APITestCase, URLPatternsTestCase
 class ItemViewTestCase(APITestCase, URLPatternsTestCase):
 
     urlpatterns = [
-        path("api/", include("api.urls")),
+        path("api/", include("product.urls")),
     ]
 
     def setUp(self):

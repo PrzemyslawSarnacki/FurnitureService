@@ -1,8 +1,6 @@
-from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 from django.db import models
-from django.db.models import Sum
 from django.shortcuts import reverse
 
 CATEGORY_CHOICES = (("S", "Shirt"), ("SW", "Sport wear"), ("OW", "Outwear"))
