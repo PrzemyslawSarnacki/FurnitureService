@@ -9,8 +9,11 @@ services:
       - POSTGRES_PASSWORD=postgres
   web:
     build: .
-    command: python manage.py test api 
-    # command: python manage.py runserver 0.0.0.0:8000 
+    command: >
+      sh -c "python manage.py makemigrations &&
+             python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+ 
     volumes:
       - .:/code
     ports:

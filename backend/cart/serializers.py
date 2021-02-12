@@ -1,6 +1,6 @@
 from rest_framework import serializers
-from backend.api.serializers import ItemSerializer, ItemVariationDetailSerializer
-from .models import Order, Coupon, Payment
+from api.serializers import ItemSerializer, ItemVariationDetailSerializer
+from .models import Order, Coupon, Payment, OrderItem
 
 
 class OrderItemSerializer(serializers.ModelSerializer):
@@ -20,6 +20,7 @@ class OrderItemSerializer(serializers.ModelSerializer):
 
     def get_final_price(self, obj):
         return obj.get_final_price()
+        
 
 
 class OrderSerializer(serializers.ModelSerializer):

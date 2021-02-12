@@ -1,13 +1,8 @@
 from rest_framework import serializers
 from .models import (
-    Address,
     Item,
-    Order,
-    OrderItem,
-    Coupon,
     Variation,
     ItemVariation,
-    Payment,
 )
 
 

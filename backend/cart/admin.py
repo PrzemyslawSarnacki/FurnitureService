@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import OrderItem, Order, Payment, Coupon, Refund
+from .models import OrderItem, Order, Payment, Coupon, Refund, make_refund_accepted
 
 
 class OrderAdmin(admin.ModelAdmin):

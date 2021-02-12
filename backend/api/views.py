@@ -6,7 +6,6 @@ from rest_framework.generics import (
 )
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from .models import Item
-import random
 
 from .serializers import (
     ItemSerializer,

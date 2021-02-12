@@ -11,9 +11,11 @@ from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
 from rest_framework.views import APIView
 
-from .models import Address, Coupon, Item, Order, OrderItem, Payment, UserProfile
+from .models import Coupon, Order, OrderItem, Payment
 from .serializers import OrderSerializer, PaymentSerializer
-
+from api.models import Item 
+from user.models import Address, UserProfile 
+from cart.models import Payment, Refund 
 
 class OrderQuantityUpdateView(APIView):
     def post(self, request, *args, **kwargs):
