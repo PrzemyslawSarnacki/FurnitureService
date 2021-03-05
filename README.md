@@ -1,7 +1,7 @@
 # FurnitureService
 Fullstack web app made with use of React (frontend) and Django (backend).
 
-Live demo of only frontend part of project is at : https://przemyslawsarnacki.github.io/FurnitureService/
+Live demo of only frontend part of project is available [here](https://przemyslawsarnacki.github.io/FurnitureService/)
 
 Landing Page: 
 
