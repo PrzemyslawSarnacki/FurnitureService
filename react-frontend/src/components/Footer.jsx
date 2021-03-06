@@ -25,14 +25,6 @@ class Footer extends React.Component {
     };
 
     render() {
-        var terms = [
-            "1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae optio voluptatum ",
-            "1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae optio voluptatum ",
-            "1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae optio voluptatum ",
-            "1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae optio voluptatum ",
-            "1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae optio voluptatum ",
-            "1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae optio voluptatum ",
-        ]
 
         return (
             <footer id="footer" className="dark">
