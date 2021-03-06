@@ -10,28 +10,28 @@ class Footer extends React.Component {
             title: modalTitle,
             content: (
                 <div>
-                 {terms.map((term) =>
-                    <p>{term}</p>
-                )} 
-                
-            </div>
-        ),
-        iconType: 'primary',
-        okType: 'primary',
-        onOk() { },
-    });
-};
+                    {terms.map((term) =>
+                        <p>{term}</p>
+                    )}
 
-render() {
-    var terms = [
-        "1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae optio voluptatum ", 
-        "1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae optio voluptatum ", 
-        "1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae optio voluptatum ", 
-        "1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae optio voluptatum ", 
-        "1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae optio voluptatum ", 
-        "1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae optio voluptatum ", 
-    ]
-        
+                </div>
+            ),
+            iconType: 'primary',
+            okType: 'primary',
+            onOk() { },
+        });
+    };
+
+    render() {
+        var terms = [
+            "1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae optio voluptatum ",
+            "1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae optio voluptatum ",
+            "1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae optio voluptatum ",
+            "1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae optio voluptatum ",
+            "1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae optio voluptatum ",
+            "1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae optio voluptatum ",
+        ]
+
         return (
             <footer id="footer" className="dark">
                 <div className="footer-wrap">
@@ -42,7 +42,7 @@ render() {
                                 <div>
                                     <a target="_blank " href="https://github.com/ant-design/ant-design">
                                         Moje konto
-                </a>
+                                    </a>
                                 </div>
                                 <div>
                                     <a href="http://pro.ant.design">Zamówienia</a>
@@ -71,13 +71,13 @@ render() {
                                 <h2>Infolinia</h2>
                                 <div>
                                     <a href="/changelog">
-                                        tel: +48 333 333 333
-                </a>
+                                        tel: +48 662 142 486
+                                    </a>
                                 </div>
                                 <div>
                                     <a target="_blank" rel="noopener noreferrer" href="https://github.com/ant-design/ant-design/wiki/FAQ">
-                                        email: mail@mail.com
-                </a>
+                                        email: mebleidea@op.pl
+                                    </a>
                                 </div>
                             </div>
                         </Col>
@@ -85,25 +85,25 @@ render() {
                             <div className="footer-center">
                                 <h2>
                                     <img className="title-icon" src="https://gw.alipayobjects.com/zos/rmsportal/nBVXkrFdWHxbZlmMbsaH.svg" alt="" />
-                Dostawa i płatność
-              </h2>
+                                    Dostawa i płatność
+                                </h2>
                                 <div>
-                                    <a target="_blank" rel="noopener noreferrer" onClick={() => this.info("Sample title", terms)}>Formy płatności</a>
+                                    <a target="_blank" rel="noopener noreferrer" onClick={() => this.info("Formy płatności", terms)}>Formy płatności</a>
                                 </div>
                                 <div>
-                                    <a target="_blank" rel="noopener noreferrer" onClick={() => this.info("Sample title", terms)}>Koszta dostawy</a>
+                                    <a target="_blank" rel="noopener noreferrer" onClick={() => this.info("Koszta dostawy", terms)}>Koszta dostawy</a>
                                 </div>
                                 <div>
-                                    <a target="_blank" rel="noopener noreferrer" onClick={() => this.info("Sample title", terms)}>Odbiór zamówienia</a>
+                                    <a target="_blank" rel="noopener noreferrer" onClick={() => this.info("Odbiór zamówienia", terms)}>Odbiór zamówienia</a>
                                 </div>
                                 <div>
-                                    <a target="_blank" rel="noopener noreferrer" onClick={() => this.info("Sample title", terms)}>Reklamacje</a>
+                                    <a target="_blank" rel="noopener noreferrer" onClick={() => this.info("Reklamacje", terms)}>Reklamacje</a>
                                 </div>
                                 <div>
-                                    <a target="_blank" rel="noopener noreferrer" onClick={() => this.info("Sample title", terms)}>Zwroty</a>
+                                    <a target="_blank" rel="noopener noreferrer" onClick={() => this.info("Zwroty", terms)}>Zwroty</a>
                                 </div>
                                 <div>
-                                    <a target="_blank" rel="noopener noreferrer" onClick={() => this.info("Sample title", terms)} >Regulamin</a>
+                                    <a target="_blank" rel="noopener noreferrer" onClick={() => this.info("Regulamin", terms)} >Regulamin</a>
                                 </div>
                             </div>
                         </Col>
@@ -123,7 +123,7 @@ render() {
                                 target="_blank"
                             >
                                 OK
-            </a>
+                            </a>
                         </span>
                         <span style={{ marginRight: 24 }}>
                             <a
@@ -132,7 +132,7 @@ render() {
                                 target="_blank"
                             >
                                 OK
-            </a>
+                            </a>
                         </span>
                         <span style={{ marginRight: 12 }}>ICP  B2-2-100257</span>
                         <span style={{ marginRight: 12 }}>Copyright © </span>
