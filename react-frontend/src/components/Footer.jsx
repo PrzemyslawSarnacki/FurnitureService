@@ -34,15 +34,15 @@ class Footer extends React.Component {
                             <div className="footer-center">
                                 <h2>Zakupy</h2>
                                 <div>
-                                    <a target="_blank " href="https://github.com/ant-design/ant-design">
+                                    <a target="_blank " href="">
                                         Moje konto
                                     </a>
                                 </div>
                                 <div>
-                                    <a href="http://pro.ant.design">Zamówienia</a>
+                                    <a href="">Zamówienia</a>
                                 </div>
                                 <div>
-                                    <a href="http://mobile.ant.design">Promocje</a>
+                                    <a href="">Promocje</a>
                                 </div>
                             </div>
                         </Col>
@@ -53,10 +53,10 @@ class Footer extends React.Component {
                                     <a target="_blank" onClick={() => this.info("Jak kupować", footerInfo.howToBuy)}>Jak kupować</a>
                                 </div>
                                 <div>
-                                    <a target="_blank" rel="noopener noreferrer" href="https://github.com/dvajs/dva">Polityka prywatności</a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://auto-kids.pl/wp-content/uploads/2017/11/Polityka-prywatno%C5%9Bci1.pdf">Polityka prywatności</a>
                                 </div>
                                 <div>
-                                    <a target="_blank" rel="noopener noreferrer" href="https://github.com/dvajs/dva-cli">Kontakt</a>
+                                    <a target="_blank" rel="noopener noreferrer" href="">Kontakt</a>
                                 </div>
                             </div>
                         </Col>
@@ -69,7 +69,7 @@ class Footer extends React.Component {
                                     </a>
                                 </div>
                                 <div>
-                                    <a target="_blank" rel="noopener noreferrer" href="https://github.com/ant-design/ant-design/wiki/FAQ">
+                                    <a target="_blank" rel="noopener noreferrer">
                                         email: mebleidea@op.pl
                                     </a>
                                 </div>
@@ -116,7 +116,7 @@ class Footer extends React.Component {
                                 rel="noopener noreferrer"
                                 target="_blank"
                             >
-                                OK
+                                Meble
                             </a>
                         </span>
                         <span style={{ marginRight: 24 }}>
@@ -125,7 +125,7 @@ class Footer extends React.Component {
                                 rel="noopener noreferrer"
                                 target="_blank"
                             >
-                                OK
+                                idea
                             </a>
                         </span>
                         <span style={{ marginRight: 12 }}>ICP  B2-2-100257</span>
