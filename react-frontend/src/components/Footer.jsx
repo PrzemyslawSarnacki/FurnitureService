@@ -2,6 +2,8 @@ import React from 'react';
 import { Modal, Row, Col } from 'antd';
 // import info from './InfoModal.jsx';
 import '../components/static/styles.less';
+import footerInfo from './footerInfo';
+
 
 
 class Footer extends React.Component {
@@ -56,7 +58,7 @@ class Footer extends React.Component {
                             <div className="footer-center">
                                 <h2>Pomoc</h2>
                                 <div>
-                                    <a href="http://scaffold.ant.design">Jak kupować</a>
+                                    <a target="_blank" onClick={() => this.info("Jak kupować", footerInfo.howToBuy)}>Jak kupować</a>
                                 </div>
                                 <div>
                                     <a target="_blank" rel="noopener noreferrer" href="https://github.com/dvajs/dva">Polityka prywatności</a>
@@ -88,22 +90,22 @@ class Footer extends React.Component {
                                     Dostawa i płatność
                                 </h2>
                                 <div>
-                                    <a target="_blank" rel="noopener noreferrer" onClick={() => this.info("Formy płatności", terms)}>Formy płatności</a>
+                                    <a target="_blank" rel="noopener noreferrer" onClick={() => this.info("Formy płatności", footerInfo.payment)}>Formy płatności</a>
                                 </div>
                                 <div>
-                                    <a target="_blank" rel="noopener noreferrer" onClick={() => this.info("Koszta dostawy", terms)}>Koszta dostawy</a>
+                                    <a target="_blank" rel="noopener noreferrer" onClick={() => this.info("Koszta dostawy", footerInfo.shipping)}>Koszta dostawy</a>
                                 </div>
                                 <div>
-                                    <a target="_blank" rel="noopener noreferrer" onClick={() => this.info("Odbiór zamówienia", terms)}>Odbiór zamówienia</a>
+                                    <a target="_blank" rel="noopener noreferrer" onClick={() => this.info("Odbiór zamówienia", footerInfo.receipt)}>Odbiór zamówienia</a>
                                 </div>
                                 <div>
-                                    <a target="_blank" rel="noopener noreferrer" onClick={() => this.info("Reklamacje", terms)}>Reklamacje</a>
+                                    <a target="_blank" rel="noopener noreferrer" onClick={() => this.info("Reklamacje", footerInfo.complaints)}>Reklamacje</a>
                                 </div>
                                 <div>
-                                    <a target="_blank" rel="noopener noreferrer" onClick={() => this.info("Zwroty", terms)}>Zwroty</a>
+                                    <a target="_blank" rel="noopener noreferrer" onClick={() => this.info("Zwroty", footerInfo.returns)}>Zwroty</a>
                                 </div>
                                 <div>
-                                    <a target="_blank" rel="noopener noreferrer" onClick={() => this.info("Regulamin", terms)} >Regulamin</a>
+                                    <a target="_blank" rel="noopener noreferrer" onClick={() => this.info("Regulamin", footerInfo.statute)} >Regulamin</a>
                                 </div>
                             </div>
                         </Col>
