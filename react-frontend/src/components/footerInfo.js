@@ -30,5 +30,6 @@ let footerInfo = {
         "2. Zamówienie telefoniczne",
         "3. Zamówienie przy pomocy serwisu internetowego (wkrótce)",
     ], 
-
 }
+
+export default footerInfo
