@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/FurnitureService/static/css/main.c6db05c3.chunk.css",
-    "main.js": "/FurnitureService/static/js/main.897e29b3.chunk.js",
-    "main.js.map": "/FurnitureService/static/js/main.897e29b3.chunk.js.map",
+    "main.js": "/FurnitureService/static/js/main.e029b446.chunk.js",
+    "main.js.map": "/FurnitureService/static/js/main.e029b446.chunk.js.map",
     "runtime-main.js": "/FurnitureService/static/js/runtime-main.935e1d30.js",
     "runtime-main.js.map": "/FurnitureService/static/js/runtime-main.935e1d30.js.map",
     "static/css/2.99b1923b.chunk.css": "/FurnitureService/static/css/2.99b1923b.chunk.css",
     "static/js/2.7418e417.chunk.js": "/FurnitureService/static/js/2.7418e417.chunk.js",
     "static/js/2.7418e417.chunk.js.map": "/FurnitureService/static/js/2.7418e417.chunk.js.map",
     "index.html": "/FurnitureService/index.html",
-    "precache-manifest.95283cc0f3e6dd5bc0e2d45c981df44d.js": "/FurnitureService/precache-manifest.95283cc0f3e6dd5bc0e2d45c981df44d.js",
+    "precache-manifest.d0afa8487fbaa405e5eba5a0e7213551.js": "/FurnitureService/precache-manifest.d0afa8487fbaa405e5eba5a0e7213551.js",
     "service-worker.js": "/FurnitureService/service-worker.js",
     "static/css/2.99b1923b.chunk.css.map": "/FurnitureService/static/css/2.99b1923b.chunk.css.map",
     "static/css/main.c6db05c3.chunk.css.map": "/FurnitureService/static/css/main.c6db05c3.chunk.css.map",
@@ -21,6 +21,6 @@
     "static/css/2.99b1923b.chunk.css",
     "static/js/2.7418e417.chunk.js",
     "static/css/main.c6db05c3.chunk.css",
-    "static/js/main.897e29b3.chunk.js"
+    "static/js/main.e029b446.chunk.js"
   ]
 }
