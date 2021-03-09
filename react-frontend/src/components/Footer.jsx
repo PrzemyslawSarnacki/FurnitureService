@@ -19,7 +19,7 @@ class Footer extends React.Component {
             ),
             iconType: 'primary',
             okType: 'primary',
-            onOk(){},
+            onOk() { },
         });
     };
 
@@ -38,10 +38,10 @@ class Footer extends React.Component {
                                     </a>
                                 </div>
                                 <div>
-                                    <a href="">Zamówienia</a>
+                                    <a target="_blank " href="">Zamówienia</a>
                                 </div>
                                 <div>
-                                    <a href="">Promocje</a>
+                                    <a target="_blank" onClick={() => this.info("Promocje", footerInfo.sales)}>Promocje</a>
                                 </div>
                             </div>
                         </Col>

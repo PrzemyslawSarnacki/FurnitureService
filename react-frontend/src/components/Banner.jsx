@@ -38,13 +38,11 @@ export class Banner extends React.Component {
               </a>
             </div>
           </QueueAnim>
-          
-            <ScrollLink
+          <ScrollLink
             to="offer"
-            >
-            <DownOutlined className="down" style={{ color: "rgba(255, 255, 255, .75)"}} />
+          >
+            <DownOutlined className="down" style={{ color: "rgba(255, 255, 255, .75)" }} />
           </ScrollLink>
-          
         </ScrollElement>
       </section>
     );

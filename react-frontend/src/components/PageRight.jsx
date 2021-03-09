@@ -26,15 +26,15 @@ export class PageRight extends React.Component {
         >
           <h2 key="h2">{this.props.headerName}</h2>
           <p key="p" style={{ maxWidth: 280 }}>
-          {this.props.paragraphName}
+            {this.props.paragraphName}
           </p>
           <div key="button">
-              <Button type="primary" size="large">
+            <Button type="primary" size="large">
               <Link to="/items">
-                    {this.props.buttonName}
-                    <RightOutlined />
-                  </Link>
-              </Button>
+                {this.props.buttonName}
+                <RightOutlined />
+              </Link>
+            </Button>
           </div>
         </QueueAnim>
       </ScrollOverPack>

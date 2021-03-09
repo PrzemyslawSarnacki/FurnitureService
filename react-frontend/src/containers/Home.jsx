@@ -2,7 +2,6 @@ import React from 'react';
 import DocumentTitle from 'react-document-title';
 import { enquireScreen } from 'enquire-js';
 import Banner from '../components/Banner';
-import Page1 from '../components/PageRight';
 import Location from '../components/Location';
 import PageRight from '../components/PageRight';
 import '../components/static/styles.less';

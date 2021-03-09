@@ -30,6 +30,13 @@ let footerInfo = {
         "2. Zamówienie telefoniczne",
         "3. Zamówienie przy pomocy serwisu internetowego (wkrótce)",
     ], 
+    "contact": [
+        "tel. +48 662 142 486",
+        "email: mebleidea.op.pl",
+    ],
+    "sales": [
+        "Soon",
+    ],
 }
 
 export default footerInfo

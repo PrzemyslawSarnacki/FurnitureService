@@ -17,7 +17,7 @@ enquireScreen((b) => {
     isMobile = b;
 });
 
-class CustomLayout extends React.Component {
+class Base extends React.Component {
 
     state = {
         isFirstScreen: true,
@@ -57,7 +57,6 @@ class CustomLayout extends React.Component {
                     </div>
                 </Content>
                 <Footer key="footer" />
-
             </Layout>
         );
     }
@@ -78,4 +77,4 @@ const mapDispatchToProps = dispatch => {
     };
   };  
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CustomLayout));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Base));
