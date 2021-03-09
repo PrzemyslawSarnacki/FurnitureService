@@ -35,14 +35,14 @@ class App extends React.PureComponent {
 
   render() {
     return (
-      [
-        <Banner key="banner" onEnterChange={this.onEnterChange} />,
-        <Offer key="offer" isMobile={this.state.isMobile} />,
-        <PageRight key="shop" isMobile={this.state.isMobile} headerName={"Sklep"} paragraphName={"Zobacz ofertę w naszym sklepie"} buttonName={"Sprawdź"} />,
-        <Location key="location" isMobile={this.state.isMobile} headerName={"Lokalizacja"} paragraphName={"Sprawdź naszą lokalizację w serwisie Google Maps"} buttonName={"Mapa"} />,
-        <PageRight key="header" isMobile={this.state.isMobile} headerName={"Social Media"} paragraphName={"Zobacz nasze media społecznościowe (fb)"} buttonName={"Sprawdź"} />,
-        <DocumentTitle title="MEBLEidea" key="title" />,
-      ]
+      <body>
+        <Banner key="banner" onEnterChange={this.onEnterChange} />
+        <Offer key="offer" isMobile={this.state.isMobile} />
+        <PageRight key="shop" isMobile={this.state.isMobile} headerName={"Sklep"} paragraphName={"Zobacz ofertę w naszym sklepie"} buttonName={"Sprawdź"} />
+        <Location key="location" isMobile={this.state.isMobile} headerName={"Lokalizacja"} paragraphName={"Sprawdź naszą lokalizację w serwisie Google Maps"} buttonName={"Mapa"} />
+        <PageRight key="header" isMobile={this.state.isMobile} headerName={"Social Media"} paragraphName={"Zobacz nasze media społecznościowe (fb)"} buttonName={"Sprawdź"} />
+        <DocumentTitle title="MEBLEidea" key="title" />
+      </body>
     );
   }
 }

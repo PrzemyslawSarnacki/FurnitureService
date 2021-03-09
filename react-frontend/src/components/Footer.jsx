@@ -15,12 +15,11 @@ class Footer extends React.Component {
                     {terms.map((term) =>
                         <p>{term}</p>
                     )}
-
                 </div>
             ),
             iconType: 'primary',
             okType: 'primary',
-            onOk() { },
+            onOk(){},
         });
     };
 
